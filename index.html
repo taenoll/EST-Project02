@@ -10,9 +10,32 @@
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/game.css" />
     <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/dom/renderInventory.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <aside class="inventory" aria-label="인벤토리">
+        <!-- 상단 힌트 / 메뉴 -->
+        <div class="inventory-header">
+          <button type="button" class="inventory-hint">
+            <span class="inventory-header-icon" aria-hidden="true">☼</span>
+            <span>힌트</span>
+          </button>
+
+          <button type="button" class="inventory-menu">
+            <span class="inventory-header-icon" aria-hidden="true">☰</span>
+            <span>메뉴</span>
+          </button>
+        </div>
+
+        <!-- 아이템 목록 -->
+        <button type="button" class="inventory-prev" aria-label="이전 아이템">▲</button>
+
+        <ul class="inventory-list"></ul>
+
+        <button type="button" class="inventory-next" aria-label="다음 아이템">▼</button>
+      </aside>
+    </div>
     <div id="modal"></div>
   </body>
 </html>

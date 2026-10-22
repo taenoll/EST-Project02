@@ -481,5 +481,35 @@
 }
 
 /* ==================================================
+   ITEM DETAIL MODAL
+   담당: 소연
+================================================== */
+
+.item-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.item-detail img {
+  width: 150px;
+  height: 150px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.item-detail h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.item-detail p {
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ==================================================
    END COMMON MODAL
 ================================================== */

@@ -1,6 +1,8 @@
 import { openModal, closeModal } from "../dom/renderModal.js";
+import { toggleBgm, toggleSfx } from "./audio.js";
+import { gameState } from "../state/gameState.js";
 
-export function openMenu() {
+export function openMenu() { 
   openModal(`
     <div class="menu-content">
       <h2>MENU</h2>
@@ -36,7 +38,7 @@ export function openMenu() {
             type="button"
             class="audio-toggle menu-bgm"
           >
-            ON
+            ${gameState.audio.bgmOn ? "ON" : "OFF"}
           </button>
         </div>
 
@@ -47,7 +49,7 @@ export function openMenu() {
             type="button"
             class="audio-toggle menu-sfx"
           >
-            ON
+            ${gameState.audio.sfxOn ? "ON" : "OFF"}
           </button>
         </div>
       </div>
@@ -57,6 +59,21 @@ export function openMenu() {
   const continueButton = document.querySelector(".menu-continue");
 
   continueButton.addEventListener("click", closeModal);
+
+  const bgmButton = document.querySelector(".menu-bgm");
+  const sfxButton = document.querySelector(".menu-sfx");
+
+  bgmButton.addEventListener("click", () => {
+    const isOn = toggleBgm();
+
+    bgmButton.textContent = isOn ? "ON" : "OFF";
+  });
+
+  sfxButton.addEventListener("click", () => {
+    const isOn = toggleSfx();
+
+    sfxButton.textContent = isOn ? "ON" : "OFF";
+  });
 
   // TODO: 처음부터 다시하기 기능 연결
   // TODO: 타이틀로 돌아가기 기능 연결

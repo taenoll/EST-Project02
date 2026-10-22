@@ -2,8 +2,10 @@
 
 import { openMenu } from "../game/menu.js";
 
-const menuButton = document.querySelector(".menu-button");
+document.addEventListener("click", (event) => {
+  const menuButton = event.target.closest(".inventory-menu");
 
-if (menuButton) {
-  menuButton.addEventListener("click", openMenu);
-}
+  if (!menuButton) return;
+
+  openMenu();
+});

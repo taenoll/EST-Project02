@@ -4,4 +4,6 @@ import { openMenu } from "../game/menu.js";
 
 const menuButton = document.querySelector(".menu-button");
 
-menuButton.addEventListener("click", openMenu);
+if (menuButton) {
+  menuButton.addEventListener("click", openMenu);
+}

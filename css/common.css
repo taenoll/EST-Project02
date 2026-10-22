@@ -1,6 +1,7 @@
-
+/* 프로젝트 전체에서 사용하는 공통 스타일 파일입니다. */
 /* ==================================================
    INVENTORY
+   담당: 소연
 ================================================== */
 
 .inventory {
@@ -254,7 +255,9 @@
 }
 
 
-/* 프로젝트 전체에서 사용하는 공통 스타일 파일입니다. */
+/* ==================================================
+   END INVENTORY
+================================================== */
 
 /* ==================================================
    DIALOGUE
@@ -412,7 +415,9 @@
     font-size: 12px;
   }
 }
-
+/* ==================================================
+   END DIALOGUE
+================================================== */
 
 /* ==================================================
    COMMON MODAL
@@ -512,4 +517,103 @@
 
 /* ==================================================
    END COMMON MODAL
+================================================== */
+
+/* ==================================================
+   GAME MENU
+   게임 공통 메뉴 UI
+   담당: 유정
+================================================== */
+
+.menu-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.menu-content h2 {
+  grid-column: 1 / -1;
+
+  margin: 0 0 18px;
+  color: #c5f1e9;
+
+  font-size: 24px;
+  letter-spacing: 4px;
+}
+
+/* 계속하기 / 처음부터 다시하기 / 타이틀 버튼 */
+.menu-button {
+  width: 100%;
+  padding: 14px 16px;
+
+  background: #172326;
+  border: 1px solid #577273;
+
+  color: #e0e2dd;
+  font-size: 14px;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background: #203638;
+  border-color: #8ba6a3;
+}
+
+/* 타이틀로 돌아가기 버튼은 전체 너비 사용 */
+.menu-title {
+  grid-column: 1 / -1;
+}
+
+/* 오디오 설정 영역 */
+.menu-audio {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+}
+
+.menu-section-title {
+  margin: 0 0 8px;
+
+  color: #8ba6a3;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+/* BGM / 효과음 설정 한 줄 */
+.menu-setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 4px;
+
+  border-top: 1px solid #32494a;
+
+  color: #e0e2dd;
+  font-size: 14px;
+}
+
+/* 오디오 ON / OFF 버튼 */
+.audio-toggle {
+  width: 70px;
+  padding: 7px 10px;
+
+  background: #172326;
+  border: 1px solid #577273;
+
+  color: #e0e2dd;
+  font-size: 13px;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.audio-toggle:hover {
+  background: #203638;
+  border-color: #8ba6a3;
+}
+
+/* ==================================================
+   END GAME MENU
 ================================================== */

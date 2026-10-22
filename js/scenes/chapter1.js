@@ -14,7 +14,6 @@ investigateButtons.forEach((button) => {
 
     console.log(result.text);
 
-    button.disabled = true;
     button.classList.add("is-checked");
 
     // TODO: 경찬님 대화창 함수 연결

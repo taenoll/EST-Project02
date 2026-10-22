@@ -1,4 +1,7 @@
-/* INVENTORY*/
+
+/* ==================================================
+   INVENTORY
+================================================== */
 
 .inventory {
   width: clamp(150px, 15vw, 272px);
@@ -18,8 +21,7 @@
   color: #C3AE88;
 }
 
-/* 힌트 / 메뉴 영역*/
-
+/* 힌트 / 메뉴 영역 */
 .inventory-header {
   width: 100%;
   padding: 8px 0 16px;
@@ -69,8 +71,7 @@
   outline-offset: 4px;
 }
 
-/* 아이템 목록*/
-
+/* 아이템 목록 */
 .inventory-list {
   width: 100%;
   min-height: 0;
@@ -91,7 +92,6 @@
 }
 
 /* 아이템 슬롯 */
-
 .inventory-list li {
   width: 100%;
   min-height: 115px;
@@ -159,7 +159,6 @@
 }
 
 /* 위아래 버튼 */
-
 .inventory-prev,
 .inventory-next {
   width: 100%;
@@ -200,7 +199,6 @@
 }
 
 /* 반응형 - 태블릿 / 작은 화면 */
-
 @media (max-width: 768px) {
   .inventory {
     width: 120px;
@@ -254,3 +252,234 @@
     font-size: 12px;
   }
 }
+
+
+/* 프로젝트 전체에서 사용하는 공통 스타일 파일입니다. */
+
+/* ==================================================
+   DIALOGUE
+   담당: 경찬
+================================================== */
+
+/* 하단 대화창 */
+.dialogue-box {
+  position: absolute;
+  left: 2%;
+  bottom: 3%;
+  width: 82%;
+  min-height: 100px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px 18px 10px;
+
+  /* 입체적인 배경 */
+  background: linear-gradient(
+    145deg,
+    #203638 0%,
+    #091719 65%,
+    #050d0f 100%
+  );
+
+  /* 외곽 테두리 */
+  border: 1px solid #8ba6a3;
+
+  /* 안쪽 테두리와 바깥쪽 그림자 */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.45);
+    /* 0 5px 0 #03090a,
+    0 9px 18px rgba(0, 0, 0, 0.65); */
+
+  color: #ffffff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#dialogueNext {
+  position: absolute;
+  right: 12px;
+  bottom: 7px;
+  color: #ffffff;
+  font-size: 10px;
+  text-shadow: 0 1px 3px #000000;
+}
+
+#dialogueText {
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+#dialogueNext {
+  position: absolute;
+  right: 12px;
+  bottom: 7px;
+  color: #ffffff;
+  font-size: 10px;
+  text-shadow: 0 1px 3px #000000;
+}
+
+#dialogueName {
+  color: #c5f1e9;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
+}
+
+/* 인물 초상화 */
+.dialogue-portrait {
+  flex-shrink: 0;
+  width: 58px;
+  height: 68px;
+  overflow: hidden;
+  background: #172326;
+  border-right: 1px solid #577273;
+}
+
+.dialogue-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.65);
+}
+
+/* 대사 내용 */
+.dialogue-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* 대사가 바뀌는 순간 */
+.dialogue-content.fade-out {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.dialogue-name {
+  margin: 0 0 8px;
+  color: #a8c6c2;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.dialogue-text {
+  margin: 0;
+  color: #e0e2dd;
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* 다음 대사 표시 */
+.dialogue-next {
+  position: fixed;
+  right: 12px;
+  bottom: 5px;
+  color: #8caaa6;
+  font-size: 9px;
+  letter-spacing: 1px;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+  .dialogue-box {
+    left: 3%;
+    bottom: 2%;
+    width: 94%;
+    min-height: 90px;
+    gap: 10px;
+    padding: 10px 12px 18px 8px;
+  }
+
+  .dialogue-portrait {
+    width: 48px;
+    height: 58px;
+  }
+
+  .dialogue-text {
+    font-size: 12px;
+  }
+}
+
+
+/* ==================================================
+   COMMON MODAL
+   아이템 상세 / 힌트 / 퍼즐 / 메뉴 등에 공통으로 사용
+   담당: 유정
+================================================== */
+
+#modal {
+  display: none;
+}
+
+#modal.is-open {
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-box {
+  position: relative;
+  width: min(500px, 90%);
+  min-height: 200px;
+  padding: 32px;
+
+  background: linear-gradient(
+    145deg,
+    #203638 0%,
+    #091719 65%,
+    #050d0f 100%
+  );
+
+  border: 1px solid #8ba6a3;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.45);
+
+  color: #ffffff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  border: 0;
+  background: transparent;
+
+  color: #c5f1e9;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  color: #e0e2dd;
+  line-height: 1.8;
+}
+
+/* ==================================================
+   END COMMON MODAL
+================================================== */

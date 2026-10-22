@@ -1,1 +1,256 @@
-/* 프로젝트 전체에서 사용하는 공통 스타일 파일입니다. */
+/* INVENTORY*/
+
+.inventory {
+  width: clamp(150px, 15vw, 272px);
+  height: 85vh;
+  padding: 20px 14px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  background-color: rgba(12, 15, 18, 0.9);
+  border: 1px solid #B9A582;
+  border-radius: 4px;
+
+  color: #C3AE88;
+}
+
+/* 힌트 / 메뉴 영역*/
+
+.inventory-header {
+  width: 100%;
+  padding: 8px 0 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+
+  border-bottom: 2px solid #B9A582;
+}
+
+/* 힌트 / 메뉴 버튼 */
+.inventory-hint,
+.inventory-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 4px;
+  background-color: transparent;
+  border: none;
+
+  color: #C3AE88;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 힌트 / 메뉴 아이콘 */
+.inventory-header-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* 힌트 / 메뉴 Hover */
+.inventory-hint:hover,
+.inventory-menu:hover {
+  color: #F6D2D2;
+}
+
+/* 힌트 / 메뉴 Focus */
+.inventory-hint:focus-visible,
+.inventory-menu:focus-visible {
+  outline: 2px solid #C3AE88;
+  outline-offset: 4px;
+}
+
+/* 아이템 목록*/
+
+.inventory-list {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #B9A582 transparent;
+}
+
+/* 아이템 슬롯 */
+
+.inventory-list li {
+  width: 100%;
+  min-height: 115px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+  background-color: rgba(190, 190, 190, 0.6);
+  border: 2px solid #B9A582;
+  border-radius: 14px;
+
+  overflow: hidden;
+}
+
+/* 아이템 버튼 */
+.inventory-list li button {
+  width: 100%;
+  min-height: 115px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background-color: transparent;
+  border: none;
+
+  color: #F5E7CB;
+  cursor: pointer;
+}
+
+/* 아이템 이미지 */
+.inventory-list li img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* 아이템 이름 */
+.inventory-list li span {
+  display: block;
+  width: 100%;
+
+  color: #F5E7CB;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 아이템 Hover */
+.inventory-list li button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* 아이템 Focus */
+.inventory-list li button:focus-visible {
+  outline: 2px solid #C3AE88;
+  outline-offset: -4px;
+}
+
+/* 위아래 버튼 */
+
+.inventory-prev,
+.inventory-next {
+  width: 100%;
+  height: 36px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  border: 1px solid #B9A582;
+  border-radius: 4px;
+
+  color: #C3AE88;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 위아래 버튼 Hover */
+.inventory-prev:hover,
+.inventory-next:hover {
+  background-color: rgba(195, 174, 136, 0.15);
+}
+
+/* 위아래 버튼 비활성화 */
+.inventory-prev:disabled,
+.inventory-next:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* 위아래 버튼 Focus */
+.inventory-prev:focus-visible,
+.inventory-next:focus-visible {
+  outline: 2px solid #C3AE88;
+  outline-offset: 2px;
+}
+
+/* 반응형 - 태블릿 / 작은 화면 */
+
+@media (max-width: 768px) {
+  .inventory {
+    width: 120px;
+    height: 80vh;
+    padding: 12px 8px;
+    gap: 10px;
+  }
+
+  .inventory-header {
+    gap: 12px;
+    padding: 6px 0 12px;
+  }
+
+  .inventory-hint,
+  .inventory-menu {
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .inventory-header-icon {
+    font-size: 18px;
+  }
+
+  .inventory-list {
+    gap: 8px;
+  }
+
+  .inventory-list li {
+    min-height: 78px;
+    border-radius: 8px;
+  }
+
+  .inventory-list li button {
+    min-height: 78px;
+    padding: 6px;
+    gap: 4px;
+  }
+
+  .inventory-list li img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .inventory-list li span {
+    font-size: 10px;
+  }
+
+  .inventory-prev,
+  .inventory-next {
+    height: 28px;
+    font-size: 12px;
+  }
+}

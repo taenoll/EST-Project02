@@ -77,6 +77,4 @@ export function openMenu() {
 
   // TODO: 처음부터 다시하기 기능 연결
   // TODO: 타이틀로 돌아가기 기능 연결
-  // TODO: BGM ON/OFF 기능 연결
-  // TODO: 효과음 ON/OFF 기능 연결
 }

@@ -3,7 +3,7 @@ import { gameState } from "../state/gameState.js";
 const bgm = new Audio("./assets/audio/bgm/main-bgm.mp3");
 
 bgm.loop = true;
-bgm.volume = 0.4;
+bgm.volume = 0.25;
 
 // BGM 재생
 export function playBgm() {

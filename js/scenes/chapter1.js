@@ -2,8 +2,6 @@
 
 import { investigate, isChapterChecked, } from "../game/investigation.js";
 
-import { gameState } from "../state/gameState.js";
-
 const investigateButtons = document.querySelectorAll(".investigate-button");
 
 

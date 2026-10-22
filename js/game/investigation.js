@@ -22,11 +22,13 @@ export function investigate(objectId) {
   };
 }
 
-// 해당 챕터의 ""필수 조사가 모두 끝났는지 확인"""
+// 해당 챕터의 필수 조사가 모두 끝났는지 확인"
 export function isChapterChecked(chapterId) {
   const requiredObjects = objects.filter(
     (object) => object.chapter === chapterId && object.required
   );
+
+  if (requiredObjects.length === 0) return false;
 
   return requiredObjects.every((object) =>
     gameState.checkedObjects.includes(object.id)

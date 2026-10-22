@@ -5,7 +5,7 @@ export const objects = [
     chapter: 1,
     text: "오래된 침대다. 침대 밑에 무언가 보인다.",
     required: true,  // 다음 챕터 이동 조건에 포함되는 조사인지 표시하는 값
-    itemId: "patient-record", // 조사했을 때 얻는 아이템이 있으면 넣dma
+    itemId: "patient-record", // 조사했을 때 얻는 아이템이 있으면 넣음
   },
   {
     id: "clock",

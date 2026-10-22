@@ -29,28 +29,31 @@ investigateButtons.forEach((button) => {
 
     if (!result) return;
 
-    // 현재는 대화창 연결 전이라 콘솔 확인 용
+    // 조사 문구는 다시 확인할 수 있음
     console.log(result.text);
 
-    // 조사 완료 표시
     button.classList.add("is-checked");
 
-    // CH1 필수 조사 완료 여부 확인
-    console.log("CH1 필수 조사 완료:", isChapterChecked(1));
+
+    // 처음 조사한 경우에만 상태 변경
+    if (!result.alreadyChecked) {
+
+      // TODO: 소연님 아이템 함수 연결
+      // if (result.itemId) {
+      //   addItem(result.itemId);
+      // }
+
+      // 필수 조사 완료 여부 확인
+      const isComplete = isChapterChecked(1);
+
+      console.log("CH1 필수 조사 완료:", isComplete);
+
+      // TODO: 자동 저장
+      // saveGame();
+    }
 
 
     // TODO: 경찬님 대화창 함수 연결
     // showDialog(result.text);
-
-
-    // TODO: 소연님 아이템 함수 연결
-    // 처음 조사했을 때만 아이템 획득
-    // if (!result.alreadyChecked && result.itemId) {
-    //   addItem(result.itemId);
-    // }
-
-
-    // TODO: 자동 저장 연결
-    // saveGame();
   });
 });

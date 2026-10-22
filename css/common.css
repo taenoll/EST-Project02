@@ -1,7 +1,10 @@
 /* 프로젝트 전체에서 사용하는 공통 스타일 파일입니다. */
 
 
-
+/* ==================================================
+   DIALOGUE
+   담당: 경찬
+================================================== */
 /* 하단 대화창 */
 .dialogue-box {
   position: absolute;
@@ -155,3 +158,73 @@
   }
 }
 
+
+/* ==================================================
+   COMMON MODAL
+   아이템 상세 / 힌트 / 퍼즐 / 메뉴 등에 공통으로 사용
+   담당: 유정
+================================================== */
+
+#modal {
+  display: none;
+}
+
+#modal.is-open {
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-box {
+  position: relative;
+  width: min(500px, 90%);
+  min-height: 200px;
+  padding: 32px;
+
+  background: linear-gradient(
+    145deg,
+    #203638 0%,
+    #091719 65%,
+    #050d0f 100%
+  );
+
+  border: 1px solid #8ba6a3;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.45);
+
+  color: #ffffff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  border: 0;
+  background: transparent;
+
+  color: #c5f1e9;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  color: #e0e2dd;
+  line-height: 1.8;
+}
+
+/* ==================================================
+   END COMMON MODAL
+================================================== */

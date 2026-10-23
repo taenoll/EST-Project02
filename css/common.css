@@ -285,12 +285,7 @@
   padding: 12px 18px 18px 10px;
 
   /* 입체적인 배경 */
-  background: linear-gradient(
-    145deg,
-    #203638 0%,
-    #091719 65%,
-    #050d0f 100%
-  );
+  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
 
   /* 외곽 테두리 */
   border: 1px solid #8ba6a3;
@@ -299,7 +294,7 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
     inset 0 -3px 8px rgba(0, 0, 0, 0.45);
-    /* 0 5px 0 #03090a,
+  /* 0 5px 0 #03090a,
     0 9px 18px rgba(0, 0, 0, 0.65); */
 
   color: #ffffff;
@@ -397,8 +392,13 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
 /* 모바일 대응 */
@@ -457,12 +457,7 @@
   min-height: 200px;
   padding: 32px;
 
-  background: linear-gradient(
-    145deg,
-    #203638 0%,
-    #091719 65%,
-    #050d0f 100%
-  );
+  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
 
   border: 1px solid #8ba6a3;
 
@@ -628,8 +623,6 @@
    다음 챕터 넘어가는 화면
    담당: 경찬
 
-
-
 #nextChapter {
   display: none;
 }
@@ -638,7 +631,7 @@
   display: block;
 }
 
-.next-modal-overlay{
+.next-modal-overlay {
   position: fixed;
   inset: 0;
 
@@ -696,8 +689,6 @@
   z-index: 2;
 }
 
-
-
 /* 글자와 버튼은 배경보다 위에 표시 */
 .next-modal-close,
 .next-modal-body {
@@ -723,7 +714,6 @@
   line-height: 1.8;
 }
 
-
 .chapter-background {
   display: block;
   width: 100%;
@@ -735,7 +725,6 @@
   border-radius: 8px;
   margin-bottom: 20px;
 }
-
 
 /* ==================================================
    END NEXT CHAPTER

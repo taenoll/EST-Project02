@@ -14,7 +14,6 @@
 //   <p>환자 기록지를 다시 확인해보자.</p>
 // `);
 
-
 const modal = document.querySelector("#modal");
 
 export function openModal(content) {
@@ -42,17 +41,13 @@ export function openModal(content) {
 
   modal.classList.add("is-open");
 
-  modal
-    .querySelector(".modal-close")
-    .addEventListener("click", closeModal);
+  modal.querySelector(".modal-close").addEventListener("click", closeModal);
 }
 
 export function closeModal() {
   modal.classList.remove("is-open");
   modal.innerHTML = "";
 }
-
-
 
 // 다음 챕터로 넘어가는 화면이 나오는 코드를 작성할 파일입니다.
 // 함수 사용법
@@ -69,15 +64,12 @@ export function closeModal() {
 //
 //nextChapterOption(3,total);
 
-
-
-const nextChapter= document.querySelector("#next-Chapter");
-
+const nextChapter = document.querySelector("#next-Chapter");
 
 const chapterImages = {
-  1: './assets/images/backgrounds/nurse-room-entrance.png',
-  2: './assets/images/backgrounds/chief-room-entrance.png',
-  3: './assets/images/backgrounds/ending-entrance.png',
+  1: "./assets/images/backgrounds/nurse-room-entrance.png",
+  2: "./assets/images/backgrounds/chief-room-entrance.png",
+  3: "./assets/images/backgrounds/ending-entrance.png",
 };
 
 export function nextChapterModal(content) {
@@ -122,21 +114,18 @@ export function nextChapterModal(content) {
     .addEventListener("click", nextCloseModal);
 }
 
-
 export function nextCloseModal() {
   nextChapter.classList.remove("is-open");
   nextChapter.innerHTML = "";
 }
 
-
-
-export function nextChapterOption(checkedItem, stageItem){
+export function nextChapterOption(checkedItem, stageItem) {
   // stageItem : 이번스테이지에서 획득해야할 아이템수
   // checkedItem : 확인한 아이템 수 // 조사이벤트 활성화마다 1씩 증가하도록 설정해주세요
-  if( checkedItem !== stageItem ){
-    return
+  if (checkedItem !== stageItem) {
+    return;
   }
-  
+
   nextChapterModal(`
     <h2>챕터 클리어</h2>
     <p>다음 챕터로 이동하시겠습니까?</p>

@@ -3,7 +3,11 @@ import { getNode } from "../../lib/dom/getNode.js";
 import { openModal } from "../dom/renderModal.js";
 import { checkAnswer } from "../dom/checkAnswer.js";
 
-export function callPuzzle() {
+/** 사용방법 :
+ * elem.addEventListener('click', callPuzzle('퍼즐의 정답 세자리 숫자'));
+ */
+
+export function callPuzzle(puzzle_answer) {
   openModal(`
     <div class="puzzle_popup hidden">
       <h2>Unlock the Password</h2>
@@ -72,6 +76,7 @@ export function callPuzzle() {
       </div>
     </div>
 `);
+  let answer = puzzle_answer;
 
   const digit_1 = getNode("#digit_1");
   const digit_2 = getNode("#digit_2");

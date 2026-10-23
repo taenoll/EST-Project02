@@ -1,5 +1,5 @@
 // 게임 진행 상황을 localStorage에 저장하고 불러오는 기능을 작성할 파일입니다.
-import { addItem } from "../game/inventory.js";
+
 import { gameState } from "./gameState.js";
 
 /**

@@ -1,3 +1,6 @@
+
+import { items } from "../data/items.js";
+import { nextChapterOption } from "../dom/renderModal.js";
 import { initDialogue } from "../game/dialogue.js";
 
 // 챕터 3에서만 사용하는 진행 코드를 작성할 파일입니다.
@@ -31,9 +34,28 @@ const room405Dialogues = [
   }
 ];
 
+export const gameState =[
+  {
+    currentChapter:1
+  }
+];
+
+
 
 // 404호에 들어갈 때
 function enterRoom404() {
-  initDialogue(room404Dialogues);
+  initDialogue(room405Dialogues);
 }
+
+enterRoom404()
+
+
+
+
+let total = items.filter(item => item.chapter === gameState[0].currentChapter).length;
+let count = 0;
+// count 변수는 조사이벤트가 활성화 될때 마다 1씩 증가하게 할 것.
+// total은 한챕터당 아이템의 갯수
+
+nextChapterOption(3,total);
 

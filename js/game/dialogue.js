@@ -24,7 +24,11 @@ let dialogues = [];
 function createDialogue() {
   document.querySelector("#dialogueContainer").innerHTML = `
     <div class="dialogue-box" id="dialogueBox">
-      <img id="dialoguePortrait" src="./assets/images/characters/player1.png" alt="주인공" />
+      <img
+        id="dialoguePortrait"
+        src="./assets/images/characters/player1.png"
+        alt="주인공"
+      />
 
       <div class="dialogue-content">
         <p id="dialogueName"></p>

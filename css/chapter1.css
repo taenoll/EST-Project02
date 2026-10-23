@@ -1,0 +1,40 @@
+/* ==================================================
+   CHAPTER 1
+================================================== */
+
+.chapter1 {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("../assets/images/backgrounds/chapter1-room.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+/* 챕터 제목 */
+.chapter1 .chapter-title {
+  position: absolute;
+  top: 54px;
+  left: 42px;
+
+  z-index: 2;
+
+  color: #e5ddd0;
+}
+
+.chapter1 .chapter-title span {
+  font-size: 24px;
+  letter-spacing: 6px;
+}
+
+.chapter1 .chapter-title h1 {
+  margin: 12px 0 0;
+
+  font-size: 54px;
+  font-weight: 400;
+}

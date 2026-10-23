@@ -1,4 +1,5 @@
 // 공통 모달을 화면에 렌더링하는 UI 코드를 작성할 파일입니다.
+
 // 공통 모달 사용법
 // 1. index.html에 <div id="modal"></div> 필요
 // 2. 사용할 파일에서 openModal을 import

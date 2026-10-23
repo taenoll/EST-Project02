@@ -587,3 +587,122 @@
 /* ==================================================
    END GAME MENU
 ================================================== */
+
+/* ==================================================
+   NEXT CHAPTER
+   다음 챕터 넘어가는 화면
+   담당: 경찬
+================================================== */
+
+
+
+#nextChapter {
+  display: none;
+}
+
+#nextChapter.is-open {
+  display: block;
+}
+
+.next-modal-overlay{
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.next-modal-box {
+  position: relative;
+  overflow: hidden;
+
+  width: min(500px, 90%);
+  min-height: 300px;
+  padding: 32px;
+
+  /* 이미지가 모달 전체의 배경이 되도록 설정 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 1px solid #8ba6a3;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  color: #ffffff;
+}
+
+.next-modal-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* 내부 배경 이미지를 어둡게 덮는 레이어 */
+  background: rgba(0, 0, 0, 0.35);
+
+  pointer-events: none;
+}
+
+.next-modal-next {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+
+  padding: 10px 14px;
+
+  border: 1px solid #8ba6a3;
+  background: rgba(5, 13, 15, 0.8);
+  color: #c5f1e9;
+
+  cursor: pointer;
+  z-index: 2;
+}
+
+
+
+/* 글자와 버튼은 배경보다 위에 표시 */
+.next-modal-close,
+.next-modal-body {
+  position: relative;
+  z-index: 1;
+}
+
+.next-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  border: 0;
+  background: transparent;
+
+  color: #c5f1e9;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.next-modal-body {
+  color: #e0e2dd;
+  line-height: 1.8;
+}
+
+
+.chapter-background {
+  display: block;
+  width: 100%;
+  height: 250px;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+
+/* ==================================================
+   END NEXT CHAPTER
+================================================== */

@@ -19,8 +19,9 @@
 /* 챕터 제목 */
 .chapter1 .chapter-title {
   position: absolute;
-  top: 54px;
-  left: 42px;
+
+  top: clamp(20px, 5%, 54px);
+  left: clamp(20px, 4%, 42px);
 
   z-index: 2;
 
@@ -28,13 +29,13 @@
 }
 
 .chapter1 .chapter-title span {
-  font-size: 24px;
-  letter-spacing: 6px;
+  font-size: clamp(12px, 1.5vw, 24px);
+  letter-spacing: clamp(3px, 0.4vw, 6px);
 }
 
 .chapter1 .chapter-title h1 {
-  margin: 12px 0 0;
+  margin: clamp(6px, 1vw, 12px) 0 0;
 
-  font-size: 54px;
+  font-size: clamp(28px, 3.4vw, 54px);
   font-weight: 400;
 }

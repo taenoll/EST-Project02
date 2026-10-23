@@ -273,30 +273,27 @@
 /* 하단 대화창 */
 .dialogue-box {
   position: absolute;
-  left: 2%;
+
+  left: 3%;
   bottom: 3%;
-  width: 82%;
 
-  /* 기존 */
-  /* min-height: 100px; */
-
-  /* 수정 */
+  width: 94%;
   min-height: clamp(110px, 17vh, 190px);
 
   box-sizing: border-box;
 
   display: flex;
-
-  /* 기존 */
-  /* align-items: center; */
-
-  /* 수정 */
   align-items: stretch;
-
   gap: 14px;
   padding: 12px 18px 18px 10px;
 
-  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
+  background: linear-gradient(
+    145deg,
+    #203638 0%,
+    #091719 65%,
+    #050d0f 100%
+  );
+
   border: 1px solid #8ba6a3;
 
   box-shadow:
@@ -359,7 +356,7 @@
 .dialogue-portrait {
   flex-shrink: 0;
 
-  width: clamp(80px, 10vw, 170px);
+  width: clamp(90px, 12%, 170px);
   aspect-ratio: 4 / 5;
 
   overflow: hidden;

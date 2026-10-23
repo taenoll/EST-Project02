@@ -3,3 +3,18 @@
 .investigate-button.is-checked {
   opacity: 0.35;
 }
+
+#app {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+#scene {
+  position: relative;
+  flex: 1;
+}
+
+.investigate-button {
+  position: absolute;
+}

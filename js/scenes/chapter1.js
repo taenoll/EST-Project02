@@ -16,6 +16,7 @@ investigateButtons.forEach((button) => {
 });
 
 
+
 // 조사 버튼 클릭 이벤트
 investigateButtons.forEach((button) => {
   button.addEventListener("click", () => {

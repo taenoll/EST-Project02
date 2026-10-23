@@ -1,4 +1,5 @@
 /* 프로젝트 전체에서 사용하는 공통 스타일 파일입니다. */
+
 /* ==================================================
    INVENTORY
    담당: 소연
@@ -15,11 +16,16 @@
   align-items: center;
   gap: 16px;
 
-  background-color: rgba(12, 15, 18, 0.9);
-  border: 1px solid #B9A582;
+  background: linear-gradient(
+    145deg,
+    #203638 0%,
+    #091719 65%,
+    #050d0f 100%
+  );
+  border: 1px solid #8ba6a3;
   border-radius: 4px;
 
-  color: #C3AE88;
+  color: #c5f1e9;
 }
 
 /* 힌트 / 메뉴 영역 */
@@ -32,7 +38,7 @@
   align-items: center;
   gap: 28px;
 
-  border-bottom: 2px solid #B9A582;
+  border-bottom: 2px solid #8ba6a3;
 }
 
 /* 힌트 / 메뉴 버튼 */
@@ -48,7 +54,7 @@
   background-color: transparent;
   border: none;
 
-  color: #C3AE88;
+  color: #c5f1e9;
   font-size: 13px;
   cursor: pointer;
 }
@@ -62,13 +68,13 @@
 /* 힌트 / 메뉴 Hover */
 .inventory-hint:hover,
 .inventory-menu:hover {
-  color: #F6D2D2;
+  color: #ffffff;
 }
 
 /* 힌트 / 메뉴 Focus */
 .inventory-hint:focus-visible,
 .inventory-menu:focus-visible {
-  outline: 2px solid #C3AE88;
+  outline: 2px solid #c5f1e9;
   outline-offset: 4px;
 }
 
@@ -89,7 +95,7 @@
 
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #B9A582 transparent;
+  scrollbar-color: #8ba6a3 transparent;
 }
 
 /* 아이템 슬롯 */
@@ -99,8 +105,8 @@
   flex-shrink: 0;
   box-sizing: border-box;
 
-  background-color: rgba(190, 190, 190, 0.6);
-  border: 2px solid #B9A582;
+  background-color: #172326;
+  border: 2px solid #577273;
   border-radius: 14px;
 
   overflow: hidden;
@@ -121,7 +127,7 @@
   background-color: transparent;
   border: none;
 
-  color: #F5E7CB;
+  color: #e0e2dd;
   cursor: pointer;
 }
 
@@ -138,7 +144,7 @@
   display: block;
   width: 100%;
 
-  color: #F5E7CB;
+  color: #e0e2dd;
   font-size: 12px;
   line-height: 1.4;
   text-align: center;
@@ -150,12 +156,12 @@
 
 /* 아이템 Hover */
 .inventory-list li button:hover {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: #203638;
 }
 
 /* 아이템 Focus */
 .inventory-list li button:focus-visible {
-  outline: 2px solid #C3AE88;
+  outline: 2px solid #c5f1e9;
   outline-offset: -4px;
 }
 
@@ -171,10 +177,10 @@
   justify-content: center;
 
   background-color: transparent;
-  border: 1px solid #B9A582;
+  border: 1px solid #8ba6a3;
   border-radius: 4px;
 
-  color: #C3AE88;
+  color: #c5f1e9;
   font-size: 16px;
   cursor: pointer;
 }
@@ -182,7 +188,7 @@
 /* 위아래 버튼 Hover */
 .inventory-prev:hover,
 .inventory-next:hover {
-  background-color: rgba(195, 174, 136, 0.15);
+  background-color: #203638;
 }
 
 /* 위아래 버튼 비활성화 */
@@ -195,7 +201,7 @@
 /* 위아래 버튼 Focus */
 .inventory-prev:focus-visible,
 .inventory-next:focus-visible {
-  outline: 2px solid #C3AE88;
+  outline: 2px solid #c5f1e9;
   outline-offset: 2px;
 }
 
@@ -254,10 +260,10 @@
   }
 }
 
-
 /* ==================================================
    END INVENTORY
 ================================================== */
+
 
 /* ==================================================
    DIALOGUE

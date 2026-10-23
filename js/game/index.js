@@ -1,2 +1,2 @@
-// export * from './hint.js';
-// export * from './puzzle.js';
+export { investigate, isChapterChecked } from "./investigation.js";
+export { initDialogue } from "./dialogue.js";

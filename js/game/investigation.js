@@ -1,7 +1,8 @@
 import { objects } from "../data/objects.js";
 import { gameState } from "../state/gameState.js";
+import { gameSave } from "../state/storage.js";
 
-// 오브젝트 조사!!
+// 오브젝트 조사
 export function investigate(objectId) {
   const object = objects.find((item) => item.id === objectId);
 
@@ -14,6 +15,9 @@ export function investigate(objectId) {
 
   if (!alreadyChecked) {
     gameState.checkedObjects.push(objectId);
+
+    // 조사 상태가 변경됐으므로 자동 저장
+    gameSave();
   }
 
   return {
@@ -22,7 +26,7 @@ export function investigate(objectId) {
   };
 }
 
-// 해당 챕터의 필수 조사가 모두 끝났는지 확인"
+// 해당 챕터의 필수 조사가 모두 끝났는지 확인
 export function isChapterChecked(chapterId) {
   const requiredObjects = objects.filter(
     (object) => object.chapter === chapterId && object.required

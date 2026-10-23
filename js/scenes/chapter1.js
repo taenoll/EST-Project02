@@ -1,6 +1,6 @@
 // 챕터 1에서만 사용하는 진행 코드를 작성할 파일입니다.
 
-import { investigate, isChapterChecked, } from "../game/investigation.js";
+import { investigate, isChapterChecked, } from "../game/index.js";
 import { gameState } from "../state/gameState.js";
 
 const investigateButtons = document.querySelectorAll(".investigate-button");

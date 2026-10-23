@@ -1,6 +1,6 @@
 import { items } from "../data/items.js";
 import { nextChapterOption } from "../dom/renderModal.js";
-import { initDialogue } from "../game/dialogue.js";
+import { initDialogue } from "../game/index.js";
 
 // 챕터 3에서만 사용하는 진행 코드를 작성할 파일입니다.
 const room404Dialogues = [

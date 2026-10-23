@@ -47,6 +47,10 @@ export function hasItem(itemId) {
  * renderInventory();
  */
 export function addItem(itemId) {
+  const item = getItem(itemId);
+
+  if (!item) return;
+  
   if(!hasItem(itemId)){
     gameState.inventory.push(itemId);
     gameSave();
@@ -99,6 +103,7 @@ export function getItem(itemId) {
  */
 export function openItem(itemId){
   const item = getItem(itemId);
+  if(!item) return;
   const {name, description, image} = item;
 
   const content = `

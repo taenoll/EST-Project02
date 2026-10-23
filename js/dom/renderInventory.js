@@ -123,8 +123,6 @@ function handleInventoryNext() {
 const prevButton = document.querySelector(".inventory-prev");
 const nextButton = document.querySelector(".inventory-next");
 
-// 인벤토리 화면 초기 렌더링
-renderInventory();
 
 
 // 이벤트 연결

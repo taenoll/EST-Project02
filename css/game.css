@@ -1,3 +1,6 @@
+/* 게임 화면과 구성 요소의 스타일 파일입니다. */
+@import './start-end.css';
+@import './title.css';
 /* 게임 화면과 구성 요소의 공통 스타일입니다. */
 
 body {

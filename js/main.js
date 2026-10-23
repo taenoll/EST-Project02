@@ -2,11 +2,11 @@
 
 import "./dom/events.js";
 import { renderChapter1 } from "./scenes/chapter1.js";
-
+import { renderInventory } from "./dom/renderInventory.js";
+import { gameLoad } from "./state/storage.js";
 renderChapter1();
+// 저장된 게임 상태 불러오기
+gameLoad();
 
-
-
-
-
-
+// 복원된 인벤토리를 화면에 표시
+renderInventory();

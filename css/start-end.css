@@ -1,0 +1,184 @@
+/* ====================================
+   PROLOGUE & ENDING - 공통 스타일
+==================================== */
+
+/* 전체 화면 공통 */
+.prolog-screen,
+.ending-screen {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 프롤로그 제목 + 엔딩 제목 공통 */
+.prolog-title,
+.ending-title {
+  letter-spacing: 8px;
+  text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* ====================================
+   PROLOGUE - 프롤로그
+==================================== */
+
+/* 프롤로그 전체 화면 */
+.prolog-screen {
+  justify-content: space-between;
+  padding: 4%;
+  background-image: url("../assets/images/backgrounds/prolog-bg.png");
+}
+
+/* 왼쪽 제목 */
+.prolog-title {
+  font-size: clamp(32px, 4vw, 64px);
+  color: #c3ae88;
+}
+
+/* 오른쪽 스토리 창 */
+.prolog-content {
+  width: 48%;
+  height: 75%;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 36px;
+
+  background: rgba(12, 15, 18, 0.85);
+  border: 1px solid #b9a582;
+  border-radius: 8px;
+
+  color: #c3ae88;
+}
+
+/* 스토리 내용 및 스크롤 */
+.prolog-story {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+
+  font-size: 18px;
+  line-height: 1.9;
+
+  scrollbar-width: thin;
+  scrollbar-color: #b9a582 transparent;
+}
+
+.prolog-story p {
+  margin-bottom: 28px;
+}
+
+/* 계속하기 버튼 */
+.prolog-next {
+  align-self: flex-end;
+  width: auto;
+  margin-top: 16px;
+  padding: 12px 32px;
+
+  background: transparent;
+  border: 1px solid #b9a582;
+  border-radius: 4px;
+
+  color: #c3ae88;
+}
+
+.prolog-next:hover {
+  background: rgba(185, 165, 130, 0.2);
+}
+
+.prolog-next[hidden] {
+  display: none;
+}
+
+/* 스크롤바 전체 너비 */
+.prolog-story::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* 스크롤바 배경 */
+.prolog-story::-webkit-scrollbar-track {
+  background: rgba(185, 165, 130, 0.08);
+  border-radius: 10px;
+}
+
+/* 움직이는 스크롤바 */
+.prolog-story::-webkit-scrollbar-thumb {
+  background: rgba(185, 165, 130, 0.55);
+  border-radius: 10px;
+}
+
+/* 스크롤바에 마우스를 올렸을 때 */
+.prolog-story::-webkit-scrollbar-thumb:hover {
+  background: #b9a582;
+}
+
+
+/* ====================================
+   ENDING - 엔딩
+==================================== */
+
+/* 엔딩 전체 화면 */
+.ending-screen {
+  position: relative;
+  justify-content: center;
+
+  background-image: url("../assets/images/backgrounds/ending-bg.png");
+}
+
+/* 중앙 제목 영역 */
+.ending-content,
+.ending-bottom {
+  text-align: center;
+  z-index: 1;
+}
+
+/* ENDING 제목 */
+.ending-title {
+  font-size: clamp(32px, 4vw, 60px);
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+/* 제목 아래 설명 */
+.ending-subtitle {
+  margin-top: 8px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #f0f0f0;
+}
+
+/* 붉은색 강조 */
+.ending-subtitle span {
+  color: #c9474c;
+}
+
+/* 하단 문구 */
+.ending-bottom {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 하단 챕터 */
+.ending-chapter {
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #e3c996;
+}
+
+/* 하단 챕터 제목 */
+.ending-chapter-title {
+  margin-top: 8px;
+  font-size: 26px;
+  letter-spacing: 3px;
+  color: #f0f0f0;
+}

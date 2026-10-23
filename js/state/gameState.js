@@ -9,6 +9,11 @@ export const gameState = {
   hintLevel: {
     chapter1: 0,
     chapter2: 0,
-    chapter3: 0
-  }
+    chapter3: 0,
+  },
+
+  audio: {
+    bgmOn: true,
+    sfxOn: true,
+  },
 };

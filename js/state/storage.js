@@ -87,3 +87,8 @@ export function gameLoad(){
     gameState[key] = value;
   }
 }
+
+//초기화 함수
+export function gameReset() {
+  localStorage.removeItem('gameState');
+}

@@ -1,0 +1,89 @@
+/* ====================================
+   TITLE - 타이틀 메인 화면
+==================================== */
+
+/* 타이틀 전체 화면 */
+.title-screen {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+      to bottom,
+      rgba(2, 8, 10, 0.28) 0%,
+      rgba(2, 8, 10, 0) 50%,
+      rgba(2, 8, 10, 0.75) 100%
+    ), url('../assets/images/backgrounds/title-bg.png') no-repeat center/cover;
+}
+
+/* 로고와 버튼 영역 */
+.title-screen-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 게임 로고 */
+.title-screen-title {
+  font-size: clamp(36px, 5vw, 70px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #f0f0f0;
+  white-space: nowrap;
+
+  text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* WITNESS 붉은색 강조 */
+.title-screen-title span {
+  color: #c9474c;
+}
+
+/* 버튼 영역 */
+.auth-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* 버튼 공통 스타일 */
+.auth-nav button {
+  min-width: 120px;
+  min-height: 44px;
+  padding: 12px 24px;
+
+  background: #bd444b;
+  border: 1px solid #d65b62;
+  border-radius: 4px;
+
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  transition: background 0.2s ease;
+}
+
+/* 버튼에 마우스를 올렸을 때 */
+.auth-nav button:hover {
+  background: #d65b62;
+}
+
+
+/* ====================================
+   AUTH - 로그인 / 회원가입 공통
+==================================== */
+
+
+/* ====================================
+   LOGIN - 로그인 화면
+==================================== */
+
+
+/* ====================================
+   SIGNUP - 회원가입 화면
+==================================== */

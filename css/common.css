@@ -89,10 +89,6 @@
   align-items: stretch;
   gap: 12px;
 
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #8ba6a3 transparent;
@@ -103,7 +99,6 @@
   width: 100%;
   min-height: 115px;
   flex-shrink: 0;
-  box-sizing: border-box;
 
   background-color: #172326;
   border: 2px solid #577273;

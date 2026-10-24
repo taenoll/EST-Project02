@@ -20,6 +20,8 @@ const investigationButtons = [
   getNode("#investigation_btn5"),
 ];
 
+// TODO: CH2 화면을 생성합니다.
+
 // investigationButtons 클릭 시, 모달창 띄움
 investigationButtons.forEach((btn) => {
   if (!btn) return;

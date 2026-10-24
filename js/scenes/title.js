@@ -4,28 +4,31 @@ export function renderTitle() {
 
   app.innerHTML = `
     <main class="title-screen" aria-labelledby="game-title">
-      <div class="title-screen-content">
+      <section class="title-screen-content">
 
         <h1 id="game-title" class="title-screen-title">
           THE <span>WITNESS</span>
         </h1>
 
+        <p class="title-screen-description">
+          기억의 조각을 모아, 사건의 진실을 밝혀라.
+        </p>
+
         <nav aria-label="게임 메뉴">
           <ul class="auth-nav">
             <li>
-              <button type="button" class="signup-btn">
-                회원 가입
+              <button type="button" class="game-start-btn">
+                게임 시작
               </button>
             </li>
             <li>
-              <button type="button" class="login-btn">
-                로그인
+              <button type="button" class="continue-btn">
+                이어 하기
               </button>
             </li>
           </ul>
         </nav>
-
-      </div>
+      </section>
     </main>
   `;
 }

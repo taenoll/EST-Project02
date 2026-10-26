@@ -11,10 +11,10 @@ export const items = [
   },
   {
     id: "warning-memo",
-    name: "기록을 믿지 마 메모",
+    name: "누군가의 메모",
     type: "clue",
     chapter: 1,
-    description: "누군가 주인공에게 단서를 남겼음을 암시",
+    description: "기록을 믿지 마. 모든 걸 의심해.",
     important: true,
     image: "../assets/images/items/warning-memo.png",
   },

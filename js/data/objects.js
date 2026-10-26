@@ -12,7 +12,10 @@ export const objects = [
   {
     id: "clock",
     chapter: 1,
-    text: "벽시계가 멈춰 있다. 이상하게도 시간이 정확히 기억에 남는다.",
+    text: [
+      "벽시계가 멈춰 있다.",
+      "04시 04분. 이상하게도 시간이 정확히 기억에 남는다.",
+    ],
     required: true,
     itemId: null,
   },
@@ -37,6 +40,16 @@ export const objects = [
     required: false,
     itemId: null,
   },
+  {
+  id: "medicine-cabinet",
+  chapter: 1,
+  text: [
+    "잠긴 약 보관함이다.",
+    "세 자리 숫자를 맞추면 열리는 것 같다.",
+  ],
+  required: true,
+  itemId: null,
+},
 
   // ===== CHAPTER 2 =====
   {

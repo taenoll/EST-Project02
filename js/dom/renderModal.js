@@ -1,7 +1,8 @@
+
 // 공통 모달을 화면에 렌더링하는 UI 코드를 작성할 파일입니다.
 
 // 공통 모달 사용법
-// 1. index.html에 <div id="modal"></div> 필요
+// 1. index.html에 <div id="next-Chapter"></div> 필요
 // 2. 사용할 파일에서 openModal을 import
 // 3. openModal(content)에 보여줄 HTML 문자열 전달
 // 4. 닫기 버튼은 내부에서 closeModal()이 자동 연결됨
@@ -64,7 +65,7 @@ export function closeModal() {
 //
 //nextChapterOption(3,total);
 
-const nextChapter = document.querySelector("#next-Chapter");
+const nextChapter = document.querySelector("#next-chapter");
 
 const chapterImages = {
   1: "./assets/images/backgrounds/nurse-room-entrance.png",
@@ -73,8 +74,9 @@ const chapterImages = {
 };
 
 export function nextChapterModal(content) {
-  const chapter = gameState[0].currentChapter;
-  const imagePat = chapterImages[chapter];
+  //const chapter = gameState[0].currentChapter;
+  const chapter = 3;
+  const imagePath = chapterImages[chapter];
 
   nextChapter.innerHTML = `
   <div class="next-modal-overlay">
@@ -125,9 +127,10 @@ export function nextChapterOption(checkedItem, stageItem) {
   if (checkedItem !== stageItem) {
     return;
   }
-
+  console.log("Ok!")
   nextChapterModal(`
     <h2>챕터 클리어</h2>
     <p>다음 챕터로 이동하시겠습니까?</p>
   `);
+
 }

@@ -1,6 +1,6 @@
 // 여러 장면에서 공통으로 사용하는 인벤토리 로직을 작성할 파일입니다.
 import { items } from "../data/items.js";
-import { renderInventory } from "../dom/renderInventory.js";
+import { handleInventoryClick, inventoryClickButton, renderInventory } from "../dom/renderInventory.js";
 import { openModal } from "../dom/renderModal.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";
@@ -158,4 +158,13 @@ export function clearChapterItems() {
 
   renderInventory();
   gameSave();
+}
+
+export function openInventoryItems(){
+  const inventoryList = app.querySelector(".inventory-list");
+  
+  inventoryList.addEventListener("click", handleInventoryClick);
+  
+  inventoryClickButton();
+
 }

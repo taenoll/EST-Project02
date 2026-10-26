@@ -10,7 +10,7 @@ import { checkAnswer } from "../dom/checkAnswer.js";
 export function callPuzzle(puzzle_answer, onSuccess) {
   openModal(`
     <div class="puzzle_popup hidden">
-      <h2>Unlock the Password</h2>
+      <h2>암호를 입력하세요.</h2>
       <div class="puzzle_nums">
         <!--첫 번째 숫자-->
         <div class="dial">

@@ -65,6 +65,7 @@ export function closeModal() {
 //
 //nextChapterOption(3,total);
 
+
 const nextChapter = document.querySelector("#next-chapter");
 
 const chapterImages = {
@@ -111,6 +112,35 @@ export function nextChapterModal(content) {
 
   nextChapter.classList.add("is-open");
 
+
+  // 우측 상단 버튼 생성
+  const scene = document.querySelector(".mainScreenChapterThree");
+
+  let chapterButton = document.querySelector("#chapter-clear-button");
+
+  if (!chapterButton) {
+    chapterButton = document.createElement("button");
+    chapterButton.id = "chapter-clear-button";
+    chapterButton.textContent = "챕터 클리어";
+
+    scene.appendChild(chapterButton);
+  }
+
+  chapterButton.onclick = () => {
+    nextChapterModal(`
+      <h2>챕터 클리어</h2>
+      <p>다음 챕터로 이동하시겠습니까?</p>
+    `);
+  };
+
+  // 버튼 클릭 시 같은 모달 실행
+  chapterButton.onclick = () => {
+    nextChapterModal(`
+      <h2>챕터 클리어</h2>
+      <p>다음 챕터로 이동하시겠습니까?</p>
+    `);
+  };
+
   nextChapter
     .querySelector(".next-modal-close")
     .addEventListener("click", nextCloseModal);
@@ -134,3 +164,4 @@ export function nextChapterOption(checkedItem, stageItem) {
   `);
 
 }
+

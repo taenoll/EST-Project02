@@ -88,7 +88,35 @@ export function gameLoad(){
   }
 }
 
-//초기화 함수
-export function gameReset() {
+/**
+ * 게임 진행 데이터를 초기 상태로 되돌리는 함수입니다.
+ *
+ * @description
+ * - gameState의 모든 진행 정보를 초기화합니다.
+ * - localStorage에 저장된 게임 데이터를 삭제합니다.
+ * - 새 게임을 시작할 때 사용합니다.
+ *
+ * @returns {void} 반환값 없음
+ *
+ * @example
+ * // 새 게임을 시작할 때
+ * gameReset();
+ * renderProlog();
+ */
+function gameReset() {
+  gameState.currentScene = 'title';
+  gameState.currentChapter = 0;
+
+  gameState.inventory = [];
+  gameState.checkedObjects = [];
+  gameState.solvedPuzzles = [];
+  gameState.unlockedRooms = [];
+  gameState.usedItems = [];
+  gameState.hintLevel = {
+    chapter1: 0,
+    chapter2: 0,
+    chapter3: 0
+  };
+
   localStorage.removeItem('gameState');
 }

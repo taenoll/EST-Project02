@@ -13,6 +13,8 @@ import { gameState } from "../state/gameState.js";
  * CH1 화면을 생성합니다.
  */
 export function renderChapter1() {
+  /* 
+  기존 코드 - 아래코드로 바꿈 
   const scene = document.querySelector("#scene");
 
   scene.innerHTML = `
@@ -51,6 +53,71 @@ export function renderChapter1() {
 
       <div id="dialogueContainer"></div>
     </section>
+  `;
+
+  setupInvestigation(); */
+  const app = document.querySelector("#app");
+
+  app.innerHTML = `
+    <div class="inventory-layout">
+      <main id="scene">
+        <section class="chapter chapter1">
+          <div class="chapter-title">
+            <span>CHAPTER 01</span>
+            <h1>낯선 병실</h1>
+          </div>
+
+          <button
+            type="button"
+            class="investigate-button investigate-bed"
+            data-object-id="bed"
+            aria-label="침대 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            class="investigate-button investigate-clock"
+            data-object-id="clock"
+            aria-label="벽시계 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            class="investigate-button investigate-window"
+            data-object-id="window"
+            aria-label="창문 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+          <div id="dialogueContainer"></div>
+        </section>
+      </main>
+      <aside class="inventory" aria-label="인벤토리">
+        <!-- 상단 힌트 / 메뉴 -->
+        <div class="inventory-header">
+          <button type="button" id="hint_btn" class="inventory-hint">
+            <span class="inventory-header-icon" aria-hidden="true">☼</span>
+            <span>힌트</span>
+          </button>
+
+          <button type="button" class="inventory-menu">
+            <span class="inventory-header-icon" aria-hidden="true">☰</span>
+            <span>메뉴</span>
+          </button>
+        </div>
+
+        <!-- 아이템 목록 -->
+        <button type="button" class="inventory-prev" aria-label="이전 아이템">▲</button>
+
+        <ul class="inventory-list"></ul>
+
+        <button type="button" class="inventory-next" aria-label="다음 아이템">▼</button>
+      </aside>
+    </div>
   `;
 
   setupInvestigation();

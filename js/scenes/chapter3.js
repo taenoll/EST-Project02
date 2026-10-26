@@ -25,7 +25,7 @@ const chiefRoomDialogues = [
 /**
  * CH3 화면을 생성합니다.
  */
-clearChapterItems();
+// clearChapterItems(); 화면 에러가 나서 주석처리 했습니다..😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭
 export function DisplayChapter3() {
 
   const scene = document.querySelector("#scene3");

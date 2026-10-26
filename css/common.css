@@ -698,3 +698,86 @@
 /* ==================================================
    END NEXT CHAPTER
 ================================================== */
+/* ==================================================
+   PUZZLE
+================================================== */
+
+.puzzle_popup {
+  text-align: center;
+}
+
+.puzzle_popup h2 {
+  margin-bottom: 24px;
+  color: #c5f1e9;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.puzzle_nums {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.dial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dial_number {
+  width: 48px;
+  padding: 10px 0;
+
+  background: #091719;
+  border: 1px solid #577273;
+
+  color: #ffffff;
+  font-size: 26px;
+  text-align: center;
+}
+
+.arrow_btn {
+  width: 48px;
+  height: 30px;
+
+  background: #172326;
+  border: 1px solid #577273;
+  color: #c5f1e9;
+
+  cursor: pointer;
+}
+
+.arrow_btn:hover {
+  background: #203638;
+  border-color: #8ba6a3;
+}
+
+.check_answer {
+  flex-basis: 100%;
+  margin-top: 16px;
+}
+
+#check_btn {
+  padding: 10px 28px;
+
+  background: #172326;
+  border: 1px solid #8ba6a3;
+
+  color: #e0e2dd;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+#check_btn:hover {
+  background: #203638;
+}
+
+#answer_message {
+  min-height: 24px;
+  margin-top: 10px;
+  color: #c5f1e9;
+}

@@ -18,8 +18,6 @@ const nurseRoomDialogues = [
     text: "양지바른 곳으로 나가자",
   },
 ];
-gameState.currentChapter = 2;
-let count = 0;
 
 /**
  * TODO: CH2 화면을 생성합니다.

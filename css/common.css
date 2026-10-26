@@ -290,35 +290,44 @@
   cursor: pointer;
 }
 
-#dialogueNext {
+/* #dialogueNext {
   position: absolute;
   right: 12px;
   bottom: 7px;
   color: #ffffff;
   font-size: 10px;
   text-shadow: 0 1px 3px #000000;
+} */
+
+#dialogueName {
+  margin: 0 0 20px;
+
+  color: #a8c6c2;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
 }
 
 #dialogueText {
-  color: #ffffff;
-  font-size: 13px;
-  line-height: 1.8;
+  margin: 0;
+
+  color: #e0e2dd;
+  font-size: 17px;
+  line-height: 1.7;
+  white-space: pre-line;
 }
 
 #dialogueNext {
   position: absolute;
   right: 12px;
   bottom: 7px;
-  color: #ffffff;
-  font-size: 10px;
-  text-shadow: 0 1px 3px #000000;
-}
 
-#dialogueName {
-  color: #c5f1e9;
-  font-size: 12px;
-  font-weight: bold;
-  text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 3px #000000;
+  animation: blink 1.2s infinite;
 }
 
 /* 인물 초상화 */
@@ -375,34 +384,31 @@
   transform: translateY(8px);
 }
 
-.dialogue-name {
-  margin: 0 0 20px;
-
+/* .dialogue-name {
+  margin: 0 0 8px;
   color: #a8c6c2;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 1px;
 }
 
 .dialogue-text {
   margin: 0;
-
   color: #e0e2dd;
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.8;
   white-space: pre-line;
-}
+} */
 
 /* 다음 대사 표시 */
-.dialogue-next {
+/* .dialogue-next {
   position: fixed;
   right: 12px;
   bottom: 5px;
   color: #8caaa6;
-  font-size: 11px;
+  font-size: 9px;
   letter-spacing: 1px;
   animation: blink 1.2s infinite;
-}
+} */
 
 @keyframes blink {
   0%,

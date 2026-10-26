@@ -7,7 +7,7 @@ import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
 import { nextChapterModal } from "../dom/renderModal.js";
 
-const gameState = [{ currentChapter: 2 }];
+gameState.currentChapter = 2 
 let count = 0;
 
 /**

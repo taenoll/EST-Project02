@@ -12,5 +12,11 @@ import { renderTitle } from "./scenes/title.js";
 renderChapter1();
 renderInventory();
 
+// gameLoad();
+
+// renderChapter1();
+// renderInventory();
+
+
 // 복원된 인벤토리를 화면에 표시
 // renderInventory();

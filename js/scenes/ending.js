@@ -1,3 +1,5 @@
+import { gameReset } from "../state/storage.js";
+import { renderTitle } from "./title.js";
 
 /* 엔딩 장면에서만 사용하는 진행 코드를 작성할 파일입니다. */
 export function renderEnding() {
@@ -26,4 +28,10 @@ export function renderEnding() {
 
     </main>
   `;
+
+  const homeButton = document.querySelector('.ending-home-btn')
+    homeButton.addEventListener('click',()=>{
+      gameReset();
+      renderTitle();
+  })
 }

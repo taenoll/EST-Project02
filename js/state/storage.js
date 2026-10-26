@@ -103,7 +103,7 @@ export function gameLoad(){
  * gameReset();
  * renderProlog();
  */
-function gameReset() {
+export function gameReset() {
   gameState.currentScene = 'title';
   gameState.currentChapter = 0;
 

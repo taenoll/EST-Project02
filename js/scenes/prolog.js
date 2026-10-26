@@ -1,3 +1,5 @@
+import { renderChapter1 } from "./chapter1.js";
+
 // 프롤로그 장면에서만 사용하는 진행 코드를 작성할 파일입니다.
 export function renderProlog() {
   const app = document.querySelector("#app");
@@ -47,4 +49,42 @@ export function renderProlog() {
       </div>
     </main>
   `;
+
+
+  // 필요한 요소 선택
+const title = document.querySelector('.prolog-title');
+const content = document.querySelector('.prolog-content');
+const story = document.querySelector('.prolog-story');
+const nextButton = document.querySelector('.prolog-next');
+
+// 제목 먼저 등장
+setTimeout(() => {
+  title.style.opacity = '1';
+}, 100);
+
+// 1초 뒤 스토리 창 등장
+setTimeout(() => {
+  content.style.opacity = '1';
+}, 1000);
+
+
+  let isFinished = false;
+
+  story.addEventListener('scroll', () => {
+    if (isFinished) return;
+
+    if (story.scrollTop + story.clientHeight >= story.scrollHeight - 1) {
+      isFinished = true;
+
+
+      setTimeout(() => {
+        nextButton.hidden = false;
+      }, 2000);
+    }
+  });
+
+
+  nextButton.addEventListener('click', () => {
+    renderChapter1();
+  });
 }

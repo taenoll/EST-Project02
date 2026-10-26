@@ -1,7 +1,7 @@
 /* 게임 화면과 구성 요소의 스타일 파일입니다. */
 @import './start-end.css';
 @import './title.css';
-@import url('./chapter1.css');
+@import './chapter1.css';
 
 /* body {
   display: flex;

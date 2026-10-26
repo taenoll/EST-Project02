@@ -12,7 +12,7 @@ export const objects = [
   {
     id: "clock",
     chapter: 1,
-    text: "벽시계가 멈춰 있다. 이상하게도 시간이 정확히 기억에 남는다.",
+    text: "벽시계가 멈춰 있다. 4시 04분.이상하게도 시간이 정확히 기억에 남는다.",
     required: true,
     itemId: null,
   },

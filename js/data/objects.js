@@ -49,7 +49,7 @@ export const objects = [
   ],
   required: true,
   itemId: null,
-},,
+},
 
   // ===== CHAPTER 2 =====
   {

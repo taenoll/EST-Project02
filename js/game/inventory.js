@@ -159,3 +159,12 @@ export function clearChapterItems() {
   renderInventory();
   gameSave();
 }
+
+export function openInventoryItems(){
+  const inventoryList = app.querySelector(".inventory-list");
+
+  inventoryList.addEventListener("click", handleInventoryClick);
+
+  inventoryClickButton();
+
+}

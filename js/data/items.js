@@ -5,7 +5,9 @@ export const items = [
     name: "찢어진 환자 기록지",
     type: "clue",
     chapter: 1,
-    description: "벽시계와 조합해 보관함의 암호를 추리할 수 있는 단서",
+    description: `입원 경위에는 ‘자진 입원’이라고 적혀 있다.
+  하지만 내가 스스로 이곳에 들어온 기억은 없다.
+  기록의 일부는 찢겨 나갔지만, ‘M-04’라는 표기만은 선명하게 남아 있다.`,
     important: false,
     image: "../assets/images/items/patient-record.png",
   },
@@ -23,7 +25,7 @@ export const items = [
     name: "간호사실 출입 카드",
     type: "key",
     chapter: 1,
-    description: "간호사실을 해금하는 출입 카드",
+    description: "이걸로 간호사실에 출입할 수 있을 것 같다.",
     important: false,
     image: "../assets/images/items/nurse-card.png",
   },

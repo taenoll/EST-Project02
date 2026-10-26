@@ -2,7 +2,11 @@
 import { getNode } from "../../lib/dom/getNode.js";
 import { gameState } from "../state/gameState.js";
 import { initDialogue } from "../game/dialogue.js";
-import { addItem, clearChapterItems } from "../game/inventory.js";
+import {
+  addItem,
+  clearChapterItems,
+  openInventoryItems,
+} from "../game/inventory.js";
 import { investigate, isChapterChecked } from "../game/investigation.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
@@ -105,6 +109,7 @@ export function renderChapter2() {
     </div>
     `;
 
+  openInventoryItems();
   setupInvestigation();
 }
 

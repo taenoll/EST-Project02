@@ -69,7 +69,7 @@ function nextDialogue(dialogues) {
       return;
     }
 
-    showDialogue();
+    showDialogue(dialogues);
     content.classList.remove("fade-out");
     isTransitioning = false;
   }, 250);
@@ -86,5 +86,5 @@ export function initDialogue(dialogueData) {
 
   document
     .querySelector("#dialogueBox")
-    .addEventListener("click", nextDialogue(dialogues));
+    .addEventListener("click", () => nextDialogue(dialogues));
 }

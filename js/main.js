@@ -6,11 +6,11 @@ import { renderInventory } from "./dom/renderInventory.js";
 import { gameLoad } from "./state/storage.js";
 import { renderTitle } from "./scenes/title.js";
 
-// renderTitle();
-// gameLoad();
+renderTitle();
+gameLoad();
 
-renderChapter1();
-renderInventory();
+// renderChapter1();
+// renderInventory();
 
 
 // 복원된 인벤토리를 화면에 표시

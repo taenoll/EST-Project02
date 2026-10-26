@@ -7,7 +7,7 @@ import { checkAnswer } from "../dom/checkAnswer.js";
  * elem.addEventListener('click', callPuzzle('퍼즐의 정답 세자리 숫자'));
  */
 
-export function callPuzzle(puzzle_answer) {
+export function callPuzzle(puzzle_answer, onSuccess) {
   openModal(`
     <div class="puzzle_popup hidden">
       <h2>Unlock the Password</h2>
@@ -102,7 +102,7 @@ export function callPuzzle(puzzle_answer) {
   // 이벤트 리스너
   check_btn.addEventListener("click", () => {
     let user_answer = digits.map((digit) => digit.textContent).join("");
-    checkAnswer(user_answer, answer);
+    checkAnswer(user_answer, answer, onSuccess);
   });
 
   // 숫자 올리기 & 내리기

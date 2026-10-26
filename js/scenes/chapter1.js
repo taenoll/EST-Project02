@@ -162,7 +162,11 @@ function handleInvestigation(button) {
   initDialogue(dialogues);
 
   if (objectId === "medicine-cabinet") {
-    callPuzzle("404");
+    initDialogue(dialogues, () => {
+      callPuzzle("404");
+    });
+  } else {
+    initDialogue(dialogues);
   }
 
   // 처음 조사한 경우에만 진행 상태 확인

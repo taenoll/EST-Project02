@@ -1,4 +1,3 @@
-
 //각 챕터별로 대사를 표현하기 위한 코드입니다.
 //사용법은 아래와 같습니다.
 // 1. .html에 '<div id="dialogueContainer"></div>' 입력
@@ -43,7 +42,7 @@ function createDialogue() {
 }
 
 // 현재 대사 표시
-function showDialogue() {
+function showDialogue(dialogues) {
   const dialogue = dialogues[currentIndex];
 
   if (!dialogue) return;
@@ -53,7 +52,7 @@ function showDialogue() {
 }
 
 // 다음 대사로 이동
-function nextDialogue() {
+function nextDialogue(dialogues) {
   const content = document.querySelector(".dialogue-content");
 
   if (isTransitioning) return;
@@ -70,7 +69,7 @@ function nextDialogue() {
       return;
     }
 
-    showDialogue();
+    showDialogue(dialogues);
     content.classList.remove("fade-out");
     isTransitioning = false;
   }, 250);
@@ -83,8 +82,9 @@ export function initDialogue(dialogueData) {
   isTransitioning = false;
 
   createDialogue();
-  showDialogue();
+  showDialogue(dialogues);
 
-  document.querySelector("#dialogueBox")
-    .addEventListener("click", nextDialogue);
+  document
+    .querySelector("#dialogueBox")
+    .addEventListener("click", () => nextDialogue(dialogues));
 }

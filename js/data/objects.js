@@ -83,7 +83,7 @@ export const objects = [
   {
     id: "drawer1",
     chapter: 2,
-    text: "서랍의 세 번째 칸이 좌물쇠로 잠겨져 있다.",
+    text: "좌물쇠로 잠겨있다.",
     required: true,
     itemId: "director-key",
   },
@@ -95,23 +95,9 @@ export const objects = [
     itemId: null,
   },
   {
-    id: "mirror",
-    chapter: 2,
-    text: "거울이 더럽다.",
-    required: false,
-    itemId: null,
-  },
-  {
     id: "board2",
     chapter: 2,
     text: "오늘의 구내식당 메뉴가 붙어있다.",
-    required: false,
-    itemId: null,
-  },
-  {
-    id: "chair",
-    chapter: 2,
-    text: "의자에서 끼익끼익 소리가 난다.",
     required: false,
     itemId: null,
   },
@@ -124,7 +110,7 @@ export const objects = [
   },
 
   // ===== CHAPTER 3 =====
-  
+
   {
     id: "accident-report",
     chapter: 3,

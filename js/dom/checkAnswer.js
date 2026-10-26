@@ -2,7 +2,7 @@ import { getNode } from "../../lib/dom/getNode.js";
 import { closeModal } from "../dom/renderModal.js";
 
 // 정답 확인 함수
-export function checkAnswer(user_answer, answer) {
+export function checkAnswer(user_answer, answer, onSuccess) {
   const answer_message = getNode("#answer_message");
   const digit_1 = getNode("#digit_1");
   const digit_2 = getNode("#digit_2");
@@ -14,6 +14,10 @@ export function checkAnswer(user_answer, answer) {
 
     setTimeout(() => {
       closeModal();
+
+      if (onSuccess) {
+        onSuccess();
+      }
     }, 2000);
 
     // TODO: 정답일때 모달창이 닫히고,.. 일어나는 일??

@@ -2,6 +2,7 @@
 
 import "./dom/events.js";
 import { renderChapter1 } from "./scenes/chapter1.js";
+import { renderChapter2 } from "./scenes/chapter2.js";
 import { renderInventory } from "./dom/renderInventory.js";
 import { gameLoad } from "./state/storage.js";
 import { renderTitle } from "./scenes/title.js";

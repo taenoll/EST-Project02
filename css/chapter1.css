@@ -39,3 +39,34 @@
   font-size: clamp(28px, 3.4vw, 54px);
   font-weight: 400;
 }
+
+/* 침대 */
+.investigate-bed {
+  left: 29%;
+  top: 54%;
+}
+
+/* 벽시계 */
+.investigate-clock {
+  left: 84%;
+  top: 20%;
+}
+
+/* 창문 */
+.investigate-window {
+  left: 61%;
+  top: 30%;
+}
+
+/* 왼쪽 서랍장 */
+.investigate-drawer {
+  left: 11%;
+  top: 53%;
+}
+
+/* 오른쪽 차트/책상 */
+.investigate-chart {
+  left: 75%;
+  top: 45%;
+}
+

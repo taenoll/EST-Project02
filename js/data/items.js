@@ -108,7 +108,8 @@ export const items = [
     name: "원장의 비공식 메모",
     type: "clue",
     chapter: 3,
-    description: "목격자인 주인공을 격리하고 환자로 등록 및 투약했다는 사실 확인",
+    description:
+      "목격자인 주인공을 격리하고 환자로 등록 및 투약했다는 사실 확인",
     important: true,
     image: "../assets/images/items/director-secret-memo.png",
   },

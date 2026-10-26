@@ -48,7 +48,6 @@ export function renderInventory() {
   });
 }
 
-
 /**
  * 인벤토리 아이템 클릭 시 상세 모달을 엽니다.
  *
@@ -94,7 +93,6 @@ function handleInventoryPrev() {
   itemList.scrollTop -= item.offsetHeight;
 }
 
-
 /**
  * 인벤토리 목록을 아래쪽으로 스크롤합니다.
  *
@@ -113,16 +111,15 @@ function handleInventoryNext() {
 
   if (!item) return;
 
-  if (itemList.scrollTop >= itemList.scrollHeight - itemList.clientHeight) return;
+  if (itemList.scrollTop >= itemList.scrollHeight - itemList.clientHeight)
+    return;
 
   itemList.scrollTop += item.offsetHeight;
 }
 
-
 // 인벤토리 위아래 버튼
 const prevButton = document.querySelector(".inventory-prev");
 const nextButton = document.querySelector(".inventory-next");
-
 
 
 // 이벤트 연결

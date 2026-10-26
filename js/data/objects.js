@@ -1,4 +1,4 @@
-import { openModal } from "../dom/renderModal";
+import { openModal } from "../dom/renderModal.js";
 
 export const objects = [
   // ===== CHAPTER 1 =====

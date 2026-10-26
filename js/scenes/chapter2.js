@@ -7,6 +7,9 @@ import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
 import { nextChapterModal, openModal } from "../dom/renderModal.js";
 
+const gameState = [{ currentChapter: 2 }];
+let count = 0;
+
 /**
  * TODO: CH2 화면을 생성합니다.
  */
@@ -51,6 +54,7 @@ export function setupInvestigation() {
 
       // 해당 버튼을 "조사 완료"로 표시
       btn.classList.add("is-checked");
+      count++;
 
       // 특정 오브젝트를 플레이어가 조사했을 때 그 결과를 처리하고 상태를 업데이트하는 함수
       const result = investigate(clickedId);
@@ -81,7 +85,6 @@ export function setupInvestigation() {
         let total = items.filter(
           (item) => item.chapter === gameState[0].currentChapter,
         ).length;
-        let count = 0;
         nextChapterModal(5, total);
       }
     });

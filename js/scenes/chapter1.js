@@ -1,9 +1,10 @@
 // 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다.
 
 import { investigate, isChapterChecked, initDialogue, } from "../game/index.js";
-import { gameState } from "../state/gameState.js";
 import { addItem,openInventoryItems } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
+import { gameState } from "../state/gameState.js";
+import { callPuzzle } from "../game/puzzle.js";
 
 
 /**
@@ -107,6 +108,8 @@ export function renderChapter1() {
 
   openInventoryItems();
   setupInvestigation();
+
+
 }
 
 
@@ -157,6 +160,10 @@ function handleInvestigation(button) {
     ];
 
   initDialogue(dialogues);
+
+  if (objectId === "medicine-cabinet") {
+    callPuzzle("404");
+  }
 
   // 처음 조사한 경우에만 진행 상태 확인
   if (!result.alreadyChecked) {

@@ -1,18 +1,17 @@
 // 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다.
 
-import {
-  investigate,
-  isChapterChecked,
-  initDialogue,
-} from "../game/index.js";
-
+import { investigate, isChapterChecked, initDialogue, } from "../game/index.js";
 import { gameState } from "../state/gameState.js";
+import { addItem } from "../game/inventory.js";
+import { renderInventory } from "../dom/renderInventory.js";
 
 
 /**
- * CH1 화면을 생성합니다.
+ * CH1 화면을 생성.
  */
 export function renderChapter1() {
+  /* 
+  기존 코드 - 아래코드로 바꿈 
   const scene = document.querySelector("#scene");
 
   scene.innerHTML = `
@@ -49,8 +48,99 @@ export function renderChapter1() {
         <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
       </button>
 
+      <button
+        type="button"
+        class="investigate-button investigate-drawer"
+        data-object-id="drawer"
+        aria-label="서랍장 조사"
+      >
+        <img
+          src="./assets/images/icons/icon-search.png"
+          alt=""
+          aria-hidden="true"
+        />
+      </button>
+
+      <button
+        type="button"
+        class="investigate-button investigate-chart"
+        data-object-id="chart"
+        aria-label="환자 차트 조사"
+      >
+        <img
+          src="./assets/images/icons/icon-search.png"
+          alt=""
+          aria-hidden="true"
+        />
+      </button>
+
       <div id="dialogueContainer"></div>
     </section>
+  `;
+
+  setupInvestigation(); */
+  const app = document.querySelector("#app");
+
+  app.innerHTML = `
+    <div class="inventory-layout">
+      <main id="scene">
+        <section class="chapter chapter1">
+          <div class="chapter-title">
+            <span>CHAPTER 01</span>
+            <h1>낯선 병실</h1>
+          </div>
+
+          <button
+            type="button"
+            class="investigate-button investigate-bed"
+            data-object-id="bed"
+            aria-label="침대 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            class="investigate-button investigate-clock"
+            data-object-id="clock"
+            aria-label="벽시계 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            class="investigate-button investigate-window"
+            data-object-id="window"
+            aria-label="창문 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+          <div id="dialogueContainer"></div>
+        </section>
+      </main>
+      <aside class="inventory" aria-label="인벤토리">
+        <!-- 상단 힌트 / 메뉴 -->
+        <div class="inventory-header">
+          <button type="button" id="hint_btn" class="inventory-hint">
+            <span class="inventory-header-icon" aria-hidden="true">☼</span>
+            <span>힌트</span>
+          </button>
+
+          <button type="button" class="inventory-menu">
+            <span class="inventory-header-icon" aria-hidden="true">☰</span>
+            <span>메뉴</span>
+          </button>
+        </div>
+
+        <!-- 아이템 목록 -->
+        <button type="button" class="inventory-prev" aria-label="이전 아이템">▲</button>
+
+        <ul class="inventory-list"></ul>
+
+        <button type="button" class="inventory-next" aria-label="다음 아이템">▼</button>
+      </aside>
+    </div>
   `;
 
   setupInvestigation();
@@ -58,7 +148,7 @@ export function renderChapter1() {
 
 
 /**
- * CH1 조사 버튼의 상태와 클릭 이벤트를 연결합니다.
+ * CH1 조사 버튼의 상태와 클릭 이벤트를 연결.
  */
 function setupInvestigation() {
   const investigateButtons =
@@ -80,7 +170,7 @@ function setupInvestigation() {
 
 
 /**
- * 조사 버튼 클릭 시 실행되는 처리입니다.
+ * 조사 버튼 클릭 시 실행되는 처리
  */
 function handleInvestigation(button) {
   const objectId = button.dataset.objectId;
@@ -89,10 +179,8 @@ function handleInvestigation(button) {
 
   if (!result) return;
 
-  // 조사 완료 표시
   button.classList.add("is-checked");
 
-  // 조사 문구를 대화창에 출력
   initDialogue([
     {
       name: "주인공",
@@ -102,15 +190,14 @@ function handleInvestigation(button) {
 
   // 처음 조사한 경우에만 진행 상태 확인
   if (!result.alreadyChecked) {
-    const isComplete = isChapterChecked(1);
+  if (result.itemId) {
+    addItem(result.itemId);
+    renderInventory();
+  }
 
-    console.log("CH1 필수 조사 완료:", isComplete);
+  const isComplete = isChapterChecked(1);
+  console.log("CH1 필수 조사 완료:", isComplete);
 
-    // TODO: 아이템 획득 연결
-    // if (result.itemId) {
-    //   addItem(result.itemId);
-    //   renderInventory();
-    // }
 
     // TODO: 필수 조사 + 퍼즐 완료 후 다음 챕터 연결
   }

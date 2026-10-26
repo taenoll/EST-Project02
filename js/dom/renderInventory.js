@@ -118,13 +118,12 @@ function handleInventoryNext() {
 }
 
 // 인벤토리 위아래 버튼
-const prevButton = document.querySelector(".inventory-prev");
-const nextButton = document.querySelector(".inventory-next");
+export function inventoryClickButton() {
+  const prevButton = document.querySelector(".inventory-prev");
+  const nextButton = document.querySelector(".inventory-next");
 
+  if (!prevButton || !nextButton) return;
 
-// 이벤트 연결
-document.removeEventListener("click", handleInventoryClick);
-document.addEventListener("click", handleInventoryClick);
-
-prevButton.addEventListener("click", handleInventoryPrev);
-nextButton.addEventListener("click", handleInventoryNext);
+  prevButton.addEventListener("click", handleInventoryPrev);
+  nextButton.addEventListener("click", handleInventoryNext);
+}

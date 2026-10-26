@@ -3,7 +3,18 @@
 @import './title.css';
 /* 게임 화면과 구성 요소의 공통 스타일입니다. */
 
-body {
+/* body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+  background-color: #030708;
+} */
+#app {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +27,8 @@ body {
 }
 
 /* 게임 전체 화면 */
-#app {
+/* #app 을  inventory-layout으오 변경*/
+.inventory-layout {
   position: relative;
 
   display: grid;
@@ -41,10 +53,14 @@ body {
   overflow: hidden;
 }
 
+
 /* 오른쪽에 인벤토리 */
 #app .inventory {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; 
+  common.css에 중복으로 있어서 일단주석으로 하고, 놀이를 조금 줄이고 가운데 오게 했어요!!
+  */
+  align-self: center;
 }
 
 /* 조사 버튼 */

@@ -62,7 +62,7 @@ export function renderInventory() {
  * @param {MouseEvent} e - 클릭 이벤트 객체
  * @returns {void} 반환값 없음
  */
-function handleInventoryClick(e) {
+export function handleInventoryClick(e) {
   const button = e.target.closest("button[data-item-id]");
 
   if (!button) return;

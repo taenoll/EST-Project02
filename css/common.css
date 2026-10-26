@@ -301,7 +301,8 @@
 
 #dialogueText {
   color: #ffffff;
-  font-size: 13px;
+  padding-top: 4rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
@@ -316,7 +317,8 @@
 
 #dialogueName {
   color: #c5f1e9;
-  font-size: 12px;
+  font-size: 1.5rem;
+  padding-top: 1rem;
   font-weight: bold;
   text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
 }

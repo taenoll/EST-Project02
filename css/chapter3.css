@@ -1,5 +1,4 @@
 
-
 .mainScreenChapterThree {
   position: relative;
 
@@ -38,30 +37,30 @@
 /* 책장 */
 .search-shelf {
 
-  left: 20%;
+  left: 16%;
   top: 30%;
 }
 
 /* 왼쪽 서랍장 */
 .search-cabinet {
-  left: 16%;
+  left: 11%;
   top: 47%;
 }
 
-/* 원장 명패 */
+/* 그림 */
 .search-portrait {
-  left: 53%;
+  left: 52%;
   top: 20%;
 }
 
 /* 책상 */
 .search-desk {
-  left: 48%;
-  top: 52%;
+  left: 45%;
+  top: 50%;
 }
 
 /* 원장실 문 */
 .search-door {
-  left: 78%;
+  left: 82%;
   top: 30%;
 }

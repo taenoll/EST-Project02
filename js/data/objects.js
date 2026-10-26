@@ -111,4 +111,36 @@ export const objects = [
   },
 
   // ===== CHAPTER 3 =====
+  
+  {
+    id: "accident-report",
+    chapter: 3,
+    description: "간호사실 기록과 비교해 사건 은폐 사실을 확인",
+    important: false,
+    itemId: "accident-report",
+  },
+  {
+    id: "staff-photo",
+    chapter: 3,
+    important: false,
+    itemId: "staff-photo",
+  },
+  {
+    id: "cctv-photo",
+    chapter: 3,
+    important: true,
+    itemId: "cctv-photo",
+  },
+  {
+    id: "director-secret-memo",
+    chapter: 3,
+    important: true,
+    itemId: "director-secret-memo",
+  },
+  {
+    id: "restricted-area-card",
+    chapter: 3,
+    important: false,
+    itemId: "restricted-area-card",
+  },
 ];

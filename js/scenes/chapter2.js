@@ -8,16 +8,20 @@ import { callPuzzle } from "../game/puzzle.js";
 import { nextChapterModal } from "../dom/renderModal.js";
 
 const gameState = [{ currentChapter: 2 }];
-let count = 0;
 
 /**
  * TODO: CH2 화면을 생성합니다.
  */
 export function renderChapter2() {
-  const scene = getNode("#sceneChapter2");
+  const a = getNode("#sceneChapter2");
 
   scene.textContent = `
         <section class="chapter chapter2">
+            <div class="chapter-title">
+                <span>CHAPTER 02</span>
+                <h1>간호사실</h1>
+            </div>
+
              <div id="dialogueContainer"></div>
         </section>
     `;
@@ -96,38 +100,48 @@ export function setupInvestigation() {
 `
 <div class="investigation_btns">
     <button 
+    type="button"
      class="investigationButtons" 
      id="board1" 
      aria-label="야간 근무 일지"
-     >돋보기
+     >
+        <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
      </button>
 
-     <button 
+     <button
+     type="button" 
      class="investigationButtons" 
      id="trashcan" 
      aria-label="약품 관리 대장"
-     >돋보기
+     >
+        <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
      </button>
 
-     <button 
+     <button
+     type="button" 
      class="investigationButtons" 
      id="desk" 
      aria-label="M-04 투약 기록"
-     >돋보기
+     >
+        <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
      </button>
 
-     <button 
+     <button
+     type="button" 
      class="investigationButtons" 
      id="computer" 
      aria-label="간호사의 녹음 기록"
-     >돋보기
+     >
+        <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
      </button>
 
-     <button 
+     <button
+     type="button" 
      class="investigationButtons" 
      id="drawer1" 
      aria-label="원장실 열쇠"
-     >돋보기
+     >
+        <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
      </button>
 
      <button class="investigationButtons" id="sink">돋보기</button>

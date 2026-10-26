@@ -1,3 +1,5 @@
+import { gameReset } from '../state/storage.js';
+import { renderProlog } from './prolog.js';
 // 타이틀 화면
 export function renderTitle() {
   const app = document.querySelector("#app");
@@ -70,4 +72,27 @@ export function renderTitle() {
 
     </div>
   `;
+
+
+  // 게임 시작 버튼 선택
+  const startButton = document.querySelector('.game-start-btn');
+
+  // 게임 시작 버튼 클릭 이벤트
+  startButton.addEventListener('click', () => {
+    gameReset();
+    renderProlog();
+  });
+
+    // 이어하기 버튼 선택
+  const continueButton = document.querySelector('.continue-btn');
+
+  // 저장된 게임 데이터 확인
+  const savedGame = localStorage.getItem('gameState');
+
+  // 저장된 게임이 없으면 이어하기 버튼 비활성화
+  if (savedGame === null) {
+    continueButton.disabled = true;
+  } else {
+    continueButton.disabled = false;
+  }
 }

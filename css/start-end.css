@@ -52,6 +52,12 @@
 .prolog-title {
   font-size: clamp(32px, 4vw, 64px);
   color: #c3ae88;
+
+  /* ⭐ 추가: 처음에는 제목 숨기기 */
+  opacity: 0;
+
+  /* ⭐ 추가: 1초 동안 서서히 나타나기 */
+  transition: opacity 1s ease;
 }
 
 /* 오른쪽 스토리 창 */
@@ -70,6 +76,12 @@
   border-radius: 8px;
 
   color: #c3ae88;
+
+  /* ⭐ 추가: 처음에는 스토리 창 숨기기 */
+  opacity: 0;
+
+  /* ⭐ 추가: 1초 동안 서서히 나타나기 */
+  transition: opacity 1s ease;
 }
 
 /* 스토리 내용 및 스크롤 */

@@ -7,6 +7,7 @@ import { gameLoad } from "./state/storage.js";
 import { renderTitle } from "./scenes/title.js";
 
 renderTitle();
+gameLoad();
 
 // renderChapter1();
 // renderInventory();

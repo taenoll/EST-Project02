@@ -144,34 +144,3 @@ export const objects = [
     itemId: "restricted-area-card",
   },
 ];
-
-/**
- * 전달받은 ID와 일치하는 오브젝트 데이터를 objects 배열에서 찾아 반환합니다.
- * @param {string} id - 조회할 오브젝트 ID (예: "board1", "desk")
- * @returns {Object|undefined} 찾은 오브젝트 객체 또는 undefined
- */
-function getObject(id) {
-  return objects.find((object) => {
-    return object.id === id;
-  });
-}
-
-/**
- * 오브젝트 ID를 받아 해당 오브젝트의 텍스트를 모달창에 표시합니다.
- * @param {string} id - 상세 정보를 표시할 오브젝트 ID
- * @returns {void}
- */
-export function openObject(id) {
-  const object = getObject(id);
-  if (!object) return;
-
-  const { text } = object;
-
-  const content = `
-    <div class="object-detail">
-      <p>${text}</p>
-    </div>
-  `;
-
-  openModal(content);
-}

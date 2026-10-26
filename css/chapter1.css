@@ -66,7 +66,12 @@
 
 /* 오른쪽 차트/책상 */
 .investigate-chart {
-  left: 75%;
+  left: 80%;
   top: 45%;
 }
 
+/* 오른쪽 약 보관함 */
+.investigate-medicine-cabinet {
+  left: 75%;
+  top: 62%;
+}

@@ -32,7 +32,7 @@
   position: relative;
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(150px, 15%, 272px);
+  grid-template-columns: minmax(0, 1fr) 15%;
 
   /* 16:9 비율을 유지하면서 화면 안에 들어오게 함(통째로 바뀌게 만들어 놨어요) */
   width: min(100vw, calc(100vh * 16 / 9));

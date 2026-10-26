@@ -5,9 +5,12 @@ import { renderChapter1 } from "./scenes/chapter1.js";
 import { renderInventory } from "./dom/renderInventory.js";
 import { gameLoad } from "./state/storage.js";
 import { renderTitle } from "./scenes/title.js";
-// renderChapter1();
+
 renderTitle();
-// 저장된 게임 상태 불러오기
-// gameLoad();
+
+// renderChapter1();
+// renderInventory();
+
+
 // 복원된 인벤토리를 화면에 표시
 // renderInventory();

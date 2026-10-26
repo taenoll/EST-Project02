@@ -55,11 +55,7 @@ export function renderChapter1() {
             data-object-id="drawer"
             aria-label="서랍장 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <button
@@ -68,11 +64,16 @@ export function renderChapter1() {
             data-object-id="chart"
             aria-label="환자 차트 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            class="investigate-button investigate-medicine-cabinet"
+            data-object-id="medicine-cabinet"
+            aria-label="약 보관함 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <div id="dialogueContainer"></div>

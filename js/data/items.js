@@ -23,7 +23,7 @@ export const items = [
     name: "간호사실 출입 카드",
     type: "key",
     chapter: 1,
-    description: "간호사실을 해금하는 출입 카드",
+    description: "이걸로 간호사실에 출입할 수 있을 것 같다.",
     important: false,
     image: "../assets/images/items/nurse-card.png",
   },

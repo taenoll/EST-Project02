@@ -5,7 +5,7 @@ import { investigate, isChapterChecked } from "../game/investigation.js";
 import { addItem } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
-import { nextChapterModal, openModal } from "../dom/renderModal.js";
+import { nextChapterModal } from "../dom/renderModal.js";
 
 const gameState = [{ currentChapter: 2 }];
 let count = 0;
@@ -52,15 +52,15 @@ export function setupInvestigation() {
     btn.addEventListener("click", (e) => {
       const clickedId = e.currentTarget.id; // ex. board1, desk, computer...
 
-      // 해당 버튼을 "조사 완료"로 표시
+      // 1. 해당 버튼을 "조사 완료"로 표시
       btn.classList.add("is-checked");
       count++;
 
-      // 특정 오브젝트를 플레이어가 조사했을 때 그 결과를 처리하고 상태를 업데이트하는 함수
+      // 2. 특정 오브젝트를 플레이어가 조사했을 때 그 결과를 처리하고 상태를 업데이트하는 함수
       const result = investigate(clickedId);
       if (!result) return;
 
-      // 조사 문구를 대화창에 출력
+      // 3. 조사 문구를 대화창에 출력
       initDialogue([
         {
           name: "주인공",
@@ -68,24 +68,24 @@ export function setupInvestigation() {
         },
       ]);
 
-      // 조사한 오브젝트에 연결된 itemId 값이 null이 아니라면 인벤토리에 아이템 추가
+      // 4. 조사한 오브젝트에 연결된 itemId 값이 null이 아니라면 인벤토리에 아이템 추가
       if (result.itemId) {
         addItem(result.itemId);
         renderInventory();
       }
 
-      // 퍼즐이 들어간 버튼이라면, 퍼즐 실행
+      // 5. 퍼즐이 들어간 버튼이라면, 퍼즐 실행
       /!--key director--/;
       if (clickedId === "drawer1") {
         callPuzzle("444");
       }
 
-      // 모든 investigationButtons 클릭되었다면, 다음챕터
+      // 6. 모든 investigationButtons 클릭되었는지 확인 후, 되었다면 다음챕터
       if (isChapterChecked(2)) {
-        let total = items.filter(
-          (item) => item.chapter === gameState[0].currentChapter,
-        ).length;
-        nextChapterModal(5, total);
+        nextChapterModal(`
+            <h2>챕터 클리어</h2>
+            <p>다음 챕터로 이동하시겠습니까?</p>
+        `);
       }
     });
   });

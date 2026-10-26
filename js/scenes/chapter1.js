@@ -4,7 +4,6 @@ import { investigate, isChapterChecked, initDialogue, } from "../game/index.js";
 import { gameState } from "../state/gameState.js";
 import { addItem } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
-import { handleInventoryClick, inventoryClickButton, renderInventory } from "../dom/renderInventory.js";
 
 
 /**

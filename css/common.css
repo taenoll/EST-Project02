@@ -376,17 +376,20 @@
 }
 
 .dialogue-name {
-  margin: 0 0 8px;
+  margin: 0 0 20px;
+
   color: #a8c6c2;
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
 .dialogue-text {
   margin: 0;
+
   color: #e0e2dd;
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 1.7;
   white-space: pre-line;
 }
 
@@ -396,7 +399,7 @@
   right: 12px;
   bottom: 5px;
   color: #8caaa6;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 1px;
   animation: blink 1.2s infinite;
 }

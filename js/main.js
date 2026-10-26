@@ -7,8 +7,14 @@ import { gameLoad } from "./state/storage.js";
 import { renderTitle } from "./scenes/title.js";
 // renderChapter1();
 // 저장된 게임 상태 불러오기
+// gameLoad();
+// renderTitle();
+
 gameLoad();
-renderTitle();
+
+renderChapter1();
+renderInventory();
+
 
 // 복원된 인벤토리를 화면에 표시
 // renderInventory();

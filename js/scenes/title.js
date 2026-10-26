@@ -1,4 +1,9 @@
-import { gameReset } from '../state/storage.js';
+import { renderInventory } from '../dom/renderInventory.js';
+import { gameState } from '../state/gameState.js';
+import { gameLoad, gameReset } from '../state/storage.js';
+import { renderChapter1 } from './chapter1.js';
+import { renderChapter2 } from './chapter2.js';
+import { DisplayChapter3 } from './chapter3.js';
 import { renderProlog } from './prolog.js';
 // 타이틀 화면
 export function renderTitle() {
@@ -83,8 +88,21 @@ export function renderTitle() {
     renderProlog();
   });
 
-    // 이어하기 버튼 선택
+  // 이어하기 버튼 선택
   const continueButton = document.querySelector('.continue-btn');
+  continueButton.addEventListener('click',() => {
+    gameLoad();
+    if(gameState.currentScene === 'chapter1'){
+      renderChapter1();
+      renderInventory();
+    }else if(gameState.currentScene === 'chapter2'){
+      renderChapter2();
+      renderInventory();
+    }else if(gameState.currentScene === 'chapter3'){
+      DisplayChapter3();
+      renderInventory();
+    }
+  })
 
   // 저장된 게임 데이터 확인
   const savedGame = localStorage.getItem('gameState');

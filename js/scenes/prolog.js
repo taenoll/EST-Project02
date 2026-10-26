@@ -1,3 +1,5 @@
+import { gameState } from "../state/gameState.js";
+import { gameSave } from "../state/storage.js";
 import { renderChapter1 } from "./chapter1.js";
 
 // 프롤로그 장면에서만 사용하는 진행 코드를 작성할 파일입니다.
@@ -52,20 +54,20 @@ export function renderProlog() {
 
 
   // 필요한 요소 선택
-const title = document.querySelector('.prolog-title');
-const content = document.querySelector('.prolog-content');
-const story = document.querySelector('.prolog-story');
-const nextButton = document.querySelector('.prolog-next');
+  const title = document.querySelector('.prolog-title');
+  const content = document.querySelector('.prolog-content');
+  const story = document.querySelector('.prolog-story');
+  const nextButton = document.querySelector('.prolog-next');
 
-// 제목 먼저 등장
-setTimeout(() => {
-  title.style.opacity = '1';
-}, 100);
+  // 제목 먼저 등장
+  setTimeout(() => {
+    title.style.opacity = '1';
+  }, 100);
 
-// 1초 뒤 스토리 창 등장
-setTimeout(() => {
-  content.style.opacity = '1';
-}, 1000);
+  // 1초 뒤 스토리 창 등장
+  setTimeout(() => {
+    content.style.opacity = '1';
+  }, 1000);
 
 
   let isFinished = false;
@@ -76,15 +78,16 @@ setTimeout(() => {
     if (story.scrollTop + story.clientHeight >= story.scrollHeight - 1) {
       isFinished = true;
 
-
       setTimeout(() => {
         nextButton.hidden = false;
-      }, 2000);
+      }, 500);
     }
   });
 
-
+  //프릴로그 화명 -> 게임 시작 -> 챕터 1 불러오기 -> 세이브 = 타이틀 이어하기 누르면 돋보기 누른 건 활성화, 근데 아이템 어디감...??
   nextButton.addEventListener('click', () => {
+    gameState.currentScene = 'chapter1'
     renderChapter1();
+    gameSave();
   });
 }

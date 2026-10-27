@@ -1,10 +1,10 @@
-import { renderInventory } from '../dom/renderInventory.js';
-import { gameState } from '../state/gameState.js';
-import { gameLoad, gameReset } from '../state/storage.js';
-import { renderChapter1 } from './chapter1.js';
-import { renderChapter2 } from './chapter2.js';
-import { DisplayChapter3 } from './chapter3.js';
-import { renderProlog } from './prolog.js';
+import { renderInventory } from "../dom/renderInventory.js";
+import { gameState } from "../state/gameState.js";
+import { gameLoad, gameReset } from "../state/storage.js";
+import { renderChapter1 } from "./chapter1.js";
+import { renderChapter2 } from "./chapter2.js";
+import { renderChapter3 } from "./chapter3.js";
+import { renderProlog } from "./prolog.js";
 // 타이틀 화면
 export function renderTitle() {
   const app = document.querySelector("#app");
@@ -78,34 +78,33 @@ export function renderTitle() {
     </div>
   `;
 
-
   // 게임 시작 버튼 선택
-  const startButton = document.querySelector('.game-start-btn');
+  const startButton = document.querySelector(".game-start-btn");
 
   // 게임 시작 버튼 클릭 이벤트
-  startButton.addEventListener('click', () => {
+  startButton.addEventListener("click", () => {
     gameReset();
     renderProlog();
   });
 
   // 이어하기 버튼 선택
-  const continueButton = document.querySelector('.continue-btn');
-  continueButton.addEventListener('click',() => {
+  const continueButton = document.querySelector(".continue-btn");
+  continueButton.addEventListener("click", () => {
     gameLoad();
-    if(gameState.currentScene === 'chapter1'){
+    if (gameState.currentScene === "chapter1") {
       renderChapter1();
       renderInventory();
-    }else if(gameState.currentScene === 'chapter2'){
+    } else if (gameState.currentScene === "chapter2") {
       renderChapter2();
       renderInventory();
-    }else if(gameState.currentScene === 'chapter3'){
-      DisplayChapter3();
+    } else if (gameState.currentScene === "chapter3") {
+      renderChapter3();
       renderInventory();
     }
-  })
+  });
 
   // 저장된 게임 데이터 확인
-  const savedGame = localStorage.getItem('gameState');
+  const savedGame = localStorage.getItem("gameState");
 
   // 저장된 게임이 없으면 이어하기 버튼 비활성화
   if (savedGame === null) {

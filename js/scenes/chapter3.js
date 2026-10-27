@@ -1,9 +1,16 @@
-
 import { items } from "../data/items.js";
-import { handleInventoryClick, inventoryClickButton, renderInventory } from "../dom/renderInventory.js";
+import {
+  handleInventoryClick,
+  inventoryClickButton,
+  renderInventory,
+} from "../dom/renderInventory.js";
 import { nextChapterModal, nextChapterOption } from "../dom/renderModal.js";
 import { initDialogue } from "../game/index.js";
-import { addItem, clearChapterItems, openInventoryItems } from "../game/inventory.js";
+import {
+  addItem,
+  clearChapterItems,
+  openInventoryItems,
+} from "../game/inventory.js";
 import { investigate } from "../game/investigation.js";
 import { gameState } from "../state/gameState.js";
 
@@ -14,20 +21,20 @@ const chapterNumber = 3;
 const chiefRoomDialogues = [
   {
     name: "주인공",
-    text: "여긴 다른 곳과는 다르게 깔끔하게 정돈되어있어."
+    text: "여긴 다른 곳과는 다르게 깔끔하게 정돈되어있어.",
   },
 
   {
     name: "주인공",
-    text: "양지바른 곳으로 나가자"
-  }
+    text: "양지바른 곳으로 나가자",
+  },
 ];
 
 /**
  * CH3 화면을 생성합니다.
  */
 
-export function DisplayChapter3() {
+export function renderChapter3() {
   const app = document.querySelector("#app");
 
   app.innerHTML = ` 
@@ -74,7 +81,7 @@ export function DisplayChapter3() {
     </aside>  
   </div>
   `;
-  
+
   renderInventory();
 
   clearChapterItems();
@@ -82,21 +89,18 @@ export function DisplayChapter3() {
   // HTML 생성 후 대화창 초기화
   initDialogue(chiefRoomDialogues);
 
-
   const investigateButtons = scene.querySelectorAll(".investigate-button");
   //console.log("조사 버튼 개수:", investigateButtons.length);
 
-  const chapter3Items = items.filter(item => item.chapter === 3);
-  let i=0;
+  const chapter3Items = items.filter((item) => item.chapter === 3);
+  let i = 0;
   investigateButtons.forEach((button) => {
-
     // 각 버튼에 대해 반복 실행할 코드
-    button.dataset.id=chapter3Items[i].id;
-    button.dataset.important=chapter3Items[i].important;
+    button.dataset.id = chapter3Items[i].id;
+    button.dataset.important = chapter3Items[i].important;
 
     i++;
   });
-
 
   investigateButtons.forEach((button) => {
     const objectId = button.dataset.id;
@@ -106,12 +110,12 @@ export function DisplayChapter3() {
     }
   });
 
-//클릭 이벤트 설정
-  investigateButtons.forEach((button) =>{
+  //클릭 이벤트 설정
+  investigateButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const objectId = button.dataset.id;
       const result = investigate(objectId);
-      
+
       //클릭시 아이템설명화면 시작
       openInventoryItems();
       //종료
@@ -121,25 +125,22 @@ export function DisplayChapter3() {
       renderInventory();
       //종료
 
-      
       if (!result) return;
-      
+
       //클릭한 버튼을 흐릿하게 만들기
       button.classList.add("is-checked");
-      
+
       let total = chapter3Items.length;
       let count = gameState.inventory.length;
 
       // 처음 조사한 경우에만 상태 변경
       if (count === total) {
         //다음챕터로 넘어가기
-        nextChapterOption(count,total);
+        nextChapterOption(count, total);
       }
     });
-  })
+  });
 }
-
-
 
 /* let total = items.filter(item => item.chapter === gameState[0].currentChapter).length;
 let count = 0;

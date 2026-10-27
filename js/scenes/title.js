@@ -1,5 +1,5 @@
 import { renderInventory } from '../dom/renderInventory.js';
-import { gameLoad, gameReset, gameState } from '../state/index.js';
+import { gameLoad, gameReset, gameState, handleLogout } from '../state/index.js';
 import { renderChapter1, renderChapter2, renderChapter3, renderLoginModal, renderProlog, renderSignupModal } from './index.js';
 
 // 타이틀 화면
@@ -17,7 +17,7 @@ export function renderTitle() {
             THE WITNESS
           </p>
 
-          <nav aria-label="회원 메뉴">
+          <nav class="title-auth-nav" aria-label="회원 메뉴">
             <ul class="title-header-nav">
               <li>
                 <button type="button" class="login-btn">
@@ -36,6 +36,10 @@ export function renderTitle() {
           <div class="title-user-info" hidden>
             <span class="title-user-name"></span>
             <span>님 환영합니다!</span>
+
+            <button type="button" class="logout-btn">
+              로그아웃
+            </button>
           </div>
 
         </div>
@@ -119,6 +123,7 @@ export function renderTitle() {
   // 회원가입 로그인
   const loginButton = document.querySelector('.login-btn');
   const signupButton = document.querySelector('.signup-btn');
+    const logoutButton = document.querySelector('.logout-btn');
 
   function handleLogin() {
     renderLoginModal();
@@ -128,6 +133,10 @@ export function renderTitle() {
     renderSignupModal();
   }
 
+  //로그인
   loginButton.addEventListener('click', handleLogin);
+  //회원가입
   signupButton.addEventListener('click', handleSignup);
+  // 로그아웃
+  logoutButton.addEventListener('click', handleLogout);
 }

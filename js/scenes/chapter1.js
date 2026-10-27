@@ -1,11 +1,7 @@
 // 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다. 정리 완료했습니다.
 
 import { investigate, initDialogue } from "../game/index.js";
-import {
-  addItem,
-  hasItem,
-  openInventoryItems,
-} from "../game/inventory.js";
+import { addItem, hasItem, openInventoryItems, } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";
@@ -94,15 +90,11 @@ export function renderChapter1() {
 
           <button
             type="button"
-            class="investigate-button investigate-medicine-cabinet"
+            class="investigate-button investigate-medicine-cabinet is-hidden"
             data-object-id="medicine-cabinet"
             aria-label="약 보관함 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <div id="dialogueContainer"></div>
@@ -145,6 +137,8 @@ export function renderChapter1() {
 
   openInventoryItems();
   setupInvestigation();
+
+  updateMedicineCabinetVisibility();
 
   // 이미 퍼즐을 풀어 카드를 가지고 있다면 이동 버튼 복원
   if (hasItem("nurse-card")) {
@@ -214,6 +208,8 @@ function handleInvestigation(button) {
     addItem(result.itemId);
     renderInventory();
   }
+
+  updateMedicineCabinetVisibility();
 }
 
 /**
@@ -242,4 +238,28 @@ function showNextChapterButton() {
     renderChapter2();
     renderInventory();
   });
+}
+
+/**
+ * 단서를 다 찾아야만 조사 버튼이 뜨게 함
+ */
+function updateMedicineCabinetVisibility() {
+  const cabinetButton = document.querySelector(
+    ".investigate-medicine-cabinet",
+  );
+
+  if (!cabinetButton) return;
+
+  const hasPatientRecord = hasItem("patient-record");
+  const hasWarningMemo = hasItem("warning-memo");
+
+  const checkedClock =
+    gameState.checkedObjects.includes("clock");
+
+  const checkedChart =
+    gameState.checkedObjects.includes("chart");
+
+  if ( hasPatientRecord && hasWarningMemo && checkedClock && checkedChart ) {
+    cabinetButton.classList.remove("is-hidden");
+  }
 }

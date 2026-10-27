@@ -90,7 +90,7 @@ export function renderTitle() {
 
   // 이어하기 버튼 선택
   const continueButton = document.querySelector('.continue-btn');
-  continueButton.addEventListener('click',() => {
+    continueButton.addEventListener('click',() => {
     gameLoad();
     if(gameState.currentScene === 'chapter1'){
       renderChapter1();

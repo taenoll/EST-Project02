@@ -52,7 +52,7 @@ function showDialogue(dialogues) {
 }
 
 // 다음 대사로 이동
-function nextDialogue(dialogues) {
+function nextDialogue(dialogues, onComplete) {
   const content = document.querySelector(".dialogue-content");
 
   if (isTransitioning) return;
@@ -66,6 +66,11 @@ function nextDialogue(dialogues) {
     if (currentIndex >= dialogues.length) {
       document.querySelector("#dialogueBox").style.display = "none";
       isTransitioning = false;
+
+      if (onComplete) {
+        onComplete();
+      }
+
       return;
     }
 
@@ -76,7 +81,7 @@ function nextDialogue(dialogues) {
 }
 
 // 대화창 초기화 및 이벤트 연결
-export function initDialogue(dialogueData) {
+export function initDialogue(dialogueData, onComplete) {
   dialogues = dialogueData;
   currentIndex = 0;
   isTransitioning = false;
@@ -86,5 +91,5 @@ export function initDialogue(dialogueData) {
 
   document
     .querySelector("#dialogueBox")
-    .addEventListener("click", () => nextDialogue(dialogues));
+    .addEventListener("click", () => nextDialogue(dialogues, onComplete));
 }

@@ -290,37 +290,48 @@
   cursor: pointer;
 }
 
-#dialogueName {
-  margin: 0 0 20px;
-
-  color: #a8c6c2;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
-}
-
-#dialogueText {
-  margin: 0;
-
-  color: #e0e2dd;
-  font-size: 17px;
-  line-height: 1.7;
-  white-space: pre-line;
-}
-
 #dialogueNext {
   position: absolute;
   right: 12px;
-  bottom: 7px;
-
+  bottom: 12px;
   color: #ffffff;
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-size: 1.5rem;
   text-shadow: 0 1px 3px #000000;
-  animation: blink 1.2s infinite;
 }
 
+#dialogueText {
+  color: #ffffff;
+  padding-top: 6rem;
+  font-size: 1.5rem;
+  line-height: 1.8;
+}
+
+#dialogueName {
+  color: #c5f1e9;
+  font-size: 2rem;
+  padding-top: 1rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
+}
+
+/* 인물 초상화 */
+/*
+.dialogue-portrait {
+  flex-shrink: 0;
+  width: 58px;
+  height: 68px;
+  overflow: hidden;
+  background: #172326;
+  border-right: 1px solid #577273;
+}
+
+.dialogue-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.65);
+}
+*/
 .dialogue-portrait {
   flex-shrink: 0;
 
@@ -357,6 +368,31 @@
   transform: translateY(8px);
 }
 
+.dialogue-name {
+  margin: 0 0 8px;
+  color: #a8c6c2;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.dialogue-text {
+  margin: 0;
+  color: #e0e2dd;
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* 다음 대사 표시 */
+.dialogue-next {
+  position: fixed;
+  right: 12px;
+  bottom: 5px;
+  color: #8caaa6;
+  font-size: 9px;
+  letter-spacing: 1px;
+  animation: blink 1.2s infinite;
+}
 
 @keyframes blink {
   0%,
@@ -384,7 +420,7 @@
     height: 58px;
   }
 
-  #dialogueText {
+  .dialogue-text {
     font-size: 12px;
   }
 }
@@ -695,6 +731,112 @@
   margin-bottom: 20px;
 }
 
+/* 챕터 클리어 버튼 */
+#chapter-clear-button {
+  position: absolute;
+  top: 7%;
+  right: 2%;
+  z-index: 10;
+
+  padding: 0.7% 1.2%;
+  font-size: clamp(10px, 1vw, 16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+
+  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
+  color: #fff;
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#chapter-clear-button:hover {
+  background: rgba(70, 70, 70, 0.95);
+}
 /* ==================================================
    END NEXT CHAPTER
 ================================================== */
+/* ==================================================
+   PUZZLE
+================================================== */
+
+.puzzle_popup {
+  text-align: center;
+}
+
+.puzzle_popup h2 {
+  margin-bottom: 24px;
+  color: #c5f1e9;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.puzzle_nums {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.dial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dial_number {
+  width: 48px;
+  padding: 10px 0;
+
+  background: #091719;
+  border: 1px solid #577273;
+
+  color: #ffffff;
+  font-size: 26px;
+  text-align: center;
+}
+
+.arrow_btn {
+  width: 48px;
+  height: 30px;
+
+  background: #172326;
+  border: 1px solid #577273;
+  color: #c5f1e9;
+
+  cursor: pointer;
+}
+
+.arrow_btn:hover {
+  background: #203638;
+  border-color: #8ba6a3;
+}
+
+.check_answer {
+  flex-basis: 100%;
+  margin-top: 16px;
+}
+
+#check_btn {
+  padding: 10px 28px;
+
+  background: #172326;
+  border: 1px solid #8ba6a3;
+
+  color: #e0e2dd;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+#check_btn:hover {
+  background: #203638;
+}
+
+#answer_message {
+  min-height: 24px;
+  margin-top: 10px;
+  color: #c5f1e9;
+}

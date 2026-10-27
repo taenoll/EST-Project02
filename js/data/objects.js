@@ -14,8 +14,9 @@ export const objects = [
     id: "clock",
     chapter: 1,
     text: [
-      "벽시계가 있다.",
-      "고장이 났는지, 시침은 4시에서 움직이지 않고 분침만 흐르고 있다.",
+      "낡은 벽시계다.",
+      "분침은 움직이고 있는데, 시침만 4를 가리킨 채 멈춰 있다.",
+      "단순히 고장 난 걸까?",
     ],
     required: true,
     itemId: null,
@@ -37,8 +38,12 @@ export const objects = [
   {
     id: "chart",
     chapter: 1,
-    text: "오래된 환자 차트다. 일부 기록이 검게 지워져 있다.",
-    required: false,
+    text: [
+      "오래된 투약 차트다. 대부분의 기록이 검게 지워져 있다.",
+      "가장자리에는 '04 → 4'처럼 보이는 희미한 표시가 남아 있다.",
+      "누군가 일부러 남겨둔 걸까?",
+    ],
+    required: true,
     itemId: null,
   },
   {

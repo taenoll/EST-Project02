@@ -1,6 +1,6 @@
 // 게임 진행 상황을 localStorage에 저장하고 불러오는 기능을 작성할 파일입니다.
 
-import { gameState } from "./gameState.js";
+import { gameState } from "./index.js";
 
 /**
  * 현재 게임 진행 상황 전체를 localStorage에 저장합니다.

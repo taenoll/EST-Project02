@@ -1,10 +1,18 @@
 
 
 import { items } from "../data/items.js";
-import { handleInventoryClick, inventoryClickButton, renderInventory } from "../dom/renderInventory.js";
+import {
+  handleInventoryClick,
+  inventoryClickButton,
+  renderInventory,
+} from "../dom/renderInventory.js";
 import { nextChapterModal, nextChapterOption } from "../dom/renderModal.js";
 import { initDialogue } from "../game/index.js";
-import { addItem, clearChapterItems, openInventoryItems } from "../game/inventory.js";
+import {
+  addItem,
+  clearChapterItems,
+  openInventoryItems,
+} from "../game/inventory.js";
 import { investigate } from "../game/investigation.js";
 import { gameState } from "../state/gameState.js";
 import { callPuzzle } from "../game/puzzle.js";
@@ -22,20 +30,20 @@ gameSave();
 const chiefRoomDialogues = [
   {
     name: "주인공",
-    text: "여긴 다른 곳과는 다르게 깔끔하게 정돈되어있어."
+    text: "여긴 다른 곳과는 다르게 깔끔하게 정돈되어있어.",
   },
 
   {
     name: "주인공",
-    text: "목적지에 다다른거 같아 서두르자 ..."
-  }
+    text: "목적지에 다다른거 같아 서두르자 ...",
+  },
 ];
 
 /**
  * CH3 화면을 생성합니다.
  */
 
-export function DisplayChapter3() {
+export function renderChapter3() {
   const app = document.querySelector("#app");
 
   app.innerHTML = ` 
@@ -91,20 +99,17 @@ export function DisplayChapter3() {
   // HTML 생성 후 대화창 초기화
   initDialogue(chiefRoomDialogues);
 
-
   const investigateButtons = scene.querySelectorAll(".investigate-button");
 
-  const chapter3Items = items.filter(item => item.chapter === 3);
-  let i=0;
+  const chapter3Items = items.filter((item) => item.chapter === 3);
+  let i = 0;
   investigateButtons.forEach((button) => {
-
     // 각 버튼에 대해 반복 실행할 코드
-    button.dataset.id=chapter3Items[i].id;
-    button.dataset.important=chapter3Items[i].important;
+    button.dataset.id = chapter3Items[i].id;
+    button.dataset.important = chapter3Items[i].important;
 
     i++;
   });
-
 
   investigateButtons.forEach((button) => {
     const objectId = button.dataset.id;
@@ -114,10 +119,9 @@ export function DisplayChapter3() {
     }
   });
 
-//클릭 이벤트 설정
-  investigateButtons.forEach((button) =>{
+  //클릭 이벤트 설정
+  investigateButtons.forEach((button) => {
     button.addEventListener("click", () => {
-
       //변수선언
       const objectId = button.dataset.id;
       const result = investigate(objectId);
@@ -147,9 +151,8 @@ export function DisplayChapter3() {
 
       addItem(objectId);
       renderInventory();
-      
 
-      // 아이템 획득시 대화창 
+      // 아이템 획득시 대화창
       const itemDialogues = [
         {
           name: "주인공",
@@ -158,17 +161,15 @@ export function DisplayChapter3() {
       ];
 
       // 클릭한 오브젝트 ID와 일치하는 데이터를 찾기
-        const clickedObject = objects.find(
-          (object) => object.id === objectId
-        );
+      const clickedObject = objects.find((object) => object.id === objectId);
 
-        // 해당 오브젝트의 설명을 대사로 사용
-        if (clickedObject) {
-          itemDialogues[0].text = clickedObject.text;
-          initDialogue(itemDialogues);
-        } else {
-          console.error("오브젝트를 찾을 수 없습니다:", objectId);
-        }
+      // 해당 오브젝트의 설명을 대사로 사용
+      if (clickedObject) {
+        itemDialogues[0].text = clickedObject.text;
+        initDialogue(itemDialogues);
+      } else {
+        console.error("오브젝트를 찾을 수 없습니다:", objectId);
+      }
 
       if (!result) return;
 
@@ -209,5 +210,5 @@ export function DisplayChapter3() {
 
 
     });
-  })
+  });
 }

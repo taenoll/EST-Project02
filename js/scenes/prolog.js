@@ -1,6 +1,5 @@
-import { gameState } from "../state/gameState.js";
-import { gameSave } from "../state/storage.js";
-import { renderChapter1 } from "./chapter1.js";
+import { gameSave, gameState } from "../state/index.js";
+import { renderChapter1 } from "./index.js";
 
 // 프롤로그 장면에서만 사용하는 진행 코드를 작성할 파일입니다.
 export function renderProlog() {

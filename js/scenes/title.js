@@ -1,11 +1,7 @@
 import { renderInventory } from '../dom/renderInventory.js';
-import { gameState } from '../state/gameState.js';
-import { gameLoad, gameReset } from '../state/storage.js';
-import { renderLoginModal ,renderSignupModal } from './auth.js';
-import { renderChapter1 } from './chapter1.js';
-import { renderChapter2 } from './chapter2.js';
-import { DisplayChapter3 } from './chapter3.js';
-import { renderProlog } from './prolog.js';
+import { gameLoad, gameReset, gameState } from '../state/index.js';
+import { renderChapter1, renderChapter2, renderChapter3, renderLoginModal, renderProlog, renderSignupModal } from './index.js';
+
 // 타이틀 화면
 export function renderTitle() {
   const app = document.querySelector("#app");
@@ -35,6 +31,12 @@ export function renderTitle() {
               </li>
             </ul>
           </nav>
+
+          <!-- 로그인 후 환영 문구 -->
+          <div class="title-user-info" hidden>
+            <span class="title-user-name"></span>
+            <span>님 환영합니다!</span>
+          </div>
 
         </div>
       </header>
@@ -118,14 +120,14 @@ export function renderTitle() {
   const loginButton = document.querySelector('.login-btn');
   const signupButton = document.querySelector('.signup-btn');
 
-  function handleLogin(){
+  function handleLogin() {
     renderLoginModal();
-  };
+  }
 
-  function handleSignup(){
+  function handleSignup() {
     renderSignupModal();
-  };
+  }
 
-  loginButton.addEventListener('click',handleLogin);
-  signupButton.addEventListener('click',handleSignup);
+  loginButton.addEventListener('click', handleLogin);
+  signupButton.addEventListener('click', handleSignup);
 }

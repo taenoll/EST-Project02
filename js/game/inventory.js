@@ -2,8 +2,8 @@
 import { items } from "../data/items.js";
 import { handleInventoryClick, inventoryClickButton, renderInventory } from "../dom/renderInventory.js";
 import { openModal } from "../dom/renderModal.js";
-import { gameState } from "../state/gameState.js";
-import { gameSave } from "../state/storage.js";
+import { gameSave, gameState } from "../state/index.js";
+
 
 /**
  * 플레이어가 특정 아이템을 가지고 있는지 확인합니다.

@@ -111,7 +111,6 @@
   outline-offset: 4px;
 }
 
-
 /* =============================
    메인
 ============================= */
@@ -159,7 +158,6 @@
   line-height: 1.8;
   color: #c3ae88;
 }
-
 
 /* =============================
    게임 시작 / 이어 하기
@@ -224,10 +222,10 @@
   cursor: not-allowed;
 }
 
-
 /* =============================
    푸터
 ============================= */
+
 .title-footer {
   width: 100%;
   min-height: 60px;
@@ -249,7 +247,7 @@
 }
 
 /* =============================
-   반응형
+  반응형
 ============================= */
 
 @media (max-width: 600px) {
@@ -268,13 +266,13 @@
   }
 
   .title-header-nav {
-  gap: 12px; /* 기존 24px */
-}
+    gap: 12px; /* 기존 24px */
+  }
 
-.title-header-nav li + li {
-  border-left: 1px solid rgba(185, 165, 130, 0.5);
-  padding-left: 12px; /* 기존 24px */
-}
+  .title-header-nav li + li {
+    border-left: 1px solid rgba(185, 165, 130, 0.5);
+    padding-left: 12px; /* 기존 24px */
+  }
 
   .title-header-nav button {
     font-size: 12px;
@@ -316,5 +314,38 @@
 
   .title-footer p {
     font-size: 10px;
+  }
+}
+
+/* =============================
+  로그인 후 환영 문구
+============================= */
+
+.title-user-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-family: "Noto Serif KR", serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #c3ae88;
+}
+
+.title-user-name {
+  color: #e5d6bd;
+  font-weight: 600;
+}
+
+/* 로그인 전에는 환영 문구 숨기기 */
+.title-user-info[hidden] {
+  display: none;
+}
+
+/* 모바일 환영 문구 */
+@media (max-width: 600px) {
+  .title-user-info {
+    font-size: 12px;
+    gap: 2px;
   }
 }

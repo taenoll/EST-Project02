@@ -109,6 +109,14 @@ export function chapterInvestigation() {
   const investigateButtons = scene.querySelectorAll('.investigateIcon');
   const chapter3Items = items.filter((item) => item.chapter === 3);
   let i = 0;
+  const getCount = () => {
+    return chapter3Items.filter((item) =>
+      gameState.checkedObjects.includes(item.id)
+    ).length;
+  };
+  const total = chapter3Items.length;
+    
+
   investigateButtons.forEach((button) => {
     // 각 버튼에 대해 반복 실행할 코드
     button.dataset.id = chapter3Items[i].id;
@@ -155,7 +163,10 @@ export function chapterInvestigation() {
             isChapter3PuzzleCompleted = true;
             gameSave();
 
-            checkChapterClear();
+            const count = getCount();
+
+
+            checkChapterClear(count, total);
           }
 
           // 퍼즐 모달이 닫히면 감시 종료
@@ -191,13 +202,10 @@ export function chapterInvestigation() {
       }
 
       //갯수를 파악하기위한 선언
-      const count = chapter3Items.filter((item) =>
-      gameState.checkedObjects.includes(item.id)
-      ).length;
+      const count = getCount();
 
-      const total = chapter3Items.length;
       if(count === total){
-        checkChapterClear();
+        checkChapterClear(count, total);
       }
 
     });

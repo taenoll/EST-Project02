@@ -126,18 +126,11 @@ export function nextChapterModal(content) {
     scene.appendChild(chapterButton);
   }
 
-  chapterButton.onclick = () => {
-    nextChapterModal(`
-      <h2>챕터 클리어</h2>
-      <p>다음 챕터로 이동하시겠습니까?</p>
-    `);
-  };
-
   // 버튼 클릭 시 같은 모달 실행
   chapterButton.onclick = () => {
     nextChapterModal(`
-      <h2>챕터 클리어</h2>
-      <p>다음 챕터로 이동하시겠습니까?</p>
+      <h2 class=nextModalTitle>챕터 클리어</h2>
+      <p class=nextModalText>다음 챕터로 이동하시겠습니까?</p>
     `);
   };
 
@@ -157,11 +150,9 @@ export function nextChapterOption(checkedItem, stageItem) {
   if (checkedItem !== stageItem) {
     return;
   }
-  console.log("Ok!")
   nextChapterModal(`
-    <h2>챕터 클리어</h2>
-    <p>다음 챕터로 이동하시겠습니까?</p>
+      <h2 class=nextModalTitle>챕터 클리어</h2>
+      <p class=nextModalText>다음 챕터로 이동하시겠습니까?</p>
   `);
 
 }
-

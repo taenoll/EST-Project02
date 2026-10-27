@@ -1,4 +1,5 @@
 
+
 import { items } from "../data/items.js";
 import { handleInventoryClick, inventoryClickButton, renderInventory } from "../dom/renderInventory.js";
 import { nextChapterModal, nextChapterOption } from "../dom/renderModal.js";
@@ -8,10 +9,14 @@ import { investigate } from "../game/investigation.js";
 import { gameState } from "../state/gameState.js";
 import { callPuzzle } from "../game/puzzle.js";
 import { objects } from "../data/objects.js";
+import { gameSave } from "../state/storage.js";
+import { renderEnding } from "./ending.js";
 
+//챕터번호 변경 및 저장
+gameState.currentChapter = 3;
+console.log(gameState)
+gameSave();
 
-//const chapterNumber = gameState.currentChapter;
-const chapterNumber = 3;
 // 챕터 3에서만 사용하는 진행 코드를 작성할 파일입니다.
 
 const chiefRoomDialogues = [
@@ -78,8 +83,8 @@ export function DisplayChapter3() {
   </div>
   `;
 
-
-  renderInventory();
+  //아이템창 초기화
+  //renderInventory();
 
   clearChapterItems();
 
@@ -118,16 +123,28 @@ export function DisplayChapter3() {
       const result = investigate(objectId);
       let total = chapter3Items.length;
       let count = gameState.inventory.length+1;
+      let classify=false
       
       //클릭시 아이템설명화면 시작
       openInventoryItems();
 
+      
+      //클릭한 버튼을 흐릿하게 만들기
+      button.classList.add("is-checked");
+
       //클릭시 인벤토리에 아이템 추가 
       if (objectId === "restricted-area-card") {
+        callPuzzle("179", () => {
+          // 정답을 맞혔을 때만 실행
+          addItem(objectId);
+          renderInventory();
 
-        callPuzzle("179");
+          //console.log("퍼즐 해결!");
+        });
+        classify = true;
+        return;
       }
-      
+
       addItem(objectId);
       renderInventory();
       
@@ -153,22 +170,44 @@ export function DisplayChapter3() {
           console.error("오브젝트를 찾을 수 없습니다:", objectId);
         }
 
-      
       if (!result) return;
-      
-      //클릭한 버튼을 흐릿하게 만들기
-      button.classList.add("is-checked");
-      
-      console.log(count);
-      console.log(total);
-      
 
-      // 챕터종료여부 확인
-      if (count === total) {
-        console.log("pass")
-        //다음챕터로 넘어가기
-        nextChapterOption(count,total);
-      }
+        gameSave();
+
+        // 챕터종료여부 확인
+
+        let isNextChapterCalled = false;
+
+        const intervalId = setInterval(() => {
+        const times = gameState.inventory.length;
+        const sum = chapter3Items.length;
+        
+
+          if (times === sum && !isNextChapterCalled) {
+            isNextChapterCalled = true;
+
+            nextChapterOption(times, sum);
+
+            clearChapterItems();
+
+            clearInterval(intervalId);
+
+            //
+            const nextButton = document.querySelector(".next-modal-next");
+              //다음 챕터로 이동 
+              nextButton.addEventListener('click', () => {
+              gameState.currentScene = 'ending'
+              renderEnding();
+              gameSave();
+          });
+
+          }
+        }, 10000);
+
+
+
+
+
     });
   })
 }

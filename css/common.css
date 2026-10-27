@@ -616,8 +616,8 @@
   position: relative;
   overflow: hidden;
 
-  width: min(500px, 90%);
-  min-height: 300px;
+  width: min(1000px, 90%);
+  min-height: 600px;
   padding: 32px;
 
   /* 이미지가 모달 전체의 배경이 되도록 설정 */
@@ -645,10 +645,10 @@
 
 .next-modal-next {
   position: absolute;
-  right: 12px;
-  bottom: 10px;
-
-  padding: 10px 14px;
+  right: 5%;
+  bottom: 9%;
+  padding: 1% 1%;
+  font-size: 1.5rem;
 
   border: 1px solid #8ba6a3;
   background: rgba(5, 13, 15, 0.8);
@@ -674,7 +674,7 @@
   background: transparent;
 
   color: #c5f1e9;
-  font-size: 24px;
+  font-size: 36px;
   cursor: pointer;
 }
 
@@ -685,8 +685,8 @@
 
 .chapter-background {
   display: block;
-  width: 100%;
-  height: 250px;
+  width: 200%;
+  /* height: 250px; */
 
   object-fit: cover;
   object-position: center;
@@ -699,7 +699,7 @@
 #chapter-clear-button {
   position: absolute;
   top: 7%;
-  right: 2%;
+  right: 4%;
   z-index: 10;
 
   padding: 0.7% 1.2%;
@@ -717,6 +717,19 @@
 
 #chapter-clear-button:hover {
   background: rgba(70, 70, 70, 0.95);
+}
+
+.nextModalTitle{
+  color: #c5f1e9;
+  font-size: 4rem;
+  padding-top: 1rem;
+  padding-left: 2rem;
+}
+
+.nextModalText{
+  font-size: 2rem;
+  padding-top: 20rem;
+  padding-left: 2rem;
 }
 /* ==================================================
    END NEXT CHAPTER

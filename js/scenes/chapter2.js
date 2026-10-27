@@ -175,7 +175,7 @@ export function setupInvestigation() {
 
       // 6. 모든 investigationButtons가 클릭되었는지 확인 후, 되었다면 다음 챕터
       if (isChapterChecked(2)) {
-        console.log("CH2 필수 조사 완료:");
+        console.log("CH2 필수 조사 완료");
         nextChapterModal(`
             <h2>챕터 클리어</h2>
             <p>다음 챕터로 이동하시겠습니까?</p>
@@ -184,3 +184,11 @@ export function setupInvestigation() {
     });
   });
 }
+
+/**
+ * hint css
+ * 아이템 books 한 꺼번에 여러 개
+ * 대사 처리 continue
+ * next chapter 넘어가기
+ * 화면 확대
+ */

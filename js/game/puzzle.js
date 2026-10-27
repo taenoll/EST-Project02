@@ -3,11 +3,12 @@ import { getNode } from "../../lib/dom/getNode.js";
 import { openModal } from "../dom/renderModal.js";
 import { checkAnswer } from "../dom/checkAnswer.js";
 
-/** 사용방법 :
- * elem.addEventListener('click', callPuzzle('퍼즐의 정답 세자리 숫자'));
+/** 함수 부르는 방법 :
+ * callPuzzle("퍼즐의 정답 세자리 숫자", "퍼즐을 풀었을 때 들어오는 아이템의 Id");
+ * ex) callPuzzle('930", "director-key");
  */
 
-export function callPuzzle(puzzle_answer, onSuccess) {
+export function callPuzzle(puzzle_answer, rewardItemId = null) {
   openModal(`
     <div class="puzzle_popup hidden">
       <h2>암호를 입력하세요.</h2>
@@ -76,6 +77,7 @@ export function callPuzzle(puzzle_answer, onSuccess) {
       </div>
     </div>
 `);
+
   let answer = puzzle_answer;
 
   const digit_1 = getNode("#digit_1");
@@ -102,7 +104,7 @@ export function callPuzzle(puzzle_answer, onSuccess) {
   // 이벤트 리스너
   check_btn.addEventListener("click", () => {
     let user_answer = digits.map((digit) => digit.textContent).join("");
-    checkAnswer(user_answer, answer, onSuccess);
+    checkAnswer(user_answer, answer, rewardItemId);
   });
 
   // 숫자 올리기 & 내리기

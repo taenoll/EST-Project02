@@ -5,8 +5,25 @@ import { addItem, hasItem, openInventoryItems, } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";
+import { initHint } from "../game/hint.js";
 import { callPuzzle } from "../game/puzzle.js";
 import { renderChapter2 } from "./chapter2.js";
+
+// 챕터 오프닝 대사
+const chapter1Dialogues = [
+  {
+    name: "주인공",
+    text: "여긴... 어디지?",
+  },
+  {
+    name: "주인공",
+    text: "분명 뭔가 있었던 것 같은데, 아무것도 기억나지 않아.",
+  },
+  {
+    name: "주인공",
+    text: "일단 이 방부터 살펴보자.",
+  },
+];
 
 /**
  * CH1 화면을 생성.
@@ -29,11 +46,7 @@ export function renderChapter1() {
             data-object-id="bed"
             aria-label="침대 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <button
@@ -42,11 +55,7 @@ export function renderChapter1() {
             data-object-id="clock"
             aria-label="벽시계 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <button
@@ -55,11 +64,7 @@ export function renderChapter1() {
             data-object-id="window"
             aria-label="창문 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <button
@@ -68,11 +73,7 @@ export function renderChapter1() {
             data-object-id="drawer"
             aria-label="서랍장 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <button
@@ -81,11 +82,16 @@ export function renderChapter1() {
             data-object-id="chart"
             aria-label="환자 차트 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+          </button>
+
+          <button
+            type="button"
+            class="investigate-button investigate-door"
+            data-object-id="door"
+            aria-label="출입문 조사"
+          >
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <button
@@ -136,14 +142,25 @@ export function renderChapter1() {
   `;
 
   openInventoryItems();
-  setupInvestigation();
 
-  updateMedicineCabinetVisibility();
+  if (gameState.introSeen.chapter1) {
+    setupInvestigation();
+    updateMedicineCabinetVisibility();
+  } else {
+    initDialogue(chapter1Dialogues, () => {
+      gameState.introSeen.chapter1 = true;
+      gameSave();
 
-  // 이미 퍼즐을 풀어 카드를 가지고 있다면 이동 버튼 복원
+      setupInvestigation();
+      updateMedicineCabinetVisibility();
+    });
+  }
+
+  // 이미 퍼즐 풀어서 가지고 있으면 안 나오도록
   if (hasItem("nurse-card")) {
     showNextChapterButton();
   }
+
 }
 
 /**
@@ -178,8 +195,8 @@ function handleInvestigation(button) {
 
   button.classList.add("is-checked");
 
-  const dialogues = Array.isArray(result.text)
-    ? result.text.map((text) => ({
+  const dialogues = Array.isArray(result.text) ? result.text.map((text) => (
+      {
         name: "주인공",
         text,
       }))

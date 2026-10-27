@@ -1,11 +1,7 @@
 // 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다. 정리 완료했습니다.
 
 import { investigate, initDialogue } from "../game/index.js";
-import {
-  addItem,
-  hasItem,
-  openInventoryItems,
-} from "../game/inventory.js";
+import { addItem, hasItem, openInventoryItems, } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";

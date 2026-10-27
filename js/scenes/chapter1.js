@@ -1,7 +1,7 @@
 // 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다.
 
 import { investigate, isChapterChecked, initDialogue, } from "../game/index.js";
-import { addItem,openInventoryItems } from "../game/inventory.js";
+import { addItem,hasItem,openInventoryItems } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { gameState } from "../state/gameState.js";
 import { callPuzzle } from "../game/puzzle.js";
@@ -108,6 +108,10 @@ export function renderChapter1() {
 
   openInventoryItems();
   setupInvestigation();
+  
+  if (hasItem("nurse-card")) {
+    showNextChapterButton();
+  }
 
 
 }
@@ -159,13 +163,15 @@ function handleInvestigation(button) {
       },
     ];
 
-  initDialogue(dialogues);
+  
 
   if (objectId === "medicine-cabinet") {
     initDialogue(dialogues, () => {
       callPuzzle("404", () => {
         addItem("nurse-card");
         renderInventory();
+
+        showNextChapterButton();
       });
     });
   } else {
@@ -185,4 +191,29 @@ function handleInvestigation(button) {
 
     // TODO: 필수 조사 + 퍼즐 완료 후 다음 챕터 연결
   }
+}
+
+function showNextChapterButton() {
+  const chapter = document.querySelector(".chapter1");
+
+  // 이미 버튼이 있으면 또 만들지 않게!!
+  if (document.querySelector("#chapter-clear-button")) return;
+
+  const nextButton = document.createElement("button");
+
+  nextButton.id = "chapter-clear-button";
+  nextButton.type = "button";
+  nextButton.textContent = "간호사실로 이동";
+
+  chapter.appendChild(nextButton);
+
+  nextButton.addEventListener("click", () => {
+    gameState.currentScene = "chapter2";
+    gameState.currentChapter = 2;
+
+    gameSave();
+
+    renderChapter2();
+    renderInventory();
+  });
 }

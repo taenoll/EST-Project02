@@ -1,41 +1,38 @@
 
-
-import { items } from "../data/items.js";
+import { items } from '../data/items.js';
 import {
   handleInventoryClick,
   inventoryClickButton,
   renderInventory,
-} from "../dom/renderInventory.js";
-import { nextChapterModal, nextChapterOption } from "../dom/renderModal.js";
-import { initDialogue } from "../game/index.js";
+} from '../dom/renderInventory.js';
+import { checkChapterClear, nextChapterModal, nextChapterOption } from '../dom/renderModal.js';
+import { initDialogue } from '../game/index.js';
 import {
   addItem,
   clearChapterItems,
   openInventoryItems,
-} from "../game/inventory.js";
-import { investigate } from "../game/investigation.js";
-import { gameState } from "../state/gameState.js";
-import { callPuzzle } from "../game/puzzle.js";
-import { objects } from "../data/objects.js";
-import { gameSave } from "../state/storage.js";
-import { renderEnding } from "./ending.js";
+} from '../game/inventory.js';
+import { investigate } from '../game/investigation.js';
+import { gameState } from '../state/gameState.js';
+import { callPuzzle } from '../game/puzzle.js';
+import { objects } from '../data/objects.js';
+import { gameSave } from '../state/storage.js';
+import { renderEnding } from './ending.js';
+import { initHint } from '../game/hint.js';
+import { getNode } from '../../lib/dom/getNode.js';
 
-//챕터번호 변경 및 저장
-gameState.currentChapter = 3;
-console.log(gameState)
-gameSave();
 
 // 챕터 3에서만 사용하는 진행 코드를 작성할 파일입니다.
 
 const chiefRoomDialogues = [
   {
-    name: "주인공",
-    text: "여긴 다른 곳과는 다르게 깔끔하게 정돈되어있어.",
+    name: '주인공',
+    text: '여긴 다른 곳과는 다르게 깔끔하게 정돈되어있어.',
   },
 
   {
-    name: "주인공",
-    text: "목적지에 다다른거 같아 서두르자 ...",
+    name: '주인공',
+    text: '목적지에 다다른거 같아 서두르자 ...',
   },
 ];
 
@@ -44,7 +41,11 @@ const chiefRoomDialogues = [
  */
 
 export function renderChapter3() {
-  const app = document.querySelector("#app");
+  const app = document.querySelector('#app');
+
+    //챕터번호 변경 및 저장
+  gameState.currentChapter = 3;
+  gameSave();
 
   app.innerHTML = ` 
   <div class="inventory-layout">
@@ -64,8 +65,6 @@ export function renderChapter3() {
         <div id="dialogueContainer"></div>
         
         <div id="next-Chapter"></div>
-
-        <button type="button" id="hint_btn" ></button>
 
       </section>
     </main>
@@ -99,8 +98,15 @@ export function renderChapter3() {
   // HTML 생성 후 대화창 초기화
   initDialogue(chiefRoomDialogues);
 
-  const investigateButtons = scene.querySelectorAll(".investigate-button");
+  chapterInvestigation();
 
+  const hint_btn = getNode('#hint_btn');
+  hint_btn.addEventListener('click', initHint);
+}
+
+export function chapterInvestigation() {
+  const scene = document.querySelector("#scene");
+  const investigateButtons = scene.querySelectorAll('.investigate-button');
   const chapter3Items = items.filter((item) => item.chapter === 3);
   let i = 0;
   investigateButtons.forEach((button) => {
@@ -115,18 +121,16 @@ export function renderChapter3() {
     const objectId = button.dataset.id;
 
     if (gameState.checkedObjects.includes(objectId)) {
-      button.classList.add("is-checked");
+      button.classList.add('is-checked');
     }
   });
 
   //클릭 이벤트 설정
   investigateButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener('click', () => {
       //변수선언
       const objectId = button.dataset.id;
       const result = investigate(objectId);
-      let total = chapter3Items.length;
-      let count = gameState.inventory.length+1;
       let classify=false
       
       //클릭시 아이템설명화면 시작
@@ -134,29 +138,44 @@ export function renderChapter3() {
 
       
       //클릭한 버튼을 흐릿하게 만들기
-      button.classList.add("is-checked");
+      button.classList.add('is-checked');
 
-      //클릭시 인벤토리에 아이템 추가 
-      if (objectId === "restricted-area-card") {
-        callPuzzle("179", () => {
-          // 정답을 맞혔을 때만 실행
-          addItem(objectId);
-          renderInventory();
+      if (objectId === 'restricted-area-card') {
+        callPuzzle('179', 'restricted-area-card');
 
-          //console.log("퍼즐 해결!");
-        });
-        classify = true;
+  // 퍼즐 정답 여부 감시
+        const checkPuzzleInterval = setInterval(() => {
+        const answerMessage = document.querySelector('#answer_message');
+        let isChapter3PuzzleCompleted = false;
+
+
+          if (answerMessage?.textContent === '정답입니다') {
+            clearInterval(checkPuzzleInterval);
+
+            isChapter3PuzzleCompleted = true;
+            gameSave();
+
+            checkChapterClear(chapter3Items);
+          }
+
+          // 퍼즐 모달이 닫히면 감시 종료
+          if (!document.querySelector('#answer_message')) {
+            clearInterval(checkPuzzleInterval);
+          }
+        }, 1000);
+
         return;
       }
 
       addItem(objectId);
       renderInventory();
+      gameSave();
 
       // 아이템 획득시 대화창
       const itemDialogues = [
         {
-          name: "주인공",
-          text: "",
+          name: '주인공',
+          text: '',
         },
       ];
 
@@ -168,46 +187,18 @@ export function renderChapter3() {
         itemDialogues[0].text = clickedObject.text;
         initDialogue(itemDialogues);
       } else {
-        console.error("오브젝트를 찾을 수 없습니다:", objectId);
+        console.error('오브젝트를 찾을 수 없습니다:', objectId);
       }
 
-      if (!result) return;
+      //갯수를 파악하기위한 선언
+      const count = chapter3Items.filter((item) =>
+      gameState.checkedObjects.includes(item.id)
+      ).length;
 
-        gameSave();
-
-        // 챕터종료여부 확인
-
-        let isNextChapterCalled = false;
-
-        const intervalId = setInterval(() => {
-        const times = gameState.inventory.length;
-        const sum = chapter3Items.length;
-        
-
-          if (times === sum && !isNextChapterCalled) {
-            isNextChapterCalled = true;
-
-            nextChapterOption(times, sum);
-
-            clearChapterItems();
-
-            clearInterval(intervalId);
-
-            //
-            const nextButton = document.querySelector(".next-modal-next");
-              //다음 챕터로 이동 
-              nextButton.addEventListener('click', () => {
-              gameState.currentScene = 'ending'
-              renderEnding();
-              gameSave();
-          });
-
-          }
-        }, 10000);
-
-
-
-
+      const total = chapter3Items.length;
+      if(count === total){
+        checkChapterClear(chapter3Items);
+      }
 
     });
   });

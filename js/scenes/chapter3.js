@@ -13,6 +13,8 @@ import {
 } from "../game/inventory.js";
 import { investigate } from "../game/investigation.js";
 import { gameState } from "../state/gameState.js";
+import { callPuzzle } from "../game/puzzle.js";
+import { objects } from "../data/objects.js";
 
 //const chapterNumber = gameState.currentChapter;
 const chapterNumber = 3;
@@ -26,7 +28,7 @@ const chiefRoomDialogues = [
 
   {
     name: "주인공",
-    text: "양지바른 곳으로 나가자",
+    text: "목적지에 다다른거 같아 서두르자 ...",
   },
 ];
 
@@ -42,15 +44,15 @@ export function renderChapter3() {
     <main id="scene">
       <section class="mainScreenChapterThree chapter chapter1">
 
+        <button class="investigate-button search-desk"></button>
+      
         <button class="investigate-button search-shelf"></button>
       
-        <button class="investigate-button search-cabinet"></button>
+        <button class="investigate-button search-door"></button>
       
         <button class="investigate-button search-portrait"></button>
       
-        <button class="investigate-button search-desk"></button>
-      
-        <button class="investigate-button search-door"></button>
+        <button class="investigate-button search-cabinet"></button>
       
         <div id="dialogueContainer"></div>
         
@@ -90,7 +92,6 @@ export function renderChapter3() {
   initDialogue(chiefRoomDialogues);
 
   const investigateButtons = scene.querySelectorAll(".investigate-button");
-  //console.log("조사 버튼 개수:", investigateButtons.length);
 
   const chapter3Items = items.filter((item) => item.chapter === 3);
   let i = 0;
@@ -113,38 +114,56 @@ export function renderChapter3() {
   //클릭 이벤트 설정
   investigateButtons.forEach((button) => {
     button.addEventListener("click", () => {
+      //변수선언
       const objectId = button.dataset.id;
       const result = investigate(objectId);
+      let total = chapter3Items.length;
+      let count = gameState.inventory.length + 1;
 
       //클릭시 아이템설명화면 시작
       openInventoryItems();
-      //종료
 
-      //클릭시 인벤토리에 아이템 추가 //시작
+      //클릭시 인벤토리에 아이템 추가
+      if (objectId === "restricted-area-card") {
+        callPuzzle("179");
+      }
+
       addItem(objectId);
       renderInventory();
-      //종료
+
+      // 아이템 획득시 대화창
+      const itemDialogues = [
+        {
+          name: "주인공",
+          text: "",
+        },
+      ];
+
+      // 클릭한 오브젝트 ID와 일치하는 데이터를 찾기
+      const clickedObject = objects.find((object) => object.id === objectId);
+
+      // 해당 오브젝트의 설명을 대사로 사용
+      if (clickedObject) {
+        itemDialogues[0].text = clickedObject.text;
+        initDialogue(itemDialogues);
+      } else {
+        console.error("오브젝트를 찾을 수 없습니다:", objectId);
+      }
 
       if (!result) return;
 
       //클릭한 버튼을 흐릿하게 만들기
       button.classList.add("is-checked");
 
-      let total = chapter3Items.length;
-      let count = gameState.inventory.length;
+      console.log(count);
+      console.log(total);
 
-      // 처음 조사한 경우에만 상태 변경
+      // 챕터종료여부 확인
       if (count === total) {
+        console.log("pass");
         //다음챕터로 넘어가기
         nextChapterOption(count, total);
       }
     });
   });
 }
-
-/* let total = items.filter(item => item.chapter === gameState[0].currentChapter).length;
-let count = 0;
-// count 변수는 조사이벤트가 활성화 될때 마다 1씩 증가하게 할 것.
-// total은 한챕터당 아이템의 갯수
-
-nextChapterOption(3,total); */

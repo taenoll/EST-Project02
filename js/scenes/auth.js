@@ -1,4 +1,5 @@
-import { handleSignup } from '../state/userStorage.js';
+
+import { handleLogin, handleSignup } from '../state/userStorage.js';
 
 /* 로그인 모달 HTML 생성 */
 export function renderLoginModal() {
@@ -12,7 +13,7 @@ export function renderLoginModal() {
         class="auth-box"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="login-title"
+        aria-label="로그인 창"
       >
         <button
           type="button"
@@ -22,7 +23,7 @@ export function renderLoginModal() {
           &times;
         </button>
 
-        <h2 id="login-title" class="auth-title">
+        <h2 class="auth-title">
           THE WITNESS
         </h2>
 
@@ -75,6 +76,11 @@ export function renderLoginModal() {
   }
 
   closeLogin.addEventListener('click', handleCloseLogin);
+
+  // 로그인 이벤트 연결
+  const loginForm = modal.querySelector('.login-form');
+
+  loginForm.addEventListener('submit', handleLogin);
 }
 
 /* 회원가입 모달 HTML 생성 */
@@ -89,7 +95,7 @@ export function renderSignupModal() {
         class="auth-box"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="signup-title"
+        aria-label="회원가입 창"
       >
         <button
           type="button"
@@ -99,7 +105,7 @@ export function renderSignupModal() {
           &times;
         </button>
 
-        <h2 id="signup-title" class="auth-title">
+        <h2 class="auth-title">
           THE WITNESS
         </h2>
 
@@ -155,7 +161,11 @@ export function renderSignupModal() {
             />
           </div>
 
-          <p class="auth-warning">※ 학습용 데모 로그인입니다.<br> 실제 비밀번호나 개인정보를 입력하지 마세요.</p>
+          <p class="auth-warning">
+            ※ 학습용 데모 로그인입니다.
+            실제 비밀번호나 개인정보를 입력하지 마세요.
+          </p>
+
           <p class="auth-message" aria-live="polite"></p>
 
           <button type="submit" class="auth-submit">
@@ -177,10 +187,8 @@ export function renderSignupModal() {
 
   closeSignup.addEventListener('click', handleCloseSignup);
 
-  // 회원가입
+  // 회원가입 이벤트 연결
   const signupForm = modal.querySelector('.signup-form');
-  const loginForm = document.querySelector('.login-form');
 
-  signupForm.addEventListener('submit', handleSignup);
   signupForm.addEventListener('submit', handleSignup);
 }

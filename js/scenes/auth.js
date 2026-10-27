@@ -1,3 +1,4 @@
+import { handleSignup } from '../state/userStorage.js';
 
 /* 로그인 모달 HTML 생성 */
 export function renderLoginModal() {
@@ -29,14 +30,27 @@ export function renderLoginModal() {
 
         <form class="login-form">
           <div class="auth-field">
-            <label for="login-nickname">닉네임</label>
+            <label for="login-id">아이디</label>
 
             <input
               type="text"
-              id="login-nickname"
-              name="nickname"
-              placeholder="닉네임을 입력하세요"
-              autocomplete="nickname"
+              id="login-id"
+              name="userId"
+              placeholder="아이디를 입력하세요"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <div class="auth-field">
+            <label for="login-password">비밀번호</label>
+
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              placeholder="비밀번호를 입력하세요"
+              autocomplete="current-password"
               required
             />
           </div>
@@ -52,6 +66,15 @@ export function renderLoginModal() {
   `;
 
   document.body.append(modal);
+
+  // 로그인 닫기 버튼
+  const closeLogin = modal.querySelector('.login-close');
+
+  function handleCloseLogin() {
+    modal.remove();
+  }
+
+  closeLogin.addEventListener('click', handleCloseLogin);
 }
 
 /* 회원가입 모달 HTML 생성 */
@@ -80,18 +103,16 @@ export function renderSignupModal() {
           THE WITNESS
         </h2>
 
-        <p class="auth-subtitle">SIGN UP</p>
-
         <form class="signup-form">
           <div class="auth-field">
-            <label for="signup-name">이름</label>
+            <label for="signup-id">아이디</label>
 
             <input
               type="text"
-              id="signup-name"
-              name="name"
-              placeholder="이름을 입력하세요"
-              autocomplete="name"
+              id="signup-id"
+              name="userId"
+              placeholder="아이디를 입력하세요"
+              autocomplete="username"
               required
             />
           </div>
@@ -104,7 +125,6 @@ export function renderSignupModal() {
               id="signup-nickname"
               name="nickname"
               placeholder="닉네임을 입력하세요"
-              autocomplete="nickname"
               required
             />
           </div>
@@ -122,6 +142,20 @@ export function renderSignupModal() {
             />
           </div>
 
+          <div class="auth-field">
+            <label for="signup-password">비밀번호</label>
+
+            <input
+              type="password"
+              id="signup-password"
+              name="password"
+              placeholder="비밀번호를 입력하세요"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+
+          <p class="auth-warning">※ 학습용 데모 로그인입니다.<br> 실제 비밀번호나 개인정보를 입력하지 마세요.</p>
           <p class="auth-message" aria-live="polite"></p>
 
           <button type="submit" class="auth-submit">
@@ -133,4 +167,20 @@ export function renderSignupModal() {
   `;
 
   document.body.append(modal);
+
+  // 회원가입 닫기 버튼
+  const closeSignup = modal.querySelector('.signup-close');
+
+  function handleCloseSignup() {
+    modal.remove();
+  }
+
+  closeSignup.addEventListener('click', handleCloseSignup);
+
+  // 회원가입
+  const signupForm = modal.querySelector('.signup-form');
+  const loginForm = document.querySelector('.login-form');
+
+  signupForm.addEventListener('submit', handleSignup);
+  signupForm.addEventListener('submit', handleSignup);
 }

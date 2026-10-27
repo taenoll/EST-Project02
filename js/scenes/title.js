@@ -1,6 +1,7 @@
 import { renderInventory } from '../dom/renderInventory.js';
 import { gameState } from '../state/gameState.js';
 import { gameLoad, gameReset } from '../state/storage.js';
+import { renderLoginModal ,renderSignupModal } from './auth.js';
 import { renderChapter1 } from './chapter1.js';
 import { renderChapter2 } from './chapter2.js';
 import { DisplayChapter3 } from './chapter3.js';
@@ -113,4 +114,19 @@ export function renderTitle() {
   } else {
     continueButton.disabled = false;
   }
+
+  // 회원가입 로그인
+  const loginButton = document.querySelector('.login-btn');
+  const signupButton = document.querySelector('.signup-btn');
+
+  function handleLogin(){
+    renderLoginModal();
+  };
+
+  function handleSignup(){
+    renderSignupModal();
+  };
+
+  loginButton.addEventListener('click',handleLogin);
+  signupButton.addEventListener('click',handleSignup);
 }

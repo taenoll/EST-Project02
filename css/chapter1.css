@@ -82,6 +82,12 @@
   top: 45%;
 }
 
+/* 왼쪽 문 */
+.chapter1 .investigate-door {
+  left: 94%;
+  top: 50%;
+}
+
 /* 오른쪽 약 보관함 */
 .investigate-medicine-cabinet {
   left: 75%;

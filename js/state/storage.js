@@ -104,7 +104,7 @@ export function gameLoad(){
  * renderProlog();
  */
 export function gameReset() {
-  gameState.currentScene = 'title';
+  gameState.currentScene = "title";
   gameState.currentChapter = 0;
 
   gameState.inventory = [];
@@ -112,11 +112,18 @@ export function gameReset() {
   gameState.solvedPuzzles = [];
   gameState.unlockedRooms = [];
   gameState.usedItems = [];
+
+  gameState.introSeen = {
+    chapter1: false,
+    chapter2: false,
+    chapter3: false,
+  };
+
   gameState.hintLevel = {
     chapter1: 0,
     chapter2: 0,
-    chapter3: 0
+    chapter3: 0,
   };
 
-  localStorage.removeItem('gameState');
+  localStorage.removeItem("gameState");
 }

@@ -138,6 +138,8 @@ export function renderChapter1() {
   openInventoryItems();
   setupInvestigation();
 
+  updateMedicineCabinetVisibility();
+
   // 이미 퍼즐을 풀어 카드를 가지고 있다면 이동 버튼 복원
   if (hasItem("nurse-card")) {
     showNextChapterButton();

@@ -1,6 +1,12 @@
 
 // 공통 모달을 화면에 렌더링하는 UI 코드를 작성할 파일입니다.
 
+import { clearChapterItems } from "../game/inventory.js";
+import { renderChapter2 } from "../scenes/chapter2.js";
+import { renderChapter3 } from "../scenes/chapter3.js";
+import { gameState } from "../state/gameState.js";
+import { gameSave } from "../state/storage.js";
+
 // 공통 모달 사용법
 // 1. index.html에 <div id="next-Chapter"></div> 필요
 // 2. 사용할 파일에서 openModal을 import
@@ -63,10 +69,9 @@ export function closeModal() {
 // count 변수는 조사이벤트가 활성화 될때 마다 1씩 증가하게 할 것.
 // total 변수는 한챕터당 아이템의 갯수
 //
-//nextChapterOption(3,total);
+//nextChapterOption(count,total);
 
 
-const nextChapter = document.querySelector("#next-chapter");
 
 const chapterImages = {
   1: "./assets/images/backgrounds/nurse-room-entrance.png",
@@ -74,10 +79,10 @@ const chapterImages = {
   3: "./assets/images/backgrounds/ending-entrance.png",
 };
 
-export function nextChapterModal(content) {
-  //const chapter = gameState[0].currentChapter;
-  const chapter = 3;
+export function nextChapterModal(content, onNext = null) {
+  const chapter = gameState.currentChapter;
   const imagePath = chapterImages[chapter];
+  const nextChapter = document.querySelector("#next-Chapter");
 
   nextChapter.innerHTML = `
   <div class="next-modal-overlay">
@@ -109,50 +114,105 @@ export function nextChapterModal(content) {
     </div>
   </div>
 `;
-
   nextChapter.classList.add("is-open");
 
-
-  // 우측 상단 버튼 생성
+    // 챕터 화면에 챕터 클리어 버튼 생성
   const scene = document.querySelector(".mainScreenChapterThree");
-
   let chapterButton = document.querySelector("#chapter-clear-button");
 
-  if (!chapterButton) {
+  if (!chapterButton && scene) {
     chapterButton = document.createElement("button");
     chapterButton.id = "chapter-clear-button";
     chapterButton.textContent = "챕터 클리어";
+    chapterButton.type = "button";
 
     scene.appendChild(chapterButton);
   }
 
-  // 버튼 클릭 시 같은 모달 실행
-  chapterButton.onclick = () => {
-    nextChapterModal(`
-      <h2 class=nextModalTitle>챕터 클리어</h2>
-      <p class=nextModalText>다음 챕터로 이동하시겠습니까?</p>
-    `);
-  };
+  // 버튼 클릭 시 챕터 클리어 모달 표시
+  if (chapterButton) {
+    chapterButton.onclick = () => {
+      nextChapterModal(
+        `
+          <h2 class="nextModalTitle">챕터 클리어</h2>
+          <p class="nextModalText">다음 챕터로 이동하시겠습니까?</p>
+        `,
+        onNext
+      );
+    };
+  }
+
 
   nextChapter
     .querySelector(".next-modal-close")
     .addEventListener("click", nextCloseModal);
+
+  nextChapter
+    .querySelector(".next-modal-next")
+    .addEventListener("click", () => {
+      nextCloseModal();
+
+      if (typeof onNext === "function") {
+        onNext();
+      }
+    });
 }
 
-export function nextCloseModal() {
+function nextCloseModal() {
+  const nextChapter = document.querySelector("#next-Chapter");
+
+  if (!nextChapter) {
+    console.error("모달 요소 #next-Chapter를 찾을 수 없습니다.");
+    return;
+  }
+
   nextChapter.classList.remove("is-open");
   nextChapter.innerHTML = "";
 }
 
-export function nextChapterOption(checkedItem, stageItem) {
+export function nextChapterOption(checkedItem, stageItem, onNext = null) {
   // stageItem : 이번스테이지에서 획득해야할 아이템수
   // checkedItem : 확인한 아이템 수 // 조사이벤트 활성화마다 1씩 증가하도록 설정해주세요
   if (checkedItem !== stageItem) {
     return;
   }
-  nextChapterModal(`
-      <h2 class=nextModalTitle>챕터 클리어</h2>
-      <p class=nextModalText>다음 챕터로 이동하시겠습니까?</p>
-  `);
+  nextChapterModal(
+    `
+      <h2 class="nextModalTitle">챕터 클리어</h2>
+      <p class="nextModalText">다음 챕터로 이동하시겠습니까?</p>
+    `,
+    onNext
+  );
 
+}
+
+
+export function checkChapterClear(chapterItems) {
+  
+  const times = chapterItems.filter((item) =>
+    gameState.checkedObjects.includes(item.id)
+  ).length;
+
+  const sum = chapterItems.length;
+
+  setTimeout(() => {
+    const moveToEnding = () => {
+      clearChapterItems();
+      console.log("Ok!")
+
+      gameState.currentScene = 'ending';
+      if(gameState.currentChapter===1){
+        renderChapter2();
+      } 
+      if(gameState.currentChapter===2){
+        renderChapter3();
+      }
+      if(gameState.currentChapter===3){
+        renderEnding();
+      }
+      gameSave();
+    };
+
+    nextChapterOption(times, sum, moveToEnding);
+  }, 2000);
 }

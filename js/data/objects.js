@@ -67,7 +67,7 @@ export const objects = [
   {
     id: "books",
     chapter: 2,
-    text: ["책들이 쌓여있다.", "책들을 뒤져본다."],
+    text: ["책들이 쌓여있다.", "책들을 뒤져보자."],
     required: true,
     itemId: "m04-medication-record",
   },

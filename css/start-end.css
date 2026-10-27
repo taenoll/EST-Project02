@@ -11,14 +11,11 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-
   display: flex;
   align-items: center;
-
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
   font-family: 'Noto Serif KR', serif;
 }
 
@@ -52,11 +49,9 @@
 .prolog-title {
   font-size: clamp(32px, 4vw, 64px);
   color: #c3ae88;
-
-  /* ⭐ 추가: 처음에는 제목 숨기기 */
+  /* 처음에는 제목 숨기기 */
   opacity: 0;
-
-  /* ⭐ 추가: 1초 동안 서서히 나타나기 */
+  /* 1초 동안 서서히 나타나기 */
   transition: opacity 1s ease;
 }
 
@@ -65,22 +60,16 @@
   width: 48%;
   height: 75%;
   min-height: 0;
-
   display: flex;
   flex-direction: column;
-
   padding: 36px;
-
   background: rgba(12, 15, 18, 0.85);
   border: 1px solid #b9a582;
   border-radius: 8px;
-
   color: #c3ae88;
-
-  /* ⭐ 추가: 처음에는 스토리 창 숨기기 */
+  /* 처음에는 스토리 창 숨기기 */
   opacity: 0;
-
-  /* ⭐ 추가: 1초 동안 서서히 나타나기 */
+  /* 1초 동안 서서히 나타나기 */
   transition: opacity 1s ease;
 }
 
@@ -89,10 +78,8 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-
   font-size: 18px;
   line-height: 1.9;
-
   scrollbar-width: thin;
   scrollbar-color: #b9a582 transparent;
 }
@@ -187,7 +174,6 @@
   font-weight: 500;
   letter-spacing: 8px;
   line-height: 1.3;
-
   text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9);
 }
 
@@ -211,11 +197,9 @@
 .ending-home-btn {
   margin-top: 60px;
   padding: 14px 44px;
-
   background: rgba(10, 15, 17, 0.75);
   border: 1px solid #b9a582;
   border-radius: 4px;
-
   color: #e3c996;
   font-size: 16px;
   letter-spacing: 2px;

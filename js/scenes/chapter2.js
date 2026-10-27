@@ -10,6 +10,7 @@ import {
 import { investigate, isChapterChecked } from "../game/investigation.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
+import { initHint } from "../game/hint.js";
 import { nextChapterModal } from "../dom/renderModal.js";
 
 const nurseRoomDialogues = [
@@ -112,6 +113,9 @@ export function renderChapter2() {
 
   openInventoryItems();
   setupInvestigation();
+
+  const hint_btn = getNode("#hint_btn");
+  hint_btn.addEventListener("click", initHint);
 }
 
 gameState.currentChapter = 2;

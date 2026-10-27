@@ -111,6 +111,37 @@
   outline-offset: 4px;
 }
 
+/* 로그인 성공 시 회원 메뉴 숨기기 */
+.title-auth-nav[hidden] {
+  display: none;
+}
+
+/* 로그아웃 버튼 */
+.logout-btn {
+  margin-left: 16px;
+  padding: 6px 10px;
+
+  border: 1px solid rgba(185, 165, 130, 0.5);
+  background: transparent;
+
+  color: #c3ae88;
+  font-family: "Noto Serif KR", serif;
+  font-size: 12px;
+
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.logout-btn:hover {
+  color: #fff0ce;
+  border-color: #c3ae88;
+}
+
+.logout-btn:focus-visible {
+  outline: 2px solid #c3ae88;
+  outline-offset: 3px;
+}
+
 /* =============================
    메인
 ============================= */

@@ -58,6 +58,7 @@ export function closeModal() {
   modal.innerHTML = "";
 }
 
+
 // 다음 챕터로 넘어가는 화면이 나오는 코드를 작성할 파일입니다.
 // 함수 사용법
 // 1. index.html에 import { nextChapterOption } from "../dom/renderModal.js"; 필요
@@ -188,58 +189,11 @@ export function nextChapterOption(checkedItem, stageItem, onNext = null) {
 
 }
 
-//  const chapter3Items = items.filter((item) => item.chapter === 3);
-//  chapter3Items은 해당챕터의 아이템을 그룹을 만든 것.
-
-
-
-// export function checkChapterClear(chapterItems) {
-  
-//   const times = chapterItems.filter((item) =>
-//     gameState.checkedObjects.includes(item.id)
-//   ).length;
-
-//   const sum = chapterItems.length;
-
-//   setTimeout(() => {
-//     const moveToEnding = () => {
-//       clearChapterItems();
-//       console.log("Ok!")
-
-//       gameState.currentScene = 'ending';
-//       if(gameState.currentChapter===1){
-//         renderChapter2();
-//       } 
-//       if(gameState.currentChapter===2){
-//         renderChapter3();
-//       }
-//       if(gameState.currentChapter===3){
-//         renderEnding();
-//       }
-//       gameSave();
-//     };
-
-//     nextChapterOption(times, sum, moveToEnding);
-//   }, 2000);
-// }
-
-export function checkChapterClear() {
-  // 현재 챕터에 해당하는 아이템 가져오기
-  const chapterItems = items.filter(
-    (item) => item.chapter === gameState.currentChapter
-  );
-
-  const times = chapterItems.filter((item) =>
-    gameState.checkedObjects.includes(item.id)
-  ).length;
-
-  const sum = chapterItems.length;
-
-  console.log(times);
-  console.log(sum);
-
+  // total : 이번스테이지에서 획득해야할 아이템수
+  // count : 확인한 아이템 수 조사이벤트 활성화마다 1씩 증가하도록 설정해주세요
+export function checkChapterClear(count, total) {
   // 모든 아이템을 조사하지 않았다면 종료
-  if (times !== sum) return;
+  if (count !== total) return;
 
   setTimeout(() => {
     const moveToNextChapter = () => {
@@ -255,6 +209,6 @@ export function checkChapterClear() {
       gameSave();
     };
 
-    nextChapterOption(times, sum, moveToNextChapter);
+    nextChapterOption(count, total, moveToNextChapter);
   }, 2000);
 }

@@ -4,3 +4,4 @@ export * from "./chapter3.js";
 export * from "./ending.js";
 export * from "./prolog.js";
 export * from "./title.js";
+export * from "./auth.js";

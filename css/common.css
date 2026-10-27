@@ -385,8 +385,8 @@
   }
 
   #dialogueText {
-  font-size: 12px;
-}
+    font-size: 12px;
+  }
 }
 /* ==================================================
    END DIALOGUE
@@ -731,186 +731,233 @@
   position: relative;
   overflow: hidden;
 
-  padding: 28px 32px;
+  padding: 28px 32px 32px;
 
+  /* 오래된 금속판 */
   background:
     radial-gradient(
-      circle at 10% 15%,
-      rgba(139, 82, 42, 0.22) 0 5%,
-      transparent 6%
+      circle at 8% 15%,
+      rgba(131, 73, 34, 0.35) 0 3%,
+      transparent 8%
     ),
     radial-gradient(
-      circle at 88% 82%,
-      rgba(126, 71, 35, 0.2) 0 7%,
-      transparent 8%
+      circle at 92% 78%,
+      rgba(151, 84, 37, 0.28) 0 4%,
+      transparent 10%
+    ),
+    radial-gradient(
+      circle at 75% 10%,
+      rgba(107, 62, 35, 0.2) 0 2%,
+      transparent 7%
     ),
     linear-gradient(
       145deg,
-      #293436 0%,
-      #172426 45%,
-      #0b1416 100%
+      #30393a 0%,
+      #182426 45%,
+      #0b1415 100%
     );
 
-  border: 1px solid #7d7567;
+  border: 1px solid #81735d;
+  border-radius: 3px;
+
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -8px 18px rgba(0, 0, 0, 0.35);
+    inset 0 -10px 20px rgba(0, 0, 0, 0.4);
 
-  color: #e8e2d4;
+  color: #e7deca;
 }
 
-/* 퍼즐 제목 */
+/* 살짝 낡은 표면 */
+.puzzle_popup::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0,
+      transparent 18px,
+      rgba(255, 255, 255, 0.015) 19px,
+      transparent 20px
+    );
+
+  pointer-events: none;
+}
+
+/* 제목 */
 .puzzle_popup h2 {
+  position: relative;
+  z-index: 1;
+
   margin: 0 0 28px;
 
-  color: #d8d0bb;
+  color: #d9ceb5;
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-align: center;
+
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
 }
 
-/* 숫자 다이얼 전체 */
+/* 숫자 자물쇠 전체 */
 .puzzle_nums {
+  position: relative;
+  z-index: 1;
+
   display: grid;
-  grid-template-columns: repeat(3, 60px);
+  grid-template-columns: repeat(3, 64px);
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
 }
 
-/* 숫자 한 칸 */
+/* 숫자 하나 */
 .dial {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
 }
 
-/* 숫자 */
+/* 숫자 표시창 */
 .dial_number {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 56px;
-  height: 58px;
+  width: 58px;
+  height: 62px;
 
   background:
     linear-gradient(
       180deg,
-      #343e3f 0%,
-      #1c2526 50%,
-      #101718 100%
+      #101718 0%,
+      #263032 48%,
+      #0b1112 100%
     );
 
-  border: 1px solid #88785f;
+  border: 1px solid #8a795e;
   border-radius: 4px;
 
   box-shadow:
-    inset 0 2px 5px rgba(255, 255, 255, 0.08),
-    inset 0 -5px 8px rgba(0, 0, 0, 0.45),
-    0 2px 5px rgba(0, 0, 0, 0.35);
+    inset 0 4px 10px rgba(0, 0, 0, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 5px rgba(0, 0, 0, 0.5);
 
-  color: #f0e6cc;
-  font-size: 26px;
+  color: #eee2c5;
+  font-size: 28px;
   font-weight: 700;
+  text-align: center;
+
+  text-shadow: 0 0 5px rgba(226, 201, 143, 0.18);
 }
 
-/* 위 / 아래 화살표 */
+/* 위 / 아래 금속 버튼 */
 .arrow_btn {
-  width: 56px;
-  height: 28px;
+  width: 58px;
+  height: 30px;
 
   background:
     linear-gradient(
       180deg,
-      #5b605d 0%,
-      #343b39 100%
+      #626662 0%,
+      #3d4341 45%,
+      #292f2d 100%
     );
 
-  border: 1px solid #786b57;
+  border: 1px solid #766952;
   border-radius: 3px;
 
-  color: #d9d1be;
-  font-size: 14px;
-
-  cursor: pointer;
-
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 2px 4px rgba(0, 0, 0, 0.45);
+
+  color: #dbd1ba;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .arrow_btn:hover {
+  border-color: #aa936c;
+
   background:
     linear-gradient(
       180deg,
-      #6b716d 0%,
-      #414946 100%
+      #757a75 0%,
+      #4b5350 50%,
+      #323936 100%
     );
 
-  border-color: #9a896d;
+  color: #fff3d4;
 }
 
 .arrow_btn:active {
   transform: translateY(1px);
+
   box-shadow:
-    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    inset 0 2px 5px rgba(0, 0, 0, 0.55);
 }
 
-/* 정답 확인 영역 */
+/* CHECK 영역 */
 .check_answer {
   grid-column: 1 / -1;
 
-  margin-top: 18px;
+  margin-top: 22px;
 
   text-align: center;
 }
 
-/* CHECK 버튼 */
+/* 확인 버튼 */
 #check_btn {
-  min-width: 130px;
-  padding: 11px 22px;
+  min-width: 140px;
+  padding: 11px 24px;
 
   background:
     linear-gradient(
       180deg,
-      #64533a 0%,
-      #423522 100%
+      #66523a 0%,
+      #453722 55%,
+      #302719 100%
     );
 
-  border: 1px solid #a58c62;
+  border: 1px solid #a68b61;
   border-radius: 3px;
-
-  color: #f0e6cc;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
-
-  cursor: pointer;
 
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 3px 8px rgba(0, 0, 0, 0.4);
+    0 3px 7px rgba(0, 0, 0, 0.45);
+
+  color: #eee2c5;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+  cursor: pointer;
 }
 
 #check_btn:hover {
+  border-color: #c0a477;
+
   background:
     linear-gradient(
       180deg,
-      #756247 0%,
-      #50402a 100%
+      #7a6245 0%,
+      #55432a 55%,
+      #3b2e1e 100%
     );
-
-  border-color: #c0a475;
 }
 
-/* 정답 / 오답 메시지 */
+#check_btn:active {
+  transform: translateY(1px);
+}
+
+/* 정답 / 오답 */
 #answer_message {
   min-height: 22px;
   margin: 12px 0 0;
 
-  color: #c5b891;
+  color: #c9b98f;
   font-size: 13px;
   letter-spacing: 1px;
 }

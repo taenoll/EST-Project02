@@ -16,7 +16,9 @@ export const items = [
     name: "누군가의 메모",
     type: "clue",
     chapter: 1,
-    description: "기록을 믿지 마. 모든 걸 의심해.",
+    description: `'기록을 믿지 마. 모든 걸 의심해.' 
+    휘갈기듯 급하게 쓴 글자다. 
+    누가 쓴 것일까?`,
     important: true,
     image: "../assets/images/items/warning-memo.png",
   },

@@ -70,7 +70,7 @@ export const objects = [
   {
     id: "board",
     chapter: 2,
-    text: "???",
+    text: "간호사들의 최근 야간 근무 시간들이 적혀있다.",
     required: true,
     itemId: "night-duty-log",
   },
@@ -84,7 +84,7 @@ export const objects = [
   {
     id: "books",
     chapter: 2,
-    text: "책 내용을 뒤져본다.",
+    text: ["책들이 쌓여있다.", "책을 뒤져보자."],
     required: true,
     itemId: "m04-medication-record",
   },
@@ -98,14 +98,14 @@ export const objects = [
   {
     id: "drawer2",
     chapter: 2,
-    text: "좌물쇠로 잠겨있다.",
+    text: "좌물쇠로 잠겨있어 열리지 않는다.",
     required: true,
     itemId: "director-key",
   },
   {
     id: "sink",
     chapter: 2,
-    text: "물이 나오지 않는다.",
+    text: "세면대 물이 나오지 않는다.",
     required: false,
     itemId: null,
   },
@@ -119,7 +119,7 @@ export const objects = [
   {
     id: "shelf",
     chapter: 2,
-    text: "수상한 액체들이 담겨있다.",
+    text: ["약들이 놓여있다.", "안에는 수상한 액체가 담겨있다."],
     required: false,
     itemId: null,
   },

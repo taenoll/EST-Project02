@@ -1,7 +1,7 @@
 // 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다. 정리 완료했습니다.
 
 import { investigate, initDialogue } from "../game/index.js";
-import { addItem, hasItem, openInventoryItems, } from "../game/inventory.js";
+import { addItem, hasItem, openInventoryItems } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";
@@ -30,7 +30,6 @@ const chapter1Dialogues = [
  */
 export function renderChapter1() {
   const app = document.querySelector("#app");
-
   app.innerHTML = `
     <div class="inventory-layout">
       <main id="scene">
@@ -160,15 +159,14 @@ export function renderChapter1() {
   if (hasItem("nurse-card")) {
     showNextChapterButton();
   }
-
+  initHint();
 }
 
 /**
  * CH1 조사 버튼의 상태와 클릭 이벤트를 연결.
  */
 function setupInvestigation() {
-  const investigateButtons =
-    document.querySelectorAll(".investigate-button");
+  const investigateButtons = document.querySelectorAll(".investigate-button");
 
   investigateButtons.forEach((button) => {
     const objectId = button.dataset.objectId;
@@ -261,22 +259,18 @@ function showNextChapterButton() {
  * 단서를 다 찾아야만 조사 버튼이 뜨게 함
  */
 function updateMedicineCabinetVisibility() {
-  const cabinetButton = document.querySelector(
-    ".investigate-medicine-cabinet",
-  );
+  const cabinetButton = document.querySelector(".investigate-medicine-cabinet");
 
   if (!cabinetButton) return;
 
   const hasPatientRecord = hasItem("patient-record");
   const hasWarningMemo = hasItem("warning-memo");
 
-  const checkedClock =
-    gameState.checkedObjects.includes("clock");
+  const checkedClock = gameState.checkedObjects.includes("clock");
 
-  const checkedChart =
-    gameState.checkedObjects.includes("chart");
+  const checkedChart = gameState.checkedObjects.includes("chart");
 
-  if ( hasPatientRecord && hasWarningMemo && checkedClock && checkedChart ) {
+  if (hasPatientRecord && hasWarningMemo && checkedClock && checkedChart) {
     cabinetButton.classList.remove("is-hidden");
   }
 }

@@ -11,7 +11,7 @@ import { renderInventory } from "../dom/renderInventory.js";
 import { renderTitle } from "../scenes/title.js";
 import { renderChapter1 } from "../scenes/chapter1.js";
 import { renderChapter2 } from "../scenes/chapter2.js";
-import { DisplayChapter3 } from "../scenes/chapter3.js";
+import { renderChapter3 } from "../scenes/chapter3.js";
 
 
 export function openMenu() {
@@ -187,7 +187,7 @@ function renderCurrentChapter() {
   }
 
   if (gameState.currentScene === "chapter3") {
-    DisplayChapter3();
+    renderChapter3();
   }
 
   renderInventory();

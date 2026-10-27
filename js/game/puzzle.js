@@ -8,7 +8,7 @@ import { checkAnswer } from "../dom/checkAnswer.js";
  * ex) callPuzzle('930", "director-key");
  */
 
-export function callPuzzle(puzzle_answer, rewardItemId = null) {
+export function callPuzzle(puzzle_answer, rewardItemId = null, onSuccess = null) {
   openModal(`
     <div class="puzzle_popup hidden">
       <h2>암호를 입력하세요.</h2>

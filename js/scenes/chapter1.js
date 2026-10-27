@@ -167,12 +167,9 @@ function handleInvestigation(button) {
 
   if (objectId === "medicine-cabinet") {
     initDialogue(dialogues, () => {
-      callPuzzle("404", () => {
-        addItem("nurse-card");
-        renderInventory();
+      callPuzzle("404", "nurse-card");
 
-        showNextChapterButton();
-      });
+      showNextChapterButton();
     });
   } else {
     initDialogue(dialogues);

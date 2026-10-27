@@ -8,7 +8,7 @@ import { checkAnswer } from "../dom/checkAnswer.js";
  * ex) callPuzzle('930", "director-key");
  */
 
-export function callPuzzle(puzzle_answer, rewardItemId = null) {
+export function callPuzzle(puzzle_answer, rewardItemId = null, onSuccess = null) {
   openModal(`
     <div class="puzzle_popup hidden">
       <h2>암호를 입력하세요.</h2>
@@ -104,7 +104,7 @@ export function callPuzzle(puzzle_answer, rewardItemId = null) {
   // 이벤트 리스너
   check_btn.addEventListener("click", () => {
     let user_answer = digits.map((digit) => digit.textContent).join("");
-    checkAnswer(user_answer, answer, rewardItemId);
+    checkAnswer(user_answer, answer, rewardItemId, onSuccess);
   });
 
   // 숫자 올리기 & 내리기

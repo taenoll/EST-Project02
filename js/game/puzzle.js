@@ -104,7 +104,7 @@ export function callPuzzle(puzzle_answer, rewardItemId = null, onSuccess = null)
   // 이벤트 리스너
   check_btn.addEventListener("click", () => {
     let user_answer = digits.map((digit) => digit.textContent).join("");
-    checkAnswer(user_answer, answer, rewardItemId);
+    checkAnswer(user_answer, answer, rewardItemId, onSuccess);
   });
 
   // 숫자 올리기 & 내리기

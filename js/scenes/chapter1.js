@@ -5,6 +5,8 @@ import { addItem,hasItem,openInventoryItems } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { gameState } from "../state/gameState.js";
 import { callPuzzle } from "../game/puzzle.js";
+import { gameSave } from "../state/storage.js";
+import { renderChapter2 } from "./chapter2.js";
 
 
 /**
@@ -167,9 +169,9 @@ function handleInvestigation(button) {
 
   if (objectId === "medicine-cabinet") {
     initDialogue(dialogues, () => {
-      callPuzzle("404", "nurse-card");
-
-      showNextChapterButton();
+      callPuzzle("404", "nurse-card", () => {
+        showNextChapterButton();
+      });
     });
   } else {
     initDialogue(dialogues);

@@ -259,12 +259,7 @@ function updateMedicineCabinetVisibility() {
   const checkedChart =
     gameState.checkedObjects.includes("chart");
 
-  if (
-    hasPatientRecord &&
-    hasWarningMemo &&
-    checkedClock &&
-    checkedChart
-  ) {
+  if ( hasPatientRecord && hasWarningMemo && checkedClock && checkedChart ) {
     cabinetButton.classList.remove("is-hidden");
   }
 }

@@ -120,7 +120,7 @@ export const items = [
     name: "폐쇄구역 출입 카드",
     type: "key",
     chapter: 3,
-    description: "404호 엔딩 시퀀스를 해금하는 출입 카드",
+    description: "폐쇄구역 404호를 출입하는 카드",
     important: false,
     image: "../assets/images/items/restricted-area-card.png",
   },

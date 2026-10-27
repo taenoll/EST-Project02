@@ -45,22 +45,22 @@ export function renderChapter3() {
 
     //챕터번호 변경 및 저장
   gameState.currentChapter = 3;
-  gameSave();
+
 
   app.innerHTML = ` 
   <div class="inventory-layout">
     <main id="scene">
       <section class="mainScreenChapterThree chapter chapter1">
 
-        <button class="investigate-button search-desk"></button>
+        <button class="investigateIcon search-desk"></button>
       
-        <button class="investigate-button search-shelf"></button>
+        <button class="investigateIcon search-shelf"></button>
       
-        <button class="investigate-button search-door"></button>
+        <button class="investigateIcon search-door"></button>
       
-        <button class="investigate-button search-portrait"></button>
+        <button class="investigateIcon search-portrait"></button>
       
-        <button class="investigate-button search-cabinet"></button>
+        <button class="investigateIcon search-cabinet"></button>
       
         <div id="dialogueContainer"></div>
         
@@ -106,9 +106,17 @@ export function renderChapter3() {
 
 export function chapterInvestigation() {
   const scene = document.querySelector("#scene");
-  const investigateButtons = scene.querySelectorAll('.investigate-button');
+  const investigateButtons = scene.querySelectorAll('.investigateIcon');
   const chapter3Items = items.filter((item) => item.chapter === 3);
   let i = 0;
+  const getCount = () => {
+    return chapter3Items.filter((item) =>
+      gameState.checkedObjects.includes(item.id)
+    ).length;
+  };
+  const total = chapter3Items.length;
+    
+
   investigateButtons.forEach((button) => {
     // 각 버튼에 대해 반복 실행할 코드
     button.dataset.id = chapter3Items[i].id;
@@ -155,7 +163,10 @@ export function chapterInvestigation() {
             isChapter3PuzzleCompleted = true;
             gameSave();
 
-            checkChapterClear(chapter3Items);
+            const count = getCount();
+
+
+            checkChapterClear(count, total);
           }
 
           // 퍼즐 모달이 닫히면 감시 종료
@@ -191,13 +202,10 @@ export function chapterInvestigation() {
       }
 
       //갯수를 파악하기위한 선언
-      const count = chapter3Items.filter((item) =>
-      gameState.checkedObjects.includes(item.id)
-      ).length;
+      const count = getCount();
 
-      const total = chapter3Items.length;
       if(count === total){
-        checkChapterClear(chapter3Items);
+        checkChapterClear(count, total);
       }
 
     });

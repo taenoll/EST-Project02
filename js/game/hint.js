@@ -4,9 +4,7 @@ import { renderHint } from "../dom/renderHint.js";
 import { openModal } from "../dom/renderModal.js";
 
 /** 사용방법
- * 각 챕터.js 파일의 화면을 생성하는 '챕터render함수' 안에 
- * addEventListener를 사용하여 해당 함수를 넣어주세요.
- * innerHTML 안에 id가 hint_btn인 버튼이 있는지 확인해 주세요. 
+ * 각 챕터.js 파일의 화면을 생성하는 '챕터render함수' 안에 initHint(); 함수만 호출해주면 됩니다.
  * 
  * Ex)
  * import { initHint } from "../game/hint.js";
@@ -14,8 +12,7 @@ import { openModal } from "../dom/renderModal.js";
    export function renderChapter2() {
    app.innerHTML = `~~`
 
-   const hint_btn = getNode("#hint_btn");
-   hint_btn.addEventListener("click", initHint);
+   initHint();
   }
  */
 

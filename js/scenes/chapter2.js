@@ -1,12 +1,13 @@
 // 챕터 2에서만 사용하는 진행 코드를 작성할 파일입니다.
-import { getNode } from "../../lib/dom/getNode.js";
-import { gameState } from "../state/gameState.js";
-import { initDialogue } from "../game/dialogue.js";
+
 import {
   addItem,
   clearChapterItems,
   openInventoryItems,
 } from "../game/inventory.js";
+import { getNode } from "../../lib/dom/getNode.js";
+import { gameState } from "../state/gameState.js";
+import { initDialogue } from "../game/dialogue.js";
 import { investigate, isChapterChecked } from "../game/investigation.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
@@ -28,8 +29,9 @@ const nurseRoomDialogues = [
  * TODO: CH2 화면을 생성합니다.
  */
 export function renderChapter2() {
-  const app = getNode("#app");
+  gameState.currentChapter = 2;
 
+  const app = getNode("#app");
   app.innerHTML = `
     <div class="inventory-layout">
       <main id="scene">
@@ -114,11 +116,8 @@ export function renderChapter2() {
   openInventoryItems();
   setupInvestigation();
 
-  const hint_btn = getNode("#hint_btn");
-  hint_btn.addEventListener("click", initHint);
+  initHint();
 }
-
-gameState.currentChapter = 2;
 
 export function setupInvestigation() {
   const investigationButtons = [
@@ -167,7 +166,7 @@ export function setupInvestigation() {
         renderInventory();
       }
 
-      // 5. 퍼즐이 들어간 버튼이라면, 퍼즐 실행
+      // 5. 퍼즐이 들어간 버튼이라면, 2초 뒤 퍼즐 실행
       if (clickedId === "drawer2") {
         setTimeout(() => {
           callPuzzle("930", "director-key");

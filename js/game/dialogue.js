@@ -93,3 +93,16 @@ export function initDialogue(dialogueData, onComplete) {
     .querySelector("#dialogueBox")
     .addEventListener("click", () => nextDialogue(dialogues, onComplete));
 }
+
+// Chapter2
+export function showMedicineChoices() {
+  initDialogueWithChoices(
+    [{ name: "주인공", text: "어떤 부분을 찾아볼까?" }],
+    [
+      { text: "Amiorillia", callback: () => showMedicineDetail("Amiorillia") },
+      { text: "Anovaxanol", callback: () => showMedicineDetail("Anovaxanol") },
+      { text: "m04", callback: () => showMedicineDetail("m04") },
+      { text: "Co-proxin", callback: () => showMedicineDetail("Co-proxin") },
+    ],
+  );
+}

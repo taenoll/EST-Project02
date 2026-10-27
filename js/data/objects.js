@@ -14,8 +14,8 @@ export const objects = [
     id: "clock",
     chapter: 1,
     text: [
-      "벽시계가 멈춰 있다.",
-      "04시 04분. 이상하게도 시간이 정확히 기억에 남는다.",
+      "벽시계가 있다.",
+      "고장이 났는지, 시침은 4시에서 움직이지 않고 분침만 흐르고 있다.",
     ],
     required: true,
     itemId: null,
@@ -23,7 +23,7 @@ export const objects = [
   {
     id: "drawer",
     chapter: 1,
-    text: "서랍 안에 구겨진 메모가 들어 있다.",
+    text: "서랍 안에 구겨진 메모가 들어 있다. 확인해보자.",
     required: true,
     itemId: "warning-memo",
   },

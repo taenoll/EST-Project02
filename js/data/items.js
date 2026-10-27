@@ -16,7 +16,9 @@ export const items = [
     name: "누군가의 메모",
     type: "clue",
     chapter: 1,
-    description: "기록을 믿지 마. 모든 걸 의심해.",
+    description: `'기록을 믿지 마. 모든 걸 의심해.' 
+    휘갈기듯 급하게 쓴 글자다. 
+    누가 쓴 것일까?`,
     important: true,
     image: "../assets/images/items/warning-memo.png",
   },
@@ -120,7 +122,7 @@ export const items = [
     name: "폐쇄구역 출입 카드",
     type: "key",
     chapter: 3,
-    description: "404호 엔딩 시퀀스를 해금하는 출입 카드",
+    description: "폐쇄구역 404호를 출입하는 카드",
     important: false,
     image: "../assets/images/items/restricted-area-card.png",
   },

@@ -1,18 +1,17 @@
-// 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다.
+// 챕터 1에서만 사용하는 화면과 진행 코드를 작성하는 파일입니다. 정리 완료했습니다.
 
-import { investigate, isChapterChecked, initDialogue } from "../game/index.js";
-import { addItem, openInventoryItems } from "../game/inventory.js";
+import { investigate, initDialogue } from "../game/index.js";
+import { addItem, hasItem, openInventoryItems } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { gameState } from "../state/gameState.js";
-import { initHint } from "../game/hint.js";
+import { gameSave } from "../state/storage.js";
 import { callPuzzle } from "../game/puzzle.js";
+import { renderChapter2 } from "./chapter2.js";
 
 /**
  * CH1 화면을 생성.
  */
 export function renderChapter1() {
-  gameState.currentChapter = 1;
-
   const app = document.querySelector("#app");
   app.innerHTML = `
     <div class="inventory-layout">
@@ -29,7 +28,11 @@ export function renderChapter1() {
             data-object-id="bed"
             aria-label="침대 조사"
           >
-            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+            <img
+              src="./assets/images/icons/icon-search.png"
+              alt=""
+              aria-hidden="true"
+            />
           </button>
 
           <button
@@ -38,7 +41,11 @@ export function renderChapter1() {
             data-object-id="clock"
             aria-label="벽시계 조사"
           >
-            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+            <img
+              src="./assets/images/icons/icon-search.png"
+              alt=""
+              aria-hidden="true"
+            />
           </button>
 
           <button
@@ -47,7 +54,11 @@ export function renderChapter1() {
             data-object-id="window"
             aria-label="창문 조사"
           >
-            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+            <img
+              src="./assets/images/icons/icon-search.png"
+              alt=""
+              aria-hidden="true"
+            />
           </button>
 
           <button
@@ -56,7 +67,11 @@ export function renderChapter1() {
             data-object-id="drawer"
             aria-label="서랍장 조사"
           >
-            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+            <img
+              src="./assets/images/icons/icon-search.png"
+              alt=""
+              aria-hidden="true"
+            />
           </button>
 
           <button
@@ -65,7 +80,11 @@ export function renderChapter1() {
             data-object-id="chart"
             aria-label="환자 차트 조사"
           >
-            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+            <img
+              src="./assets/images/icons/icon-search.png"
+              alt=""
+              aria-hidden="true"
+            />
           </button>
 
           <button
@@ -74,14 +93,18 @@ export function renderChapter1() {
             data-object-id="medicine-cabinet"
             aria-label="약 보관함 조사"
           >
-            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
+            <img
+              src="./assets/images/icons/icon-search.png"
+              alt=""
+              aria-hidden="true"
+            />
           </button>
 
           <div id="dialogueContainer"></div>
         </section>
       </main>
+
       <aside class="inventory" aria-label="인벤토리">
-        <!-- 상단 힌트 / 메뉴 -->
         <div class="inventory-header">
           <button type="button" id="hint_btn" class="inventory-hint">
             <span class="inventory-header-icon" aria-hidden="true">☼</span>
@@ -94,12 +117,23 @@ export function renderChapter1() {
           </button>
         </div>
 
-        <!-- 아이템 목록 -->
-        <button type="button" class="inventory-prev" aria-label="이전 아이템">▲</button>
+        <button
+          type="button"
+          class="inventory-prev"
+          aria-label="이전 아이템"
+        >
+          ▲
+        </button>
 
         <ul class="inventory-list"></ul>
 
-        <button type="button" class="inventory-next" aria-label="다음 아이템">▼</button>
+        <button
+          type="button"
+          class="inventory-next"
+          aria-label="다음 아이템"
+        >
+          ▼
+        </button>
       </aside>
     </div>
   `;
@@ -107,7 +141,10 @@ export function renderChapter1() {
   openInventoryItems();
   setupInvestigation();
 
-  initHint();
+  // 이미 퍼즐을 풀어 카드를 가지고 있다면 이동 버튼 복원
+  if (hasItem("nurse-card")) {
+    showNextChapterButton();
+  }
 }
 
 /**
@@ -131,11 +168,10 @@ function setupInvestigation() {
 }
 
 /**
- * 조사 버튼 클릭 시 실행되는 처리
+ * 조사 버튼 클릭 시 실행.
  */
 function handleInvestigation(button) {
   const objectId = button.dataset.objectId;
-
   const result = investigate(objectId);
 
   if (!result) return;
@@ -145,7 +181,7 @@ function handleInvestigation(button) {
   const dialogues = Array.isArray(result.text)
     ? result.text.map((text) => ({
         name: "주인공",
-        text: text,
+        text,
       }))
     : [
         {
@@ -154,29 +190,50 @@ function handleInvestigation(button) {
         },
       ];
 
-  initDialogue(dialogues);
-
+  // 약 보관함은 대화 종료 후 퍼즐 실행
   if (objectId === "medicine-cabinet") {
     initDialogue(dialogues, () => {
-      callPuzzle("404", () => {
-        addItem("nurse-card");
-        renderInventory();
+      callPuzzle("404", "nurse-card", () => {
+        showNextChapterButton();
       });
     });
-  } else {
-    initDialogue(dialogues);
+
+    return;
   }
 
-  // 처음 조사한 경우에만 진행 상태 확인
-  if (!result.alreadyChecked) {
-    if (result.itemId) {
-      addItem(result.itemId);
-      renderInventory();
-    }
+  initDialogue(dialogues);
 
-    const isComplete = isChapterChecked(1);
-    console.log("CH1 필수 조사 완료:", isComplete);
-
-    // TODO: 필수 조사 + 퍼즐 완료 후 다음 챕터 연결
+  // 처음 조사했을 때만 아이템 획득
+  if (!result.alreadyChecked && result.itemId) {
+    addItem(result.itemId);
+    renderInventory();
   }
+}
+
+/**
+ * CH2 이동 버튼 생성.
+ */
+function showNextChapterButton() {
+  const chapter = document.querySelector(".chapter1");
+
+  // 이미 버튼이 있다면 중복 생성하지 않음
+  if (document.querySelector("#chapter-clear-button")) return;
+
+  const nextButton = document.createElement("button");
+
+  nextButton.id = "chapter-clear-button";
+  nextButton.type = "button";
+  nextButton.textContent = "간호사실로 이동";
+
+  chapter.appendChild(nextButton);
+
+  nextButton.addEventListener("click", () => {
+    gameState.currentScene = "chapter2";
+    gameState.currentChapter = 2;
+
+    gameSave();
+
+    renderChapter2();
+    renderInventory();
+  });
 }

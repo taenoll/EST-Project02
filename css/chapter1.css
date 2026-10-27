@@ -83,9 +83,9 @@
 }
 
 /* 왼쪽 문 */
-.investigate-door {
-  left: 50%;
-  top: 45%;
+.chapter1 .investigate-door {
+  left: 94%;
+  top: 50%;
 }
 
 /* 오른쪽 약 보관함 */

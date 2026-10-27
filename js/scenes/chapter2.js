@@ -27,11 +27,8 @@ const nurseRoomDialogues = [
  * TODO: CH2 화면을 생성합니다.
  */
 export function renderChapter2() {
-  // 기본 셋팅
-  clearChapterItems();
-  initDialogue(nurseRoomDialogues);
-
   const app = getNode("#app");
+
   app.innerHTML = `
     <div class="inventory-layout">
       <main id="scene">
@@ -44,41 +41,41 @@ export function renderChapter2() {
           <button 
            type="button"
            class="investigationButtons" 
-           id="board1" 
+           id="board" 
            aria-label="야간 근무 일지"
           >
           </button>
           <button
            type="button" 
            class="investigationButtons" 
-           id="trashcan" 
+           id="desk" 
            aria-label="약품 관리 대장"
           >
           </button>
           <button
            type="button" 
            class="investigationButtons" 
-           id="desk" 
+           id="books" 
            aria-label="M-04 투약 기록"
           >
           </button>
           <button
            type="button" 
            class="investigationButtons" 
-           id="computer" 
+           id="cellphone" 
            aria-label="간호사의 녹음 기록"
           >
           </button>
           <button
            type="button" 
            class="investigationButtons" 
-           id="drawer1" 
+           id="drawer2" 
            aria-label="원장실 열쇠"
           >
           </button>
           <button type="button" class="investigationButtons" id="sink"></button>
-          <button type="button" class="investigationButtons" id="board2"></button>
-          <button type="button" class="investigationButtons" id="drawer2"></button>
+          <button type="button" class="investigationButtons" id="noticeboard"></button>
+          <button type="button" class="investigationButtons" id="shelf"></button>
 
           <div id="dialogueContainer"></div>
         </section>
@@ -109,28 +106,33 @@ export function renderChapter2() {
     </div>
     `;
 
+  // 기본 셋팅
+  clearChapterItems();
+  initDialogue(nurseRoomDialogues);
+
   openInventoryItems();
   setupInvestigation();
 }
 
 gameState.currentChapter = 2;
 
-const investigationButtons = [
-  /!--인벤토리에 아이템이 들어오는 조사버튼--/,
-  getNode("#board1"), // night-duty-log
-  getNode("#trashcan"), // medicine-log
-  getNode("#desk"), // m04-medication-log
-  getNode("#computer"), // nurse-recording
-  getNode("#drawer1"), // director-key
-  /!--다음 버튼들은 아이템이 들어오지 않는 조사버튼입니다--/,
-  getNode("#sink"),
-  getNode("#board2"),
-  getNode("#drawer2"),
-];
-
 export function setupInvestigation() {
+  const investigationButtons = [
+    // 인벤토리에 아이템이 들어오는 조사버튼
+    getNode("#board"), // night-duty-log
+    getNode("#desk"), // medicine-log
+    getNode("#books"), // m04-medication-log
+    getNode("#cellphone"), // nurse-recording
+    getNode("#drawer2"), // director-key
+    // 다음 버튼들은 아이템이 들어오지 않는 조사버튼입니다
+    getNode("#sink"),
+    getNode("#noticeboard"),
+    getNode("#shelf"),
+  ];
+
   investigationButtons.forEach((btn) => {
     if (!btn) return;
+
     // 페이지 로드 시 이미 조사된 항목이라면 표시 유지
     const objectId = btn.id;
     if (gameState.checkedObjects.includes(objectId)) {
@@ -142,7 +144,6 @@ export function setupInvestigation() {
 
       // 1. 해당 버튼을 "조사 완료"로 표시
       btn.classList.add("is-checked");
-      count++;
 
       // 2. 특정 오브젝트를 플레이어가 조사했을 때 그 결과를 처리하고 상태를 업데이트하는 함수
       const result = investigate(clickedId);
@@ -157,18 +158,19 @@ export function setupInvestigation() {
       ]);
 
       // 4. 조사한 오브젝트에 연결된 itemId 값이 null이 아니라면 인벤토리에 아이템 추가
-      if (result.itemId) {
+      if (result.itemId !== null && result.itemId !== "director-key") {
         addItem(result.itemId);
         renderInventory();
       }
 
       // 5. 퍼즐이 들어간 버튼이라면, 퍼즐 실행
-      /!--key director--/;
-      if (clickedId === "drawer1") {
-        callPuzzle("930");
+      if (clickedId === "drawer2") {
+        setTimeout(() => {
+          callPuzzle("930", "director-key");
+        }, 2000);
       }
 
-      // 6. 모든 investigationButtons 클릭되었는지 확인 후, 되었다면 다음챕터
+      // 6. 모든 investigationButtons가 클릭되었는지 확인 후, 되었다면 다음 챕터
       if (isChapterChecked(2)) {
         console.log("CH2 필수 조사 완료:");
         nextChapterModal(`

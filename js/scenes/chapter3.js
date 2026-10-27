@@ -45,22 +45,22 @@ export function renderChapter3() {
 
     //챕터번호 변경 및 저장
   gameState.currentChapter = 3;
-  gameSave();
+
 
   app.innerHTML = ` 
   <div class="inventory-layout">
     <main id="scene">
       <section class="mainScreenChapterThree chapter chapter1">
 
-        <button class="investigate-button search-desk"></button>
+        <button class="investigateIcon search-desk"></button>
       
-        <button class="investigate-button search-shelf"></button>
+        <button class="investigateIcon search-shelf"></button>
       
-        <button class="investigate-button search-door"></button>
+        <button class="investigateIcon search-door"></button>
       
-        <button class="investigate-button search-portrait"></button>
+        <button class="investigateIcon search-portrait"></button>
       
-        <button class="investigate-button search-cabinet"></button>
+        <button class="investigateIcon search-cabinet"></button>
       
         <div id="dialogueContainer"></div>
         
@@ -106,7 +106,7 @@ export function renderChapter3() {
 
 export function chapterInvestigation() {
   const scene = document.querySelector("#scene");
-  const investigateButtons = scene.querySelectorAll('.investigate-button');
+  const investigateButtons = scene.querySelectorAll('.investigateIcon');
   const chapter3Items = items.filter((item) => item.chapter === 3);
   let i = 0;
   investigateButtons.forEach((button) => {
@@ -155,7 +155,7 @@ export function chapterInvestigation() {
             isChapter3PuzzleCompleted = true;
             gameSave();
 
-            checkChapterClear(chapter3Items);
+            checkChapterClear();
           }
 
           // 퍼즐 모달이 닫히면 감시 종료
@@ -197,7 +197,7 @@ export function chapterInvestigation() {
 
       const total = chapter3Items.length;
       if(count === total){
-        checkChapterClear(chapter3Items);
+        checkChapterClear();
       }
 
     });

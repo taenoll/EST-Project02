@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-.investigate-button {
+.investigateIcon {
   position: absolute;
 
   width: 3%;
@@ -33,6 +33,8 @@
   cursor: pointer;
   z-index: 5;
 }
+
+
 
 /* 책장 */
 .search-shelf {
@@ -63,4 +65,8 @@
 .search-door {
   left: 82%;
   top: 30%;
+}
+
+.investigateIcon.is-checked {
+  opacity: 0.35;
 }

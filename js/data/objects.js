@@ -72,7 +72,7 @@ export const objects = [
   {
     id: "books",
     chapter: 2,
-    text: ["책들이 쌓여있다.", "책들을 뒤져보자."],
+    text: ["책들이 쌓여있다.", "책을 뒤져보자."],
     required: true,
     itemId: "m04-medication-record",
   },
@@ -150,22 +150,3 @@ export const objects = [
     itemId: "restricted-area-card",
   },
 ];
-
-export const bookDetails = {
-  Amiorillia: {
-    text: "Amiorillia에 대한 상세 설명입니다.",
-    image: "./assets/images/items/amiorillia.png",
-  },
-  Anovaxanol: {
-    text: "Anovaxanol에 대한 상세 설명입니다.",
-    image: "./assets/images/items/anovaxanol.png",
-  },
-  m04: {
-    text: "m04에 대한 상세 설명입니다.",
-    image: "./assets/images/items/m04-record.png",
-  },
-  "Co-proxin": {
-    text: "Co-proxin에 대한 상세 설명입니다.",
-    image: "./assets/images/items/co-proxin.png",
-  },
-};

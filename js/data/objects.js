@@ -1,4 +1,5 @@
-import { openModal } from "../dom/renderModal.js";
+// 이름이 같으면 다른 챕터에 있는 아이템이 있는데.. 챕터 반영 불가능?? OR just 이름 바꿈.
+// 들어오는 아이템으로 puzzle 추리 어떻게??
 
 export const objects = [
   // ===== CHAPTER 1 =====
@@ -41,47 +42,44 @@ export const objects = [
     itemId: null,
   },
   {
-  id: "medicine-cabinet",
-  chapter: 1,
-  text: [
-    "잠긴 약 보관함이다.",
-    "세 자리 숫자를 맞추면 열리는 것 같다.",
-  ],
-  required: true,
-  itemId: null,
-},
+    id: "medicine-cabinet",
+    chapter: 1,
+    text: ["잠긴 약 보관함이다.", "세 자리 숫자를 맞추면 열리는 것 같다."],
+    required: true,
+    itemId: null,
+  },
 
   // ===== CHAPTER 2 =====
   {
-    id: "board1",
+    id: "board",
     chapter: 2,
-    text: "무언가 붙어있다.",
+    text: "???",
     required: true,
     itemId: "night-duty-log",
   },
   {
-    id: "trashcan",
+    id: "desk",
     chapter: 2,
-    text: "쓰레기통을 뒤져본다.",
+    text: "알 수 없는 약들이 적혀있다.",
     required: true,
     itemId: "medicine-log",
   },
   {
-    id: "desk",
+    id: "books",
     chapter: 2,
-    text: "데스크 위에 어떤 서류가 올려져 있다.",
+    text: "책 내용을 뒤져본다.",
     required: true,
     itemId: "m04-medication-record",
   },
   {
-    id: "computer",
+    id: "cellphone",
     chapter: 2,
     text: "한 녹취 기록이 저장되어 있다.",
     required: true,
     itemId: "nurse-recording",
   },
   {
-    id: "drawer1",
+    id: "drawer2",
     chapter: 2,
     text: "좌물쇠로 잠겨있다.",
     required: true,
@@ -95,16 +93,16 @@ export const objects = [
     itemId: null,
   },
   {
-    id: "board2",
+    id: "noticeboard",
     chapter: 2,
     text: "오늘의 구내식당 메뉴가 붙어있다.",
     required: false,
     itemId: null,
   },
   {
-    id: "drawer2",
+    id: "shelf",
     chapter: 2,
-    text: "알 수 없는 약들이 들어있다.",
+    text: "수상한 액체들이 담겨있다.",
     required: false,
     itemId: null,
   },

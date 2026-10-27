@@ -90,15 +90,11 @@ export function renderChapter1() {
 
           <button
             type="button"
-            class="investigate-button investigate-medicine-cabinet"
+            class="investigate-button investigate-medicine-cabinet is-hidden"
             data-object-id="medicine-cabinet"
             aria-label="약 보관함 조사"
           >
-            <img
-              src="./assets/images/icons/icon-search.png"
-              alt=""
-              aria-hidden="true"
-            />
+            <img src="./assets/images/icons/icon-search.png" alt="" aria-hidden="true" />
           </button>
 
           <div id="dialogueContainer"></div>
@@ -210,6 +206,8 @@ function handleInvestigation(button) {
     addItem(result.itemId);
     renderInventory();
   }
+
+  updateMedicineCabinetVisibility();
 }
 
 /**
@@ -238,4 +236,33 @@ function showNextChapterButton() {
     renderChapter2();
     renderInventory();
   });
+}
+
+/**
+ * 단서를 다 찾아야만 조사 버튼이 뜨게 함
+ */
+function updateMedicineCabinetVisibility() {
+  const cabinetButton = document.querySelector(
+    ".investigate-medicine-cabinet",
+  );
+
+  if (!cabinetButton) return;
+
+  const hasPatientRecord = hasItem("patient-record");
+  const hasWarningMemo = hasItem("warning-memo");
+
+  const checkedClock =
+    gameState.checkedObjects.includes("clock");
+
+  const checkedChart =
+    gameState.checkedObjects.includes("chart");
+
+  if (
+    hasPatientRecord &&
+    hasWarningMemo &&
+    checkedClock &&
+    checkedChart
+  ) {
+    cabinetButton.classList.remove("is-hidden");
+  }
 }

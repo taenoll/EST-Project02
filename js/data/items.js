@@ -7,7 +7,8 @@ export const items = [
     chapter: 1,
     description: `입원 경위에는 ‘자진 입원’이라고 적혀 있다.
   하지만 내가 스스로 이곳에 들어온 기억은 없다.
-  기록의 일부는 찢겨 나갔지만, ‘M-04’라는 표기만은 선명하게 남아 있다.`,
+  기록의 일부가 엉망으로 찢겨 나갔지만,
+  ‘M-04’라는 표기는 알아볼 수 있다.`,
     important: false,
     image: "../assets/images/items/patient-record.png",
   },
@@ -16,8 +17,10 @@ export const items = [
     name: "누군가의 메모",
     type: "clue",
     chapter: 1,
-    description: `'기록을 믿지 마. 모든 걸 의심해.' 
-    휘갈기듯 급하게 쓴 글자다. 
+    description: `'기록을 믿지 마.
+    멈춘 것이 먼저다.'
+
+    휘갈기듯 급하게 쓴 글자다.
     누가 쓴 것일까?`,
     important: true,
     image: "../assets/images/items/warning-memo.png",

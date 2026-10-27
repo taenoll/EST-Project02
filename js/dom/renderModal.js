@@ -1,9 +1,11 @@
 
 // 공통 모달을 화면에 렌더링하는 UI 코드를 작성할 파일입니다.
 
+import { items } from "../data/items.js";
 import { clearChapterItems } from "../game/inventory.js";
 import { renderChapter2 } from "../scenes/chapter2.js";
 import { renderChapter3 } from "../scenes/chapter3.js";
+import { renderEnding } from "../scenes/ending.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";
 
@@ -186,33 +188,73 @@ export function nextChapterOption(checkedItem, stageItem, onNext = null) {
 
 }
 
+//  const chapter3Items = items.filter((item) => item.chapter === 3);
+//  chapter3Items은 해당챕터의 아이템을 그룹을 만든 것.
 
-export function checkChapterClear(chapterItems) {
+
+
+// export function checkChapterClear(chapterItems) {
   
+//   const times = chapterItems.filter((item) =>
+//     gameState.checkedObjects.includes(item.id)
+//   ).length;
+
+//   const sum = chapterItems.length;
+
+//   setTimeout(() => {
+//     const moveToEnding = () => {
+//       clearChapterItems();
+//       console.log("Ok!")
+
+//       gameState.currentScene = 'ending';
+//       if(gameState.currentChapter===1){
+//         renderChapter2();
+//       } 
+//       if(gameState.currentChapter===2){
+//         renderChapter3();
+//       }
+//       if(gameState.currentChapter===3){
+//         renderEnding();
+//       }
+//       gameSave();
+//     };
+
+//     nextChapterOption(times, sum, moveToEnding);
+//   }, 2000);
+// }
+
+export function checkChapterClear() {
+  // 현재 챕터에 해당하는 아이템 가져오기
+  const chapterItems = items.filter(
+    (item) => item.chapter === gameState.currentChapter
+  );
+
   const times = chapterItems.filter((item) =>
     gameState.checkedObjects.includes(item.id)
   ).length;
 
   const sum = chapterItems.length;
 
-  setTimeout(() => {
-    const moveToEnding = () => {
-      clearChapterItems();
-      console.log("Ok!")
+  console.log(times);
+  console.log(sum);
 
-      gameState.currentScene = 'ending';
-      if(gameState.currentChapter===1){
+  // 모든 아이템을 조사하지 않았다면 종료
+  if (times !== sum) return;
+
+  setTimeout(() => {
+    const moveToNextChapter = () => {
+      clearChapterItems();
+      
+      if (gameState.currentChapter === 1) {
         renderChapter2();
-      } 
-      if(gameState.currentChapter===2){
+      } else if (gameState.currentChapter === 2) {
         renderChapter3();
-      }
-      if(gameState.currentChapter===3){
+      } else if (gameState.currentChapter === 3) {
         renderEnding();
       }
       gameSave();
     };
 
-    nextChapterOption(times, sum, moveToEnding);
+    nextChapterOption(times, sum, moveToNextChapter);
   }, 2000);
 }

@@ -83,11 +83,17 @@ export function renderProlog() {
     title.style.opacity = "1";
   }, 100);
 
-  // 스토리 창 등장 및 첫 번째 더빙
+  
+ // 스토리 창 등장 및 첫 번째 더빙
   setTimeout(() => {
     content.style.opacity = "1";
 
-    playSfx("./assets/audio/sfx/prolog-1.m4a");
+    const voice1 = playSfx("./assets/audio/sfx/prolog-1.m4a");
+
+    // 스크롤이 없으면 첫 번째 더빙 종료 후 두 번째 더빙 재생
+    if (story.scrollHeight <= story.clientHeight && voice1) {
+      voice1.addEventListener("ended", playVoice2, { once: true });
+    }
   }, 1000);
 
   let isFinished = false;

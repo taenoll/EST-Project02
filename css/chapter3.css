@@ -39,19 +39,19 @@
 /* 책장 */
 .search-shelf {
 
-  left: 16%;
-  top: 30%;
+  left: 18%;
+  top: 40%;
 }
 
 /* 왼쪽 서랍장 */
 .search-cabinet {
-  left: 11%;
-  top: 47%;
+  left: 7%;
+  top: 49%;
 }
 
 /* 그림 */
 .search-portrait {
-  left: 52%;
+  left: 57%;
   top: 20%;
 }
 
@@ -63,8 +63,8 @@
 
 /* 원장실 문 */
 .search-door {
-  left: 82%;
-  top: 30%;
+  left: 87%;
+  top: 35%;
 }
 
 .investigateIcon.is-checked {

@@ -28,7 +28,7 @@ export const objects = [
   {
     id: "window",
     chapter: 1,
-    text: "창밖은 어둡다. 병원 밖에는 아무것도 보이지 않는다.",
+    text: "창밖은 어둡다. 구석진 곳인지 아무것도 보이지 않는다.",
     required: false,
     itemId: null,
   },
@@ -55,8 +55,7 @@ export const objects = [
     chapter: 1,
     text: [
       "병실 출입문이다.",
-      "손잡이를 돌려봤지만 꿈쩍도 하지 않는다.",
-      "밖에서 잠겨 있는 것 같다.",
+      "손잡이를 돌려봤지만 꿈쩍도 하지 않는다. 밖에서 잠겨 있는 것 같다.",
       "...자진 입원한 사람을, 왜 가둬둔 거지?",
     ],
     required: false,

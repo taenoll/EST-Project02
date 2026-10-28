@@ -27,7 +27,7 @@ export const items = [
   },
   {
     id: "nurse-card",
-    name: "간호사실 출입 카드",
+    name: "직원용 출입 카드",
     type: "key",
     chapter: 1,
     description: "이걸로 간호사실에 출입할 수 있을 것 같다.",

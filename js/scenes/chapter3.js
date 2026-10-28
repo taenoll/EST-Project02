@@ -52,6 +52,11 @@ export function renderChapter3() {
     <main id="scene">
       <section class="mainScreenChapterThree chapter chapter1">
 
+        <div class="chapter-title">
+          <span>CHAPTER 03</span>
+          <h1>원장실</h1>
+        </div>
+
         <button class="investigateIcon search-desk"></button>
       
         <button class="investigateIcon search-shelf"></button>

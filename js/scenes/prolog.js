@@ -33,7 +33,7 @@ export function renderProlog() {
             주변을 둘러보니<br>
             오래된 침대와 정체를 알 수 없는 기록들이 보였다.
           </p>
-          <p>그때, 어디선가 작은 목소리가 들려왔다.</p>
+          <p class="prolog-voice-2-trigger"> 그때, 어디선가 작은 목소리가 들려왔다. </p>
           <p>"이곳에 오래 머물러서는 안 돼..."</p>
           <p>
             이곳에는 분명 무언가 숨겨져 있다.<br>
@@ -58,20 +58,38 @@ export function renderProlog() {
   const story = document.querySelector('.prolog-story');
   const nextButton = document.querySelector('.prolog-next');
 
-  // 제목 먼저 등장
-  setTimeout(() => {
-    title.style.opacity = '1';
-  }, 100);
+  // 강사님 더빙 삽입 부분 하트
+  const voice1 = new Audio("./assets/audio/sfx/prolog-1.m4a");
+  const voice2 = new Audio("./assets/audio/sfx/prolog-2.m4a");
 
-  // 1초 뒤 스토리 창 등장
+  const voice2Trigger = document.querySelector(".prolog-voice-2-trigger");
+
+
+  // 제목 먼저 등장, 그 다음 스토리창이랑 더빙 시작
   setTimeout(() => {
-    content.style.opacity = '1';
+    content.style.opacity = "1";
+
+    if (gameState.audio.sfxOn) {
+      voice1.play();
+    }
   }, 1000);
 
-
   let isFinished = false;
+  let isVoice2Played = false;
 
-  story.addEventListener('scroll', () => {
+  story.addEventListener("scroll", () => {
+    if (!isVoice2Played) {
+      const triggerTop = voice2Trigger.offsetTop;
+
+      if (story.scrollTop + story.clientHeight >= triggerTop) {
+        isVoice2Played = true;
+
+        if (gameState.audio.sfxOn) {
+          voice2.play();
+        }
+      }
+    }
+
     if (isFinished) return;
 
     if (story.scrollTop + story.clientHeight >= story.scrollHeight - 1) {

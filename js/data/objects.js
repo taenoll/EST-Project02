@@ -3,7 +3,8 @@ export const objects = [
   {
     id: "bed",
     chapter: 1,
-    text: "오래된 침대다. 침대 밑에 무언가 보인다.",
+    text: [ "내가 누워있던 침대다. 깨끗한 시트와 베개 커버 이외에는 따로 손질이 되어있지 않다.", 
+      "...어라? 밑에 무언가 보인다.",],
     required: true,
     itemId: "patient-record",
   },
@@ -11,9 +12,9 @@ export const objects = [
     id: "clock",
     chapter: 1,
     text: [
-      "낡은 벽시계다.",
+      "먼지 쌓인 낡은 벽시계다.",
       "분침은 움직이고 있는데, 시침만 4를 가리킨 채 멈춰 있다.",
-      "단순히 고장 난 걸까?",
+      "...단순히 고장 난 걸까?",
     ],
     required: true,
     itemId: null,
@@ -21,14 +22,15 @@ export const objects = [
   {
     id: "drawer",
     chapter: 1,
-    text: "서랍 안에 구겨진 메모가 들어 있다. 확인해보자.",
+    text: [ "잡동사니가 가득하다. 눈에 띄는 게 없나 뒤적이다 보면...", 
+      "응? 이상한 액체가 묻은 채 구겨진 메모가 있다. 확인해볼까?", ],
     required: true,
     itemId: "warning-memo",
   },
   {
     id: "window",
     chapter: 1,
-    text: "창밖은 어둡다. 구석진 곳인지 아무것도 보이지 않는다.",
+    text: "창문은 열리지 않는다. 구석진 곳인지 아무것도 보이지 않는다.",
     required: false,
     itemId: null,
   },
@@ -56,7 +58,7 @@ export const objects = [
     text: [
       "병실 출입문이다.",
       "손잡이를 돌려봤지만 꿈쩍도 하지 않는다. 밖에서 잠겨 있는 것 같다.",
-      "...자진 입원한 사람을, 왜 가둬둔 거지?",
+      "...자진 입원한 사람을 왜 가둬둔 거지?",
     ],
     required: false,
     itemId: null,

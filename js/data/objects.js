@@ -125,6 +125,9 @@ export const objects = [
 
   // ===== CHAPTER 3 =====
 
+
+// ===== CHAPTER 3 =====
+
   {
     id: "accident-report",
     chapter: 3,
@@ -135,14 +138,14 @@ export const objects = [
   {
     id: "staff-photo",
     chapter: 3,
-    text: "이 병원의 구성원들로 보이는 사진, 이 사람들은 어떻게 되었을까.",
+    text: "이 병원의 구성원들로 보이는 사진, 나랑 닮은 사람이 보인다.",
     important: false,
     itemId: "staff-photo",
   },
   {
     id: "cctv-photo",
     chapter: 3,
-    text: "사건 당일 404호 앞의 CCTV 사진, 이사람은 누구지?",
+    text: "사건 당일 404호 앞의 CCTV 사진, 흐릿하지만 직원인거 같다",
     important: true,
     itemId: "cctv-photo",
   },

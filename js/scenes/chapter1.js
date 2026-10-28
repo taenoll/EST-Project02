@@ -29,6 +29,8 @@ const chapter1Dialogues = [
  * CH1 화면을 생성.
  */
 export function renderChapter1() {
+  gameState.currentChapter = 1;
+  
   const app = document.querySelector("#app");
   app.innerHTML = `
     <div class="inventory-layout">

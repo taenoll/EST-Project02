@@ -7,32 +7,103 @@
 
 /* 전체 화면 공통 */
 .prolog-screen,
-.ending-screen {
+.ending-screen,
+.ending-prolog-screen {
   width: 100%;
   height: 100vh;
+  height: 100dvh;
+  box-sizing: border-box;
   overflow: hidden;
-  display: flex;
-  align-items: center;
+  font-family: 'Noto Serif KR', serif;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: 'Noto Serif KR', serif;
 }
 
 /* 영어 제목 공통 */
 .prolog-title,
-.ending-label {
+.ending-label,
+.ending-prolog-title {
   font-family: 'Cinzel', serif;
   letter-spacing: 8px;
   text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9);
 }
 
-/* 버튼 공통 폰트 */
+/* 버튼 공통 */
 .prolog-next,
-.ending-home-btn {
+.ending-home-btn,
+.ending-prolog-next {
   font-family: 'Noto Serif KR', serif;
+  background: rgba(8, 11, 13, 0.9);
+  border: 1px solid #b9a582;
+  border-radius: 4px;
+  color: #c3ae88;
+  cursor: pointer;
 }
 
+/* 버튼 호버 공통 */
+.prolog-next:hover,
+.ending-home-btn:hover,
+.ending-prolog-next:hover {
+  background: rgba(185, 165, 130, 0.2);
+}
+
+/* 키보드 포커스 공통 */
+.prolog-next:focus-visible,
+.ending-home-btn:focus-visible,
+.ending-prolog-next:focus-visible {
+  outline: 2px solid #e3c996;
+  outline-offset: 3px;
+}
+
+/* 스토리 창 공통 */
+.prolog-content,
+.ending-prolog-content {
+  width: 48%;
+  min-height: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: rgba(12, 15, 18, 0.88);
+  border: 1px solid #b9a582;
+  border-radius: 8px;
+  color: #c3ae88;
+}
+
+/* 스토리 스크롤 공통 */
+.prolog-story,
+.ending-prolog-story {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #b9a582 transparent;
+}
+
+/* 스크롤바 공통 */
+.prolog-story::-webkit-scrollbar,
+.ending-prolog-story::-webkit-scrollbar {
+  width: 6px;
+}
+
+.prolog-story::-webkit-scrollbar-track,
+.ending-prolog-story::-webkit-scrollbar-track {
+  background: rgba(185, 165, 130, 0.08);
+  border-radius: 10px;
+}
+
+.prolog-story::-webkit-scrollbar-thumb,
+.ending-prolog-story::-webkit-scrollbar-thumb {
+  background: rgba(185, 165, 130, 0.55);
+  border-radius: 10px;
+}
+
+.prolog-story::-webkit-scrollbar-thumb:hover,
+.ending-prolog-story::-webkit-scrollbar-thumb:hover {
+  background: #b9a582;
+}
 
 /* ====================================
    PROLOGUE - 프롤로그
@@ -40,108 +111,81 @@
 
 /* 프롤로그 전체 화면 */
 .prolog-screen {
+  position: relative;
+  display: flex;
   justify-content: space-between;
-  padding: 4%;
-  background-image: url("../assets/images/backgrounds/prolog-bg.png");
+  align-items: center;
+  padding: 4% 4% 90px;
+  background-image:
+    linear-gradient(
+      rgba(3, 5, 7, 0.3),
+      rgba(3, 5, 7, 0.55)
+    ),
+    url("../assets/images/backgrounds/prolog-bg.png");
 }
 
 /* 왼쪽 제목 */
 .prolog-title {
-  font-size: clamp(32px, 4vw, 64px);
+  margin: 0;
   color: #c3ae88;
-  /* 처음에는 제목 숨기기 */
+  font-size: clamp(32px, 4vw, 64px);
   opacity: 0;
-  /* 1초 동안 서서히 나타나기 */
   transition: opacity 1s ease;
 }
 
 /* 오른쪽 스토리 창 */
 .prolog-content {
-  width: 48%;
-  height: 75%;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
+  height: 85%;
   padding: 36px;
-  background: rgba(12, 15, 18, 0.85);
-  border: 1px solid #b9a582;
-  border-radius: 8px;
-  color: #c3ae88;
-  /* 처음에는 스토리 창 숨기기 */
   opacity: 0;
-  /* 1초 동안 서서히 나타나기 */
   transition: opacity 1s ease;
 }
 
-/* 스토리 내용 및 스크롤 */
+/* 스토리 글자 */
 .prolog-story {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
+  color: #c3ae88;
   font-size: 18px;
   line-height: 1.9;
-  scrollbar-width: thin;
-  scrollbar-color: #b9a582 transparent;
 }
 
+/* 스토리 문단 */
 .prolog-story p {
-  margin-bottom: 28px;
+  margin: 0 0 28px;
 }
 
-/* 계속하기 버튼 */
+.prolog-story p:last-child {
+  margin-bottom: 0;
+}
+
+/* 계속하기 버튼 - 오른쪽 하단 */
 .prolog-next {
-  align-self: flex-end;
-  width: auto;
-  margin-top: 16px;
+  position: absolute;
+  bottom: 24px;
+  right: 4%;
+  left: auto;
+  transform: none;
+  width: 240px;
+  margin: 0;
   padding: 12px 32px;
-
-  background: transparent;
-  border: 1px solid #b9a582;
-  border-radius: 4px;
-
-  color: #c3ae88;
+  font-size: 14px;
+  text-align: center;
 }
 
-.prolog-next:hover {
-  background: rgba(185, 165, 130, 0.2);
-}
-
+/* 버튼 숨기기 */
 .prolog-next[hidden] {
   display: none;
 }
 
-/* 스크롤바 전체 너비 */
-.prolog-story::-webkit-scrollbar {
-  width: 6px;
-}
-
-/* 스크롤바 배경 */
-.prolog-story::-webkit-scrollbar-track {
-  background: rgba(185, 165, 130, 0.08);
-  border-radius: 10px;
-}
-
-/* 움직이는 스크롤바 */
-.prolog-story::-webkit-scrollbar-thumb {
-  background: rgba(185, 165, 130, 0.55);
-  border-radius: 10px;
-}
-
-/* 스크롤바에 마우스를 올렸을 때 */
-.prolog-story::-webkit-scrollbar-thumb:hover {
-  background: #b9a582;
-}
-
-
 /* ====================================
-   ENDING - 엔딩
+   ENDING - 최종 엔딩
 ==================================== */
 
 /* 엔딩 전체 화면 */
 .ending-screen {
   position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
-
   background-image:
     linear-gradient(
       rgba(5, 8, 9, 0.25),
@@ -158,16 +202,15 @@
   z-index: 1;
 }
 
-/* ENDING - h1 */
+/* ENDING 제목 */
 .ending-label {
   margin-bottom: 36px;
-
   color: #c3ae88;
   font-size: 18px;
   font-weight: 600;
 }
 
-/* 낯선 병실 - p */
+/* 낯선 병실 */
 .ending-title {
   color: #e8dcc7;
   font-size: clamp(48px, 6vw, 92px);
@@ -177,10 +220,9 @@
   text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.9);
 }
 
-/* 목격자는 나였다 - p */
+/* 마지막 목격자는 나였다 */
 .ending-subtitle {
   margin-top: 28px;
-
   color: #e8dcc7;
   font-size: clamp(20px, 2.5vw, 34px);
   letter-spacing: 4px;
@@ -193,25 +235,169 @@
   font-weight: 700;
 }
 
-/* 처음으로 돌아가기 버튼 */
+/* 타이틀 복귀 버튼 */
 .ending-home-btn {
   margin-top: 60px;
   padding: 14px 44px;
-  background: rgba(10, 15, 17, 0.75);
-  border: 1px solid #b9a582;
-  border-radius: 4px;
   color: #e3c996;
   font-size: 16px;
   letter-spacing: 2px;
 }
 
-/* 버튼 마우스 호버 */
-.ending-home-btn:hover {
-  background: rgba(185, 165, 130, 0.2);
+/* ====================================
+   ENDING PROLOGUE - 엔딩 프롤로그
+==================================== */
+
+/* 엔딩 프롤로그 전체 화면 */
+.ending-prolog-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 4%;
+  background-image:
+    linear-gradient(
+      rgba(3, 5, 7, 0.4),
+      rgba(3, 5, 7, 0.65)
+    ),
+    url("../assets/images/backgrounds/ending-bg.png");
 }
 
-/* 키보드 포커스 */
-.ending-home-btn:focus-visible {
-  outline: 2px solid #e3c996;
-  outline-offset: 4px;
+/* 제목과 스토리 창 레이아웃 */
+.ending-prolog-layout {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+/* 왼쪽 제목 */
+.ending-prolog-title {
+  flex: 1;
+  margin: 0;
+  color: #c3ae88;
+  font-size: clamp(32px, 4vw, 64px);
+  font-weight: 600;
+}
+
+/* 오른쪽 스토리 창 */
+.ending-prolog-content {
+  height: 85%;
+  padding: 32px;
+}
+
+/* 스토리 글자 */
+.ending-prolog-story p {
+  margin: 0 0 28px;
+  color: #c3ae88;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.9;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.ending-prolog-story p:last-child {
+  margin-bottom: 0;
+}
+
+/* 엔딩 버튼 - 오른쪽 하단 */
+.ending-prolog-next {
+  position: static;
+  transform: none;
+  align-self: flex-end;
+  flex-shrink: 0;
+  width: 240px;
+  margin: 0;
+  padding: 12px 32px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ====================================
+   반응형
+==================================== */
+
+@media (max-width: 768px) {
+  /* 프롤로그 */
+  .prolog-screen {
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px 16px 85px;
+  }
+
+  .prolog-title {
+    flex-shrink: 0;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .prolog-content {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    padding: 20px;
+  }
+
+  .prolog-story {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .prolog-story p {
+    margin-bottom: 20px;
+  }
+
+  .prolog-next {
+    width: 200px;
+    right: 16px;
+    bottom: 20px;
+  }
+
+  /* 엔딩 프롤로그 */
+  .ending-prolog-screen {
+    padding: 16px;
+  }
+
+  .ending-prolog-layout {
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .ending-prolog-title {
+    flex: 0 0 auto;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .ending-prolog-content {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    padding: 20px;
+  }
+
+  .ending-prolog-story p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .ending-prolog-next {
+    width: 200px;
+  }
+
+  /* 최종 엔딩 */
+  .ending-title {
+    font-size: clamp(36px, 7vw, 64px);
+  }
+
+  .ending-subtitle {
+    font-size: clamp(18px, 4vw, 26px);
+  }
 }

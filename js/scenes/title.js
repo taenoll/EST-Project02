@@ -96,8 +96,11 @@ export function renderTitle() {
 
   // 이어하기 버튼 선택
   const continueButton = document.querySelector(".continue-btn");
+
+  // 이어하기 버튼 클릭 이벤트
   continueButton.addEventListener("click", () => {
     gameLoad();
+
     if (gameState.currentScene === "chapter1") {
       renderChapter1();
       renderInventory();
@@ -113,17 +116,38 @@ export function renderTitle() {
   // 저장된 게임 데이터 확인
   const savedGame = localStorage.getItem("gameState");
 
-  // 저장된 게임이 없으면 이어하기 버튼 비활성화
+  // 저장된 게임이 없으면 이어하기 비활성화
   if (savedGame === null) {
     continueButton.disabled = true;
   } else {
     continueButton.disabled = false;
   }
 
-  // 회원가입 로그인
+  // 회원가입 / 로그인 버튼 선택
   const loginButton = document.querySelector('.login-btn');
   const signupButton = document.querySelector('.signup-btn');
-    const logoutButton = document.querySelector('.logout-btn');
+  const logoutButton = document.querySelector('.logout-btn');
+
+  // 로그인 화면 요소 선택
+  const authNav = document.querySelector('.title-auth-nav');
+  const userInfo = document.querySelector('.title-user-info');
+  const userName = document.querySelector('.title-user-name');
+
+  //저장된 로그인 정보 가져오기
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const savedUser = localStorage.getItem('user');
+
+  // 로그인 상태 유지
+  if (isLoggedIn === 'true' && savedUser) {
+    const user = JSON.parse(savedUser);
+
+    authNav.hidden = true;
+    userInfo.hidden = false;
+    userName.textContent = user.nickName;
+  } else {
+    authNav.hidden = false;
+    userInfo.hidden = true;
+  }
 
   function handleLogin() {
     renderLoginModal();
@@ -133,10 +157,14 @@ export function renderTitle() {
     renderSignupModal();
   }
 
-  //로그인
+  // 로그인
   loginButton.addEventListener('click', handleLogin);
-  //회원가입
+
+  // 회원가입
   signupButton.addEventListener('click', handleSignup);
-  // 로그아웃
-  logoutButton.addEventListener('click', handleLogout);
+
+  logoutButton.addEventListener('click', () => {
+    handleLogout();
+    continueButton.disabled = true;
+  });
 }

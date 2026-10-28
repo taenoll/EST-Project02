@@ -1,13 +1,9 @@
+import { gameReset } from "./index.js";
+
 const users = [];
 
 export async function handleSignup(e) {
   e.preventDefault();
-
-  /* const authMessage = document.querySelector('.auth-message')
-
-  function showMessage (message){
-    authMessage.textContent = message;
-  } */
 
   const id = document.querySelector('#signup-id').value.trim();
   const nickName = document.querySelector('#signup-nickname').value.trim();
@@ -46,7 +42,7 @@ export function handleLogin(e) {
   const user = JSON.parse(savedUser);
 
   if(userId === user.id && userPw === user.password){
-    console.log('성공');
+    localStorage.setItem('isLoggedIn', 'true');
     
     const modal = e.target.closest('.auth-modal');
     modal.remove();
@@ -66,7 +62,14 @@ export function handleLogin(e) {
 export function handleLogout() {
   const authNav = document.querySelector('.title-auth-nav');
   const userInfo = document.querySelector('.title-user-info');
+  const continueButton = document.querySelector('.continue-btn');
+
+  localStorage.removeItem('isLoggedIn');
+
+  gameReset();
+
   alert('로그아웃 되었습니다😊');
   authNav.hidden = false;
   userInfo.hidden = true;
+  continueButton.disabled = true;
 };

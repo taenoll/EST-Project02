@@ -143,7 +143,7 @@ export const items = [
     type: "clue",
     chapter: 3,
     description:
-      "목격자인 주인공을 격리하고 환자로 등록 및 투약하라는 지시가 적혀있다. 그리고 뒷면에는 179 라고 적혀있다. 무슨 숫자일까",
+      "목격자인 주인공을 격리하고 환자로 등록 및 투약하라는 지시가 적혀있다.",
     important: true,
     image: "../assets/images/items/director-secret-memo.png",
   },

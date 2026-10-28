@@ -7,6 +7,7 @@ import { checkChapterClear} from '../dom/renderModal.js';
 import { initDialogue } from '../game/index.js';
 import {
   addItem,
+  hasItem,
   clearChapterItems,
   openInventoryItems,
 } from '../game/inventory.js';
@@ -117,6 +118,22 @@ export function chapterInvestigation() {
     ).length;
   };
   const total = chapter3Items.length;
+
+  let isClearTriggered = false;
+
+  function tryChapterClear() {
+    if (isClearTriggered) return;
+
+    const count = getCount();
+
+    // 모든 조사 완료 + 금고 퍼즐 보상 획득
+    if (count !== total || !hasItem("restricted-area-card")) {
+      return;
+    }
+
+    isClearTriggered = true;
+    checkChapterClear(count, total);
+  }
     
 
   investigateButtons.forEach((button) => {
@@ -150,35 +167,12 @@ export function chapterInvestigation() {
       //클릭한 버튼을 흐릿하게 만들기
       button.classList.add('is-checked');
 
+      
       if (objectId === 'restricted-area-card') {
-        callPuzzle('179', 'restricted-area-card');
-
-  // 퍼즐 정답 여부 감시
-        const checkPuzzleInterval = setInterval(() => {
-        const answerMessage = document.querySelector('#answer_message');
-        let isChapter3PuzzleCompleted = false;
-
-
-          if (answerMessage?.textContent === '정답입니다') {
-            clearInterval(checkPuzzleInterval);
-
-            isChapter3PuzzleCompleted = true;
-            gameSave();
-
-            const count = getCount();
-
-
-            checkChapterClear(count, total);
-          }
-
-          // 퍼즐 모달이 닫히면 감시 종료
-          if (!document.querySelector('#answer_message')) {
-            clearInterval(checkPuzzleInterval);
-          }
-        }, 1000);
-
+        callPuzzle('179', 'restricted-area-card', tryChapterClear);
         return;
       }
+
 
       addItem(objectId);
       renderInventory();
@@ -203,12 +197,8 @@ export function chapterInvestigation() {
         console.error('오브젝트를 찾을 수 없습니다:', objectId);
       }
 
-      //갯수를 파악하기위한 선언
-      const count = getCount();
-
-      if(count === total){
-        checkChapterClear(count, total);
-      }
+      // 모든 조사 완료 + 금고 퍼즐 해결 여부 확인
+      tryChapterClear();
 
     });
   });

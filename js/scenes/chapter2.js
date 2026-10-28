@@ -18,7 +18,7 @@ import { initHint } from "../game/hint.js";
 const nurseRoomDialogues = [
   {
     name: "주인공",
-    text: "여기는 곧곧에 많은 정보가 있는 것 같아.",
+    text: "여기는 곳곳에 많은 정보가 있는 것 같아.",
   },
   {
     name: "주인공",

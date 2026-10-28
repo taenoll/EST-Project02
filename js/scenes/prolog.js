@@ -1,6 +1,7 @@
 
 import { gameSave, gameState } from "../state/index.js";
 import { renderChapter1 } from "./index.js";
+import { playSfx } from "../game/audio.js";
 
 // 프롤로그 장면
 export function renderProlog() {
@@ -57,14 +58,11 @@ export function renderProlog() {
   `;
 
   // 필요한 요소 선택
-  const title = document.querySelector(".prolog-title");
-  const content = document.querySelector(".prolog-content");
-  const story = document.querySelector(".prolog-story");
-  const nextButton = document.querySelector(".prolog-next");
+  const title = document.querySelector('.prolog-title');
+  const content = document.querySelector('.prolog-content');
+  const story = document.querySelector('.prolog-story');
+  const nextButton = document.querySelector('.prolog-next');
 
-  // 프롤로그 더빙
-  const voice1 = new Audio("./assets/audio/sfx/prolog-1.m4a");
-  const voice2 = new Audio("./assets/audio/sfx/prolog-2.m4a");
   const voice2Trigger = document.querySelector(".prolog-voice-2-trigger");
 
   // 제목 등장
@@ -76,9 +74,7 @@ export function renderProlog() {
   setTimeout(() => {
     content.style.opacity = "1";
 
-    if (gameState.audio.sfxOn) {
-      voice1.play().catch(() => {});
-    }
+    playSfx("./assets/audio/sfx/prolog-1.m4a");
   }, 1000);
 
   let isFinished = false;
@@ -94,9 +90,7 @@ export function renderProlog() {
       if (story.scrollTop + story.clientHeight >= triggerTop) {
         isVoice2Played = true;
 
-        if (gameState.audio.sfxOn) {
-          voice2.play().catch(() => {});
-        }
+        playSfx("./assets/audio/sfx/prolog-2.m4a");
       }
     }
 

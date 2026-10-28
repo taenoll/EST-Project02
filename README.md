@@ -30,7 +30,7 @@
 | 개발 인원 | 4명 |
 | 프로젝트 형태 | 웹 개발 부트캠프 팀 프로젝트 |
 | 실행 환경 | ES Modules와 LocalStorage를 지원하는 웹 브라우저 |
-| 배포 URL | **[팀 입력]** 배포 후 주소 추가 |
+| 배포 URL | https://taenoll.github.io/EST-Project02/  |
 
 ## 02. 게임 스토리
 

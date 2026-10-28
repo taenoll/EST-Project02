@@ -1,9 +1,12 @@
 // 여러 장면에서 공통으로 사용하는 인벤토리 로직을 작성할 파일입니다.
 import { items } from "../data/items.js";
-import { handleInventoryClick, inventoryClickButton, renderInventory } from "../dom/renderInventory.js";
+import {
+  handleInventoryClick,
+  inventoryClickButton,
+  renderInventory,
+} from "../dom/renderInventory.js";
 import { openModal } from "../dom/renderModal.js";
 import { gameSave, gameState } from "../state/index.js";
-
 
 /**
  * 플레이어가 특정 아이템을 가지고 있는지 확인합니다.
@@ -23,7 +26,6 @@ import { gameSave, gameState } from "../state/index.js";
 export function hasItem(itemId) {
   return gameState.inventory.includes(itemId);
 }
-
 
 /**
  * 플레이어의 인벤토리에 아이템을 추가합니다.
@@ -50,11 +52,39 @@ export function addItem(itemId) {
   const item = getItem(itemId);
 
   if (!item) return;
-  
-  if(!hasItem(itemId)){
+
+  if (!hasItem(itemId)) {
     gameState.inventory.push(itemId);
     gameSave();
   }
+}
+
+// 여러 아이템을 한 번에 인벤토리에 넣고싶을 때 사용.
+/* ex)
+if (objectId === "조사버튼의id") {
+    const medicine_books = [
+      "m04-book",
+      "amiorillia-book",
+      "anovaxanol-book",
+      "co-proxin-book",
+    ]; -> 넣고 싶은 아이템들의 id를 배열로 만듦.
+
+    addMultipleItems(medicine_books); -> 함수 실행
+    renderInventory();
+  }
+*/
+export function addMultipleItems(itemIds) {
+  itemIds.forEach((itemId) => {
+    const item = getItem(itemId);
+
+    if (!item) return;
+
+    if (!hasItem(itemId)) {
+      gameState.inventory.push(itemId);
+    }
+  });
+
+  gameSave();
 }
 
 /**
@@ -101,10 +131,10 @@ export function getItem(itemId) {
  * // 아이템 상세 정보 열기
  * openItem("patient-record");
  */
-export function openItem(itemId){
+export function openItem(itemId) {
   const item = getItem(itemId);
-  if(!item) return;
-  const {name, description, image} = item;
+  if (!item) return;
+  const { name, description, image } = item;
 
   const content = `
     <div class="item-detail">
@@ -145,9 +175,9 @@ export function openItem(itemId){
  * // 실제 챕터 변경 처리는 챕터 담당 함수에서 진행
  */
 export function clearChapterItems() {
-  const result = gameState.inventory.filter((itemId)=>{
+  const result = gameState.inventory.filter((itemId) => {
     const item = getItem(itemId);
-    if(item && item.important === true) {
+    if (item && item.important === true) {
       return true;
     }
 

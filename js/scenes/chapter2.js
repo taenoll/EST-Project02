@@ -2,26 +2,27 @@
 
 import {
   addItem,
+  hasItem,
+  addMultipleItems,
   clearChapterItems,
   openInventoryItems,
 } from "../game/inventory.js";
 import { getNode } from "../../lib/dom/getNode.js";
 import { gameState } from "../state/gameState.js";
 import { initDialogue } from "../game/dialogue.js";
-import { investigate, isChapterChecked } from "../game/investigation.js";
+import { investigate } from "../game/investigation.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
 import { initHint } from "../game/hint.js";
-import { nextChapterModal } from "../dom/renderModal.js";
 
 const nurseRoomDialogues = [
   {
     name: "주인공",
-    text: "여긴 다른 곳과는 다르게 깔끔하게 정돈되어있어.",
+    text: "여기는 곧곧에 많은 정보가 있는 것 같아.",
   },
   {
     name: "주인공",
-    text: "양지바른 곳으로 나가자",
+    text: "정보들을 모두 찾아서 맞춰보자.",
   },
 ];
 
@@ -59,7 +60,7 @@ export function renderChapter2() {
            type="button" 
            class="investigationButtons" 
            id="books" 
-           aria-label="M-04 투약 기록"
+           aria-label="약물 정보 책들"
           >
           </button>
           <button
@@ -71,7 +72,7 @@ export function renderChapter2() {
           </button>
           <button
            type="button" 
-           class="investigationButtons" 
+           class="investigationButtons is-hidden" 
            id="drawer2" 
            aria-label="원장실 열쇠"
           >
@@ -124,7 +125,7 @@ export function setupInvestigation() {
     // 인벤토리에 아이템이 들어오는 조사버튼
     getNode("#board"), // night-duty-log
     getNode("#desk"), // medicine-log
-    getNode("#books"), // m04-medication-log
+    getNode("#books"), // m04-book...
     getNode("#cellphone"), // nurse-recording
     getNode("#drawer2"), // director-key
     // 다음 버튼들은 아이템이 들어오지 않는 조사버튼입니다
@@ -152,19 +153,25 @@ export function setupInvestigation() {
       const result = investigate(clickedId);
       if (!result) return;
 
-      // 3. 조사 문구를 대화창에 출력
-      initDialogue([
-        {
-          name: "주인공",
-          text: result.text,
-        },
-      ]);
+      const dialogues = Array.isArray(result.text)
+        ? result.text.map((text) => ({
+            name: "주인공",
+            text,
+          }))
+        : [
+            {
+              name: "주인공",
+              text: result.text,
+            },
+          ];
 
-      // 4. 조사한 오브젝트에 연결된 itemId 값이 null이 아니라면 인벤토리에 아이템 추가
-      if (result.itemId !== null && result.itemId !== "director-key") {
-        addItem(result.itemId);
-        renderInventory();
-      }
+      // 3. 조사 문구를 대화창에 출력
+      initDialogue(dialogues);
+
+      // 4. 조사한 오브젝트에 연결된 itemId값이 null이 아니라면 인벤토리에 아이템 추가
+      setTimeout(() => {
+        chapter2_items(objectId, result);
+      }, 2000);
 
       // 5. 퍼즐이 들어간 버튼이라면, 2초 뒤 퍼즐 실행
       if (clickedId === "drawer2") {
@@ -173,14 +180,57 @@ export function setupInvestigation() {
         }, 2000);
       }
 
-      // 6. 모든 investigationButtons가 클릭되었는지 확인 후, 되었다면 다음 챕터
-      if (isChapterChecked(2)) {
-        console.log("CH2 필수 조사 완료:");
-        nextChapterModal(`
-            <h2>챕터 클리어</h2>
-            <p>다음 챕터로 이동하시겠습니까?</p>
-        `);
-      }
+      // 6. TODO: 퍼즐을 풀고 열쇠를 획득했다면, 다음 챕터로 넘어가는 함수
+      //
     });
   });
+}
+
+// 클릭한 조사 버튼에 알맞는 아이템을 설정해주는 함수
+function chapter2_items(objectId, result) {
+  if (objectId === "books") {
+    const medicine_books = [
+      "m04-book",
+      "amiorillia-book",
+      "anovaxanol-book",
+      "co-proxin-book",
+    ];
+
+    addMultipleItems(medicine_books);
+    renderInventory();
+    updateButtonVisibility();
+    return;
+  }
+
+  if (result.itemId !== null && result.itemId !== "director-key") {
+    addItem(result.itemId);
+    renderInventory();
+    updateButtonVisibility();
+  }
+}
+
+// 단서를 다 찾아야만 퍼즐조사 버튼이 뜨게 하는 함수
+function updateButtonVisibility() {
+  const drawerButton = getNode("#drawer2");
+  if (!drawerButton) return;
+
+  const hasNightDutyLog = hasItem("night-duty-log");
+  const hasMedicineLog = hasItem("medicine-log");
+  const hasM04Book = hasItem("m04-book");
+  const hasAmiorilliaBook = hasItem("amiorillia-book");
+  const hasAnovaxanolBook = hasItem("anovaxanol-book");
+  const hasCoProxinBook = hasItem("co-proxin-book");
+  const hasNurseRecording = hasItem("nurse-recording");
+
+  if (
+    hasNightDutyLog &&
+    hasMedicineLog &&
+    hasM04Book &&
+    hasAmiorilliaBook &&
+    hasAnovaxanolBook &&
+    hasCoProxinBook &&
+    hasNurseRecording
+  ) {
+    drawerButton.classList.remove("is-hidden");
+  } else return;
 }

@@ -28,8 +28,6 @@
   color: #e5ddd0;
 }
 
-
-
 .chapter1 .chapter-title span {
   font-size: clamp(12px, 1.5vw, 24px);
   letter-spacing: clamp(3px, 0.4vw, 6px);

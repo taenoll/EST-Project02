@@ -14,11 +14,14 @@ import { investigate } from "../game/investigation.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
 import { initHint } from "../game/hint.js";
+import { nextChapterModal } from "../dom/renderModal.js";
+import { renderChapter3 } from "./index.js";
+import { gameSave } from "../state/index.js";
 
 const nurseRoomDialogues = [
   {
     name: "주인공",
-    text: "여기는 곧곧에 많은 정보가 있는 것 같아.",
+    text: "여기는 곳곳에 많은 정보가 있는 것 같아.",
   },
   {
     name: "주인공",
@@ -82,6 +85,7 @@ export function renderChapter2() {
           <button type="button" class="investigationButtons" id="shelf"></button>
 
           <div id="dialogueContainer"></div>
+          <div id="next-Chapter"></div>
         </section>
       </main>
 
@@ -179,9 +183,6 @@ export function setupInvestigation() {
           callPuzzle("930", "director-key");
         }, 2000);
       }
-
-      // 6. TODO: 퍼즐을 풀고 열쇠를 획득했다면, 다음 챕터로 넘어가는 함수
-      //
     });
   });
 }
@@ -202,10 +203,16 @@ function chapter2_items(objectId, result) {
     return;
   }
 
-  if (result.itemId !== null && result.itemId !== "director-key") {
+  if (result.itemId !== null) {
     addItem(result.itemId);
     renderInventory();
     updateButtonVisibility();
+
+    if (result.itemId === "director-key" || hasItem("director-key")) {
+      setTimeout(() => {
+        showNextChapterButton();
+      }, 1000);
+    }
   }
 }
 
@@ -233,4 +240,38 @@ function updateButtonVisibility() {
   ) {
     drawerButton.classList.remove("is-hidden");
   } else return;
+}
+
+// 다음 챕터로 넘어가는 모달창을 보여주는 함수
+function showNextChapterButton() {
+  const chapter = document.querySelector(".chapter2");
+
+  if (!chapter) return;
+  if (document.querySelector("#chapter-clear-button")) return;
+
+  const button = document.createElement("button");
+
+  button.id = "chapter-clear-button";
+  button.type = "button";
+  button.textContent = "원장실로 이동";
+
+  chapter.appendChild(button);
+
+  button.addEventListener("click", () => {
+    nextChapterModal(
+      `
+        <h2 class="nextModalTitle">챕터 클리어</h2>
+        <p class="nextModalText">원장실로 이동하시겠습니까?</p>
+      `,
+      () => {
+        gameState.currentScene = "chapter3";
+        gameState.currentChapter = 3;
+
+        gameSave();
+
+        renderChapter3();
+        renderInventory();
+      },
+    );
+  });
 }

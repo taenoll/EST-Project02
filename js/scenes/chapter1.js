@@ -3,11 +3,12 @@
 import { investigate, initDialogue } from "../game/index.js";
 import { addItem, hasItem, openInventoryItems } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
+import { nextChapterModal } from "../dom/renderModal.js";
 import { gameState } from "../state/gameState.js";
+import { renderChapter2 } from "./chapter2.js";
+import { callPuzzle } from "../game/puzzle.js";
 import { gameSave } from "../state/storage.js";
 import { initHint } from "../game/hint.js";
-import { callPuzzle } from "../game/puzzle.js";
-import { renderChapter2 } from "./chapter2.js";
 
 // 챕터 오프닝 대사
 const chapter1Dialogues = [
@@ -105,6 +106,7 @@ export function renderChapter1() {
           </button>
 
           <div id="dialogueContainer"></div>
+          <div id="next-Chapter"></div>
         </section>
       </main>
 
@@ -247,13 +249,21 @@ function showNextChapterButton() {
   chapter.appendChild(nextButton);
 
   nextButton.addEventListener("click", () => {
-    gameState.currentScene = "chapter2";
-    gameState.currentChapter = 2;
+    nextChapterModal(
+      `
+        <h2 class="nextModalTitle">챕터 클리어</h2>
+        <p class="nextModalText">간호사실로 이동하시겠습니까?</p>
+      `,
+      () => {
+        gameState.currentScene = "chapter2";
+        gameState.currentChapter = 2;
 
-    gameSave();
+        gameSave();
 
-    renderChapter2();
-    renderInventory();
+        renderChapter2();
+        renderInventory();
+      },
+    );
   });
 }
 

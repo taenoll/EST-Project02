@@ -65,7 +65,7 @@ export function renderProlog() {
   const voice2Trigger = document.querySelector(".prolog-voice-2-trigger");
 
 
-  // 제목 먼저 등장, 그 다음 스토리장이랑 더빙 시작됨
+  // 제목 먼저 등장, 그 다음 스토리창이랑 더빙 시작
   setTimeout(() => {
     content.style.opacity = "1";
 
@@ -74,22 +74,14 @@ export function renderProlog() {
     }
   }, 1000);
 
-  // 1초 뒤 스토리 창 등장
-  setTimeout(() => {
-    content.style.opacity = '1';
-  }, 1000);
-
-
   let isFinished = false;
+  let isVoice2Played = false;
 
-  story.addEventListener('scroll', () => {
-    // 스크롤 시 강사님의 더빙
+  story.addEventListener("scroll", () => {
     if (!isVoice2Played) {
       const triggerTop = voice2Trigger.offsetTop;
 
-      if (
-        story.scrollTop + story.clientHeight >= triggerTop
-      ) {
+      if (story.scrollTop + story.clientHeight >= triggerTop) {
         isVoice2Played = true;
 
         if (gameState.audio.sfxOn) {

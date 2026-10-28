@@ -91,3 +91,22 @@
   left: 75%;
   top: 62%;
 }
+
+
+.chapter1-chart-preview {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 46%;
+  max-height: 48%;
+  object-fit: contain;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+.chapter1 .dialogue-box {
+  z-index: 4;
+}

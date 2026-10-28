@@ -3,11 +3,12 @@
 import { investigate, initDialogue } from "../game/index.js";
 import { addItem, hasItem, openInventoryItems } from "../game/inventory.js";
 import { renderInventory } from "../dom/renderInventory.js";
+import { nextChapterModal } from "../dom/renderModal.js";
 import { gameState } from "../state/gameState.js";
+import { renderChapter2 } from "./chapter2.js";
+import { callPuzzle } from "../game/puzzle.js";
 import { gameSave } from "../state/storage.js";
 import { initHint } from "../game/hint.js";
-import { callPuzzle } from "../game/puzzle.js";
-import { renderChapter2 } from "./chapter2.js";
 
 // 챕터 오프닝 대사
 const chapter1Dialogues = [
@@ -105,6 +106,7 @@ export function renderChapter1() {
           </button>
 
           <div id="dialogueContainer"></div>
+          <div id="next-Chapter"></div>
         </section>
       </main>
 
@@ -218,7 +220,21 @@ function handleInvestigation(button) {
     return;
   }
 
-  initDialogue(dialogues);
+  if (objectId === "chart") {
+    const chartImage = document.createElement("img");
+
+    chartImage.src = "./assets/images/items/chart-false-lead.png";
+    chartImage.alt = "오래된 투약 차트";
+    chartImage.className = "chapter1-chart-preview";
+
+    document.querySelector(".chapter1").appendChild(chartImage);
+
+    initDialogue(dialogues, () => {
+      chartImage.remove();
+    });
+  } else {
+    initDialogue(dialogues);
+  }
 
   // 처음 조사했을 때만 아이템 획득
   if (!result.alreadyChecked && result.itemId) {
@@ -247,13 +263,22 @@ function showNextChapterButton() {
   chapter.appendChild(nextButton);
 
   nextButton.addEventListener("click", () => {
-    gameState.currentScene = "chapter2";
-    gameState.currentChapter = 2;
+    nextChapterModal(
+      `
+        <h2 class="nextModalTitle">챕터 클리어</h2>
+        <p class="nextModalText">출입 카드를 대자, 잠겨 있던 문이 열렸다.
+        간호사실로 들어가 볼까?</p>
+      `,
+      () => {
+        gameState.currentScene = "chapter2";
+        gameState.currentChapter = 2;
 
-    gameSave();
+        gameSave();
 
-    renderChapter2();
-    renderInventory();
+        renderChapter2();
+        renderInventory();
+      },
+    );
   });
 }
 

@@ -128,7 +128,7 @@ export function nextChapterModal(content, onNext = null) {
   }
 
   // 버튼 클릭 시 챕터 클리어 모달 표시
-  if (chapterButton) {
+  if (chapterButton && scene) {
     chapterButton.onclick = () => {
       nextChapterModal(
         `

@@ -3,10 +3,10 @@
 import { clearChapterItems } from "../game/inventory.js";
 import { renderChapter2 } from "../scenes/chapter2.js";
 import { renderChapter3 } from "../scenes/chapter3.js";
-import { renderEnding } from "../scenes/ending.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";
 import { playSfx } from "../game/audio.js";
+import { renderEndingProlog } from "../scenes/endingProlog.js";
 
 // 공통 모달 사용법
 // 1. index.html에 <div id="next-Chapter"></div> 필요
@@ -204,7 +204,7 @@ export function checkChapterClear(count, total) {
       } else if (gameState.currentChapter === 2) {
         renderChapter3();
       } else if (gameState.currentChapter === 3) {
-        renderEnding();
+        renderEndingProlog();
       }
       gameSave();
     };
@@ -277,7 +277,7 @@ document.addEventListener("keydown", (event) => {
 
       if (chapter === 1) renderChapter2();
       if (chapter === 2) renderChapter3();
-      if (chapter === 3) renderEnding();
+      if (chapter === 3) renderEndingProlog();
     },
   );
 });

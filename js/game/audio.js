@@ -39,11 +39,28 @@ export function toggleSfx() {
   return gameState.audio.sfxOn;
 }
 
+// 자주 사용하는 효과음 미리 불러오기
+const sfxCache = {};
+
+function preloadSfx(src) {
+  if (sfxCache[src]) return;
+
+  const sound = new Audio(src);
+  sound.preload = "auto";
+  sound.load();
+
+  sfxCache[src] = sound;
+}
+
+preloadSfx("./assets/audio/sfx/door-open.wav");
+
 // 효과음 재생
 export function playSfx(src) {
   if (!gameState.audio.sfxOn) return;
 
-  const sound = new Audio(src);
+  const sound = sfxCache[src] || new Audio(src);
+
+  sound.currentTime = 0;
   sound.volume = 0.7;
 
   sound.play().catch((error) => {

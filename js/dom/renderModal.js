@@ -147,14 +147,18 @@ export function nextChapterModal(content, onNext = null) {
 
   nextChapter
     .querySelector(".next-modal-next")
-    .addEventListener("click", () => {
+    .addEventListener("click", (event) => {
+      event.currentTarget.disabled = true;
+
       playSfx("./assets/audio/sfx/door-open.wav");
 
-      nextCloseModal();
+      setTimeout(() => {
+        nextCloseModal();
 
-      if (typeof onNext === "function") {
-        onNext();
-      }
+        if (typeof onNext === "function") {
+          onNext();
+        }
+      }, 500);
     });
 }
 

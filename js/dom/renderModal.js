@@ -148,7 +148,7 @@ export function nextChapterModal(content, onNext = null) {
   nextChapter
     .querySelector(".next-modal-next")
     .addEventListener("click", () => {
-      playSfx("./assets/audio/sfx/door-open.mp3");
+      playSfx("./assets/audio/sfx/door-open.wav");
 
       nextCloseModal();
 

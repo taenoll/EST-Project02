@@ -59,10 +59,6 @@ export function renderProlog() {
   const story = document.querySelector('.prolog-story');
   const nextButton = document.querySelector('.prolog-next');
 
-  // 강사님 더빙 삽입 부분 하트
-  playSfx("./assets/audio/sfx/prolog-1.m4a");
-  playSfx("./assets/audio/sfx/prolog-2.m4a");
-
   const voice2Trigger = document.querySelector(".prolog-voice-2-trigger");
 
 
@@ -70,9 +66,7 @@ export function renderProlog() {
   setTimeout(() => {
     content.style.opacity = "1";
 
-    if (gameState.audio.sfxOn) {
-      voice1.play();
-    }
+    playSfx("./assets/audio/sfx/prolog-1.m4a");
   }, 1000);
 
   let isFinished = false;
@@ -85,9 +79,7 @@ export function renderProlog() {
       if (story.scrollTop + story.clientHeight >= triggerTop) {
         isVoice2Played = true;
 
-        if (gameState.audio.sfxOn) {
-          voice2.play();
-        }
+        playSfx("./assets/audio/sfx/prolog-2.m4a");
       }
     }
 

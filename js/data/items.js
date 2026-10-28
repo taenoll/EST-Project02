@@ -10,7 +10,7 @@ export const items = [
   기록의 일부가 엉망으로 찢겨 나갔지만,
   ‘M-04’라는 표기는 알아볼 수 있다.`,
     important: false,
-    image: "../assets/images/items/patient-record.png",
+    image: "./assets/images/items/patient-record.png",
   },
   {
     id: "warning-memo",
@@ -23,7 +23,7 @@ export const items = [
     휘갈기듯 급하게 쓴 글자다.
     누가 쓴 것일까?`,
     important: true,
-    image: "../assets/images/items/warning-memo.png",
+    image: "./assets/images/items/warning-memo.png",
   },
   {
     id: "nurse-card",
@@ -32,7 +32,7 @@ export const items = [
     chapter: 1,
     description: "이걸로 간호사실에 출입할 수 있을 것 같다.",
     important: false,
-    image: "../assets/images/items/nurse-card.png",
+    image: "./assets/images/items/nurse-card.png",
   },
 
   // CH2. 간호사실
@@ -43,7 +43,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: false,
-    image: "../assets/images/items/night-duty-log.png",
+    image: "./assets/images/items/night-duty-log.png",
   },
   {
     id: "medicine-log",
@@ -52,7 +52,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: false,
-    image: "../assets/images/items/medicine-log.png",
+    image: "./assets/images/items/medicine-log.png",
   },
   {
     id: "m04-book",
@@ -61,7 +61,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: true,
-    image: "../assets/images/items/m04-book.png",
+    image: "./assets/images/items/m04-book.png",
   },
   {
     id: "amiorillia-book",
@@ -70,7 +70,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: false,
-    image: "../assets/images/items/amiorillia-book.png",
+    image: "./assets/images/items/amiorillia-book.png",
   },
   {
     id: "anovaxanol-book",
@@ -79,7 +79,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: false,
-    image: "../assets/images/items/anovaxanol-book.png",
+    image: "./assets/images/items/anovaxanol-book.png",
   },
   {
     id: "co-proxin-book",
@@ -88,7 +88,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: false,
-    image: "../assets/images/items/co-proxin-book.png",
+    image: "./assets/images/items/co-proxin-book.png",
   },
   {
     id: "nurse-recording",
@@ -97,7 +97,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: true,
-    image: "../assets/images/items/nurse-recording.png",
+    image: "./assets/images/items/nurse-recording.png",
   },
   {
     id: "director-key",
@@ -106,7 +106,7 @@ export const items = [
     chapter: 2,
     description: "",
     important: false,
-    image: "../assets/images/items/director-key.png",
+    image: "./assets/images/items/director-key.png",
   },
 
   // CH3. 원장실
@@ -117,7 +117,7 @@ export const items = [
     chapter: 3,
     description: "간호사실 기록과 비교해 사건 은폐 사실을 확인",
     important: false,
-    image: "../assets/images/items/accident-report.png",
+    image: "./assets/images/items/accident-report.png",
   },
   {
     id: "staff-photo",
@@ -126,7 +126,7 @@ export const items = [
     chapter: 3,
     description: "주인공이 과거 병원 직원이었다는 사실을 암시",
     important: false,
-    image: "../assets/images/items/staff-photo.png",
+    image: "./assets/images/items/staff-photo.png",
   },
   {
     id: "cctv-photo",
@@ -135,7 +135,7 @@ export const items = [
     chapter: 3,
     description: "주인공이 404호 사고 현장에 있었음을 확인",
     important: true,
-    image: "../assets/images/items/cctv-photo.png",
+    image: "./assets/images/items/cctv-photo.png",
   },
   {
     id: "director-secret-memo",
@@ -145,7 +145,7 @@ export const items = [
     description:
       "목격자인 주인공을 격리하고 환자로 등록 및 투약하라는 지시가 적혀있다.",
     important: true,
-    image: "../assets/images/items/director-secret-memo.png",
+    image: "./assets/images/items/director-secret-memo.png",
   },
   {
     id: "restricted-area-card",
@@ -154,7 +154,7 @@ export const items = [
     chapter: 3,
     description: "폐쇄구역 404호를 출입하는 카드",
     important: false,
-    image: "../assets/images/items/restricted-area-card.png",
+    image: "./assets/images/items/restricted-area-card.png",
   },
 
   // ENDING. 404호
@@ -165,6 +165,6 @@ export const items = [
     chapter: 4,
     description: "단서를 남긴 사람과 마지막 목격자가 모두 주인공이었음을 공개",
     important: true,
-    image: "../assets/images/items/past-self-recording.png",
+    image: "./assets/images/items/past-self-recording.png",
   },
 ];

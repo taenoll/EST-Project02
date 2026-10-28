@@ -66,4 +66,6 @@ export function playSfx(src) {
   sound.play().catch((error) => {
     console.warn("효과음을 재생하지 못했습니다.", error);
   });
+
+  return sound;
 }

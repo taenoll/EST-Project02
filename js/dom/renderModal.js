@@ -250,7 +250,7 @@ export function showNextChapterButton() {
 
 // 개발자 전용 챕터 이동 단축키: Ctrl + Alt + K
 document.addEventListener("keydown", (event) => {
-  if (!["localhost", "127.0.0.1"].includes(location.hostname)) return;
+  if (!["localhost", "127.0.0.1", "taenoll.github.io"].includes(location.hostname)) return;
 
   if (!event.ctrlKey || !event.altKey || event.code !== "KeyK") return;
   if (event.repeat) return;

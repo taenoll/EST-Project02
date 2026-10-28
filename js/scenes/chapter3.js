@@ -1,11 +1,9 @@
 
 import { items } from '../data/items.js';
 import {
-  handleInventoryClick,
-  inventoryClickButton,
   renderInventory,
 } from '../dom/renderInventory.js';
-import { checkChapterClear, nextChapterModal, nextChapterOption } from '../dom/renderModal.js';
+import { checkChapterClear} from '../dom/renderModal.js';
 import { initDialogue } from '../game/index.js';
 import {
   addItem,
@@ -17,7 +15,6 @@ import { gameState } from '../state/gameState.js';
 import { callPuzzle } from '../game/puzzle.js';
 import { objects } from '../data/objects.js';
 import { gameSave } from '../state/storage.js';
-import { renderEnding } from './ending.js';
 import { initHint } from '../game/hint.js';
 import { getNode } from '../../lib/dom/getNode.js';
 

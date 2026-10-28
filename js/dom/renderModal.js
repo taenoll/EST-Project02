@@ -158,7 +158,7 @@ export function nextChapterModal(content, onNext = null) {
         if (typeof onNext === "function") {
           onNext();
         }
-      }, 500);
+      }, 900);
     });
 }
 
@@ -246,3 +246,38 @@ export function showNextChapterButton() {
     );
   });
 }
+
+
+// 개발자 전용 챕터 이동 단축키: Ctrl + Alt + K
+document.addEventListener("keydown", (event) => {
+  if (!["localhost", "127.0.0.1"].includes(location.hostname)) return;
+
+  if (!event.ctrlKey || !event.altKey || event.code !== "KeyK") return;
+  if (event.repeat) return;
+
+  const chapter = gameState.currentChapter;
+
+  if (chapter < 1 || chapter > 3) return;
+
+  event.preventDefault();
+
+  nextChapterModal(
+    `
+      <h2 class="nextModalTitle">개발자 전용 화면</h2>
+      <p class="nextModalText">다음 챕터로 이동합니다.</p>
+    `,
+    () => {
+      clearChapterItems();
+
+      gameState.currentChapter = chapter + 1;
+      gameState.currentScene =
+        chapter === 3 ? "ending" : `chapter${chapter + 1}`;
+
+      gameSave();
+
+      if (chapter === 1) renderChapter2();
+      if (chapter === 2) renderChapter3();
+      if (chapter === 3) renderEnding();
+    },
+  );
+});

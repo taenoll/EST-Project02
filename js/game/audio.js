@@ -63,6 +63,13 @@ export function playSfx(src) {
   sound.currentTime = 0;
   sound.volume = 0.7;
 
+  const startTime = performance.now();
+
+  sound.addEventListener("playing", () => {
+    const delay = performance.now() - startTime;
+    console.log(`효과음 재생 시작까지: ${delay.toFixed(0)}ms`);
+  }, { once: true });
+
   sound.play().catch((error) => {
     console.warn("효과음을 재생하지 못했습니다.", error);
   });

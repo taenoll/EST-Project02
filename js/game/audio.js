@@ -38,3 +38,15 @@ export function toggleSfx() {
 
   return gameState.audio.sfxOn;
 }
+
+// 효과음 재생
+export function playSfx(src) {
+  if (!gameState.audio.sfxOn) return;
+
+  const sound = new Audio(src);
+  sound.volume = 0.7;
+
+  sound.play().catch((error) => {
+    console.warn("효과음을 재생하지 못했습니다.", error);
+  });
+}

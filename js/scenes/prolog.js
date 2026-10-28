@@ -1,5 +1,6 @@
 import { gameSave, gameState } from "../state/index.js";
 import { renderChapter1 } from "./index.js";
+import { playSfx } from "../game/audio.js";
 
 // 프롤로그 장면에서만 사용하는 진행 코드를 작성할 파일입니다.
 export function renderProlog() {

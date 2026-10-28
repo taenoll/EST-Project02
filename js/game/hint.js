@@ -22,16 +22,21 @@ export function initHint() {
 
   hint_btn.addEventListener("click", () => {
     openModal(`
-    <h2>HINT</h2>
-    <p>돋보기 아이콘을 눌러 단서를 모두 찾아주세요.</p>
+      <div class="hint-inner-content">
+        <div class="hint-header">
+          <h2>HINT</h2>
+        </div>
+        
+        <p>돋보기 아이콘을 눌러 단서를 모두 찾아주세요.</p>
 
-    <div class="hint_buttons">
-      <button id="level_1">레벨1</button>
-      <button id="level_2">레벨2</button>
-      <button id="level_3">레벨3</button>
+        <div class="hint_buttons">
+          <button id="level_1">레벨1</button>
+          <button id="level_2">레벨2</button>
+          <button id="level_3">레벨3</button>
+        </div>
+
+      <div class="hint_content">힌트 단계를 선택해주세요.</div>
     </div>
-
-    <div class="hint_content">힌트 단계를 선택해주세요.</div>
 `);
 
     const level_1 = getNode("#level_1");

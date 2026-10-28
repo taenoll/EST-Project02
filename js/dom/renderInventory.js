@@ -46,6 +46,11 @@ export function renderInventory() {
     // HTML에 아이템 추가
     itemList.insertAdjacentHTML("beforeend", template);
   });
+  // 아이템 추가될 때, 인벤토리 스크롤을 맨 아래로 이동
+  const inventoryList = document.querySelector(".inventory-list");
+  if (inventoryList) {
+    inventoryList.scrollTop = inventoryList.scrollHeight;
+  }
 }
 
 /**

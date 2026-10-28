@@ -64,21 +64,39 @@ export function renderProlog() {
   const nextButton = document.querySelector('.prolog-next');
 
   const voice2Trigger = document.querySelector(".prolog-voice-2-trigger");
+  
+  // 두 번째 더빙 중복 재생 방지
+  let isVoice2Played = false;
+
+  // 두 번째 더빙 재생 함수
+  function playVoice2() {
+    if (isVoice2Played) return;
+    if (!document.querySelector(".prolog-screen")) return;
+
+    isVoice2Played = true;
+    playSfx("./assets/audio/sfx/prolog-2.m4a");
+  }
+
 
   // 제목 등장
   setTimeout(() => {
     title.style.opacity = "1";
   }, 100);
 
-  // 스토리 창 등장 및 첫 번째 더빙
+  
+ // 스토리 창 등장 및 첫 번째 더빙
   setTimeout(() => {
     content.style.opacity = "1";
 
-    playSfx("./assets/audio/sfx/prolog-1.m4a");
+    const voice1 = playSfx("./assets/audio/sfx/prolog-1.m4a");
+
+    // 스크롤이 없으면 첫 번째 더빙 종료 후 두 번째 더빙 재생
+    if (story.scrollHeight <= story.clientHeight && voice1) {
+      voice1.addEventListener("ended", playVoice2, { once: true });
+    }
   }, 1000);
 
   let isFinished = false;
-  let isVoice2Played = false;
 
   // 스토리 스크롤
   story.addEventListener("scroll", () => {
@@ -88,9 +106,7 @@ export function renderProlog() {
       const triggerTop = voice2Trigger.offsetTop;
 
       if (story.scrollTop + story.clientHeight >= triggerTop) {
-        isVoice2Played = true;
-
-        playSfx("./assets/audio/sfx/prolog-2.m4a");
+        playVoice2();
       }
     }
 
@@ -105,6 +121,15 @@ export function renderProlog() {
       }, 500);
     }
   });
+
+  // 스크롤이 필요 없는 화면에서는 계속하기 버튼 표시
+  if (story.scrollHeight <= story.clientHeight) {
+    isFinished = true;
+
+    setTimeout(() => {
+      nextButton.hidden = false;
+    }, 1500);
+  }
 
   // 프롤로그 -> 챕터 1
   nextButton.addEventListener("click", () => {

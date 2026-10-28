@@ -14,9 +14,6 @@ import { investigate } from "../game/investigation.js";
 import { renderInventory } from "../dom/renderInventory.js";
 import { callPuzzle } from "../game/puzzle.js";
 import { initHint } from "../game/hint.js";
-import { nextChapterModal } from "../dom/renderModal.js";
-import { renderChapter3 } from "./index.js";
-import { gameSave } from "../state/index.js";
 
 const nurseRoomDialogues = [
   {
@@ -178,6 +175,7 @@ export function setupInvestigation() {
       }, 2000);
 
       // 5. 퍼즐이 들어간 버튼이라면, 2초 뒤 퍼즐 실행
+      const hasDirectorKey = hasItem("director-key");
       if (clickedId === "drawer2") {
         setTimeout(() => {
           callPuzzle("930", "director-key");
@@ -203,16 +201,10 @@ function chapter2_items(objectId, result) {
     return;
   }
 
-  if (result.itemId !== null) {
+  if (result.itemId !== null && result.itemId !== "director-key") {
     addItem(result.itemId);
     renderInventory();
     updateButtonVisibility();
-
-    if (result.itemId === "director-key" || hasItem("director-key")) {
-      setTimeout(() => {
-        showNextChapterButton();
-      }, 1000);
-    }
   }
 }
 
@@ -240,38 +232,4 @@ function updateButtonVisibility() {
   ) {
     drawerButton.classList.remove("is-hidden");
   } else return;
-}
-
-// 다음 챕터로 넘어가는 모달창을 보여주는 함수
-function showNextChapterButton() {
-  const chapter = document.querySelector(".chapter2");
-
-  if (!chapter) return;
-  if (document.querySelector("#chapter-clear-button")) return;
-
-  const button = document.createElement("button");
-
-  button.id = "chapter-clear-button";
-  button.type = "button";
-  button.textContent = "원장실로 이동";
-
-  chapter.appendChild(button);
-
-  button.addEventListener("click", () => {
-    nextChapterModal(
-      `
-        <h2 class="nextModalTitle">챕터 클리어</h2>
-        <p class="nextModalText">원장실로 이동하시겠습니까?</p>
-      `,
-      () => {
-        gameState.currentScene = "chapter3";
-        gameState.currentChapter = 3;
-
-        gameSave();
-
-        renderChapter3();
-        renderInventory();
-      },
-    );
-  });
 }

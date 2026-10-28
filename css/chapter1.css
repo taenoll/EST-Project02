@@ -1,0 +1,112 @@
+/* ==================================================
+   CHAPTER 1
+================================================== */
+
+.chapter1 {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("../assets/images/backgrounds/chapter1-room.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+/* 챕터 제목 */
+.chapter1 .chapter-title {
+  position: absolute;
+
+  top: clamp(20px, 5%, 54px);
+  left: clamp(20px, 4%, 42px);
+
+  z-index: 2;
+
+  color: #e5ddd0;
+}
+
+.chapter1 .chapter-title span {
+  font-size: clamp(12px, 1.5vw, 24px);
+  letter-spacing: clamp(3px, 0.4vw, 6px);
+}
+
+.chapter1 .chapter-title h1 {
+  margin: clamp(6px, 1vw, 12px) 0 0;
+
+  font-size: clamp(28px, 3.4vw, 54px);
+  font-weight: 400;
+}
+
+.chapter1 .investigate-button {
+  width: 3.5%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.chapter1 .investigate-button.is-hidden {
+  display: none;
+}
+
+/* 침대 */
+.investigate-bed {
+  left: 29%;
+  top: 54%;
+}
+
+/* 벽시계 */
+.investigate-clock {
+  left: 84%;
+  top: 20%;
+}
+
+/* 창문 */
+.investigate-window {
+  left: 61%;
+  top: 30%;
+}
+
+/* 왼쪽 서랍장 */
+.investigate-drawer {
+  left: 11%;
+  top: 53%;
+}
+
+/* 오른쪽 차트/책상 */
+.investigate-chart {
+  left: 80%;
+  top: 45%;
+}
+
+/* 왼쪽 문 */
+.chapter1 .investigate-door {
+  left: 94%;
+  top: 50%;
+}
+
+/* 오른쪽 약 보관함 */
+.investigate-medicine-cabinet {
+  left: 75%;
+  top: 62%;
+}
+
+
+.chapter1-chart-preview {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 46%;
+  max-height: 48%;
+  object-fit: contain;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+.chapter1 .dialogue-box {
+  z-index: 4;
+}

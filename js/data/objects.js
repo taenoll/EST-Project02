@@ -1,0 +1,168 @@
+export const objects = [
+  // ===== CHAPTER 1 =====
+  {
+    id: "bed",
+    chapter: 1,
+    text: [ "내가 누워있던 침대다. 깨끗한 시트와 베개 커버 이외에는 따로 손질이 되어있지 않다.", 
+      "...어라? 밑에 무언가 보인다.",],
+    required: true,
+    itemId: "patient-record",
+  },
+  {
+    id: "clock",
+    chapter: 1,
+    text: [
+      "먼지 쌓인 낡은 벽시계다.",
+      "분침은 움직이고 있는데, 시침만 4를 가리킨 채 멈춰 있다.",
+      "...단순히 고장 난 걸까?",
+    ],
+    required: true,
+    itemId: null,
+  },
+  {
+    id: "drawer",
+    chapter: 1,
+    text: [ "잡동사니가 가득하다. 눈에 띄는 게 없나 뒤적이다 보면...", 
+      "응? 이상한 액체가 묻은 채 구겨진 메모가 있다. 확인해볼까?", ],
+    required: true,
+    itemId: "warning-memo",
+  },
+  {
+    id: "window",
+    chapter: 1,
+    text: "창문은 열리지 않는다. 구석진 곳인지 아무것도 보이지 않는다.",
+    required: false,
+    itemId: null,
+  },
+  {
+    id: "chart",
+    chapter: 1,
+    text: [
+      "오래된 투약 차트다. 대부분의 기록이 검게 지워져 있다.",
+      "가장자리에는 '04 → 4'처럼 보이는 희미한 표시가 남아 있다.",
+      "누군가 일부러 남겨둔 걸까?",
+    ],
+    required: true,
+    itemId: null,
+  },
+  {
+    id: "medicine-cabinet",
+    chapter: 1,
+    text: ["잠긴 약 보관함이다.", "세 자리 숫자를 맞추면 열리는 것 같다."],
+    required: true,
+    itemId: null,
+  },
+  {
+    id: "door",
+    chapter: 1,
+    text: [
+      "병실 출입문이다.",
+      "손잡이를 돌려봤지만 꿈쩍도 하지 않는다. 밖에서 잠겨 있는 것 같다.",
+      "...자진 입원한 사람을 왜 가둬둔 거지?",
+    ],
+    required: false,
+    itemId: null,
+  },
+
+  // ===== CHAPTER 2 =====
+  {
+    id: "board",
+    chapter: 2,
+    text: "간호사들의 최근 야간 근무 기록이 적혀있다. 살펴보자.",
+    required: true,
+    itemId: "night-duty-log",
+  },
+  {
+    id: "desk",
+    chapter: 2,
+    text: ["알 수 없는 약들이 적혀있다.", "어디에 쓰는 약일까."],
+    required: true,
+    itemId: "medicine-log",
+  },
+  {
+    id: "books",
+    chapter: 2,
+    text: ["책들이 쌓여있다.", "책을 뒤져보자."],
+    required: true,
+    itemId: "medicine_books",
+  },
+  {
+    id: "cellphone",
+    chapter: 2,
+    text: "한 녹취 기록이 저장되어 있다. 확인해보자.",
+    required: true,
+    itemId: "nurse-recording",
+  },
+  {
+    id: "drawer2",
+    chapter: 2,
+    text: "좌물쇠로 잠겨있어 열리지 않는다.",
+    required: true,
+    itemId: "director-key",
+  },
+  {
+    id: "sink",
+    chapter: 2,
+    text: ["세면대의 시원한 물이 나온다.", "손을 닦았다."],
+    required: false,
+    itemId: null,
+  },
+  {
+    id: "noticeboard",
+    chapter: 2,
+    text: [
+      "오늘의 구내식당 메뉴가 붙어있다.",
+      "소고기 미역국, 주먹밥, 새우 튀김...",
+    ],
+    required: false,
+    itemId: null,
+  },
+  {
+    id: "shelf",
+    chapter: 2,
+    text: ["수상한 액체의 병들이 놓여져있다.", "위험해보이니까 건들지 말자."],
+    required: false,
+    itemId: null,
+  },
+
+  // ===== CHAPTER 3 =====
+
+
+// ===== CHAPTER 3 =====
+
+  {
+    id: "accident-report",
+    chapter: 3,
+    text: "파일화한 종이뭉치, 읽어보기 싫은 보고서다.",
+    important: false,
+    itemId: "accident-report",
+  },
+  {
+    id: "staff-photo",
+    chapter: 3,
+    text: "이 병원의 구성원들로 보이는 사진, 나랑 닮은 사람이 보인다.",
+    important: false,
+    itemId: "staff-photo",
+  },
+  {
+    id: "cctv-photo",
+    chapter: 3,
+    text: "사건 당일 404호 앞의 CCTV 사진, 흐릿하지만 직원인거 같다",
+    important: true,
+    itemId: "cctv-photo",
+  },
+  {
+    id: "director-secret-memo",
+    chapter: 3,
+    text: "이해하기 힘든 지시가 적혀있는 메모, 오래된듯 종이가 삭아있다.",
+    important: true,
+    itemId: "director-secret-memo",
+  },
+  {
+    id: "restricted-area-card",
+    chapter: 3,
+    text: "오래되어 보이는 출입카드, 왜인지 피가 묻어있다.",
+    important: false,
+    itemId: "restricted-area-card",
+  },
+];

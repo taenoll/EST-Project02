@@ -1,0 +1,1056 @@
+/* 프로젝트 전체에서 사용하는 공통 스타일 파일입니다. */
+
+/* ==================================================
+   INVENTORY
+   담당: 소연
+================================================== */
+
+.inventory {
+  width: 100%;
+  height: 100%; /* 혹은 100vh 로 고정 */
+  max-height: 100vh; /* 절대 부모 밖으로 늘어나지 않게 제한 */
+  padding: 20px 14px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
+  border: 1px solid #8ba6a3;
+  border-radius: 4px;
+  color: #c5f1e9;
+  overflow: hidden; /* 혹시 넘치는 요소가 있다면 내부에서 차단 */
+}
+
+/* 힌트 / 메뉴 영역 */
+.inventory-header {
+  width: 100%;
+  padding: 8px 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  border-bottom: 2px solid #8ba6a3;
+}
+
+/* 힌트 / 메뉴 버튼 */
+.inventory-hint,
+.inventory-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px;
+  background-color: transparent;
+  border: none;
+  color: #c5f1e9;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 힌트 / 메뉴 아이콘 */
+.inventory-header-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* 힌트 / 메뉴 Hover */
+.inventory-hint:hover,
+.inventory-menu:hover {
+  color: #ffffff;
+}
+
+/* 힌트 / 메뉴 Focus */
+.inventory-hint:focus-visible,
+.inventory-menu:focus-visible {
+  outline: 2px solid #c5f1e9;
+  outline-offset: 4px;
+}
+
+/* 아이템 목록 */
+.inventory-list {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #8ba6a3 transparent;
+}
+
+/* 아이템 슬롯 */
+.inventory-list li {
+  width: 100%;
+  min-height: 115px;
+  flex-shrink: 0;
+  background-color: #172326;
+  border: 2px solid #577273;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* 아이템 버튼 */
+.inventory-list li button {
+  width: 100%;
+  min-height: 115px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  border: none;
+  color: #e0e2dd;
+  cursor: pointer;
+}
+
+/* 아이템 이미지 */
+.inventory-list li img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* 아이템 이름 */
+.inventory-list li span {
+  display: block;
+  width: 100%;
+  color: #e0e2dd;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 아이템 Hover */
+.inventory-list li button:hover {
+  background-color: #203638;
+}
+
+/* 아이템 Focus */
+.inventory-list li button:focus-visible {
+  outline: 2px solid #c5f1e9;
+  outline-offset: -4px;
+}
+
+/* 위아래 버튼 */
+.inventory-prev,
+.inventory-next {
+  width: 100%;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid #8ba6a3;
+  border-radius: 4px;
+  color: #c5f1e9;
+  font-size: 16px;
+}
+
+/* 위아래 버튼 Hover */
+.inventory-prev:hover,
+.inventory-next:hover {
+  background-color: #203638;
+}
+
+/* 위아래 버튼 비활성화 */
+.inventory-prev:disabled,
+.inventory-next:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* 위아래 버튼 Focus */
+.inventory-prev:focus-visible,
+.inventory-next:focus-visible {
+  outline: 2px solid #c5f1e9;
+  outline-offset: 2px;
+}
+
+/* 반응형 - 태블릿 / 작은 화면 */
+@media (max-width: 768px) {
+  .inventory {
+    width: 100%;
+    height: 100%;
+    padding: 12px 8px;
+    gap: 10px;
+  }
+
+  .inventory-header {
+    gap: 12px;
+    padding: 6px 0 12px;
+  }
+
+  .inventory-hint,
+  .inventory-menu {
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .inventory-header-icon {
+    font-size: 18px;
+  }
+
+  .inventory-list {
+    gap: 8px;
+  }
+
+  .inventory-list li {
+    min-height: 78px;
+    border-radius: 8px;
+  }
+
+  .inventory-list li button {
+    min-height: 78px;
+    padding: 6px;
+    gap: 4px;
+  }
+
+  .inventory-list li img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .inventory-list li span {
+    font-size: 10px;
+  }
+
+  .inventory-prev,
+  .inventory-next {
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+/* ==================================================
+   END INVENTORY
+================================================== */
+
+/* ==================================================
+   DIALOGUE
+   담당: 경찬
+================================================== */
+
+/* 하단 대화창 */
+.dialogue-box {
+  position: absolute;
+  left: 3%;
+  bottom: 3%;
+  width: 94%;
+  min-height: clamp(110px, 17vh, 190px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  padding: 12px 18px 18px 10px;
+  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
+  border: 1px solid #8ba6a3;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#dialogueName {
+  margin: 0 0 12px;
+
+  color: #a8c6c2;
+  font-size: clamp(18px, 2vw, 36px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
+}
+
+#dialogueText {
+  margin: 0;
+
+  color: #e0e2dd;
+  font-size: clamp(16px, 1.6vw, 28px);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+#dialogueNext {
+  position: absolute;
+  right: 12px;
+  bottom: 7px;
+
+  color: #ffffff;
+  font-size: clamp(11px, 1.1vw, 18px);
+  letter-spacing: 1px;
+  text-shadow: 0 1px 3px #000000;
+  animation: blink 1.2s infinite;
+}
+
+.dialogue-portrait {
+  flex-shrink: 0;
+  width: clamp(90px, 12%, 170px);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #172326;
+  border-right: 1px solid #577273;
+}
+
+.dialogue-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 대사 내용 */
+.dialogue-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* 대사가 바뀌는 순간 */
+.dialogue-content.fade-out {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* 모바일 대응 */
+@media (max-width: 600px) {
+  .dialogue-box {
+    left: 3%;
+    bottom: 2%;
+    width: 94%;
+    min-height: 90px;
+    gap: 10px;
+    padding: 10px 12px 18px 8px;
+  }
+
+  .dialogue-portrait {
+    width: 48px;
+    height: 58px;
+  }
+
+  #dialogueText {
+    font-size: 12px;
+  }
+}
+/* ==================================================
+   END DIALOGUE
+================================================== */
+
+/* ==================================================
+   COMMON MODAL
+   아이템 상세 / 힌트 / 퍼즐 / 메뉴 등에 공통으로 사용
+   담당: 유정
+================================================== */
+
+#modal {
+  display: none;
+}
+
+#modal.is-open {
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-box {
+  position: relative;
+  width: min(500px, 90%);
+  min-height: 200px;
+  padding: 32px;
+  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
+  border: 1px solid #8ba6a3;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.45);
+
+  color: #ffffff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #c5f1e9;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-body {
+  color: #e0e2dd;
+  line-height: 1.8;
+}
+
+/* ==================================================
+   ITEM DETAIL MODAL
+   담당: 소연
+================================================== */
+
+.item-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.item-detail img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.item-detail h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.item-detail p {
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* ==================================================
+   END COMMON MODAL
+================================================== */
+
+/* ==================================================
+   GAME MENU
+   게임 공통 메뉴 UI
+   담당: 유정
+================================================== */
+
+.menu-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.menu-content h2 {
+  grid-column: 1 / -1;
+  margin: 0 0 18px;
+  color: #c5f1e9;
+  font-size: 24px;
+  letter-spacing: 4px;
+}
+
+/* 계속하기 / 처음부터 다시하기 / 타이틀 버튼 */
+.menu-button {
+  width: 100%;
+  padding: 14px 16px;
+  background: #172326;
+  border: 1px solid #577273;
+  color: #e0e2dd;
+  font-size: 14px;
+  text-align: left;
+}
+
+.menu-button:hover {
+  background: #203638;
+  border-color: #8ba6a3;
+}
+
+/* 타이틀로 돌아가기 버튼은 전체 너비 사용 */
+.menu-title {
+  grid-column: 1 / -1;
+}
+
+/* 오디오 설정 영역 */
+.menu-audio {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+}
+
+.menu-section-title {
+  margin: 0 0 8px;
+
+  color: #8ba6a3;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+/* BGM / 효과음 설정 한 줄 */
+.menu-setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4px;
+  border-top: 1px solid #32494a;
+  color: #e0e2dd;
+  font-size: 14px;
+}
+
+/* 오디오 ON / OFF 버튼 */
+.audio-toggle {
+  width: 70px;
+  padding: 7px 10px;
+  background: #172326;
+  border: 1px solid #577273;
+  color: #e0e2dd;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.audio-toggle:hover {
+  background: #203638;
+  border-color: #8ba6a3;
+}
+
+/* ==================================================
+   END GAME MENU
+================================================== */
+
+/* ==================================================
+   NEXT CHAPTER
+   다음 챕터 넘어가는 화면
+   담당: 경찬
+================================================== */
+
+#nextChapter {
+  display: none;
+}
+
+#nextChapter.is-open {
+  display: block;
+}
+
+.next-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.next-modal-box {
+  position: relative;
+  overflow: hidden;
+
+  width: min(800px, 76vw, 110vh);
+  aspect-ratio: 5 / 3;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid #8ba6a3;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.next-modal-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* 내부 배경 이미지를 어둡게 덮는 레이어 */
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.next-modal-next {
+  position: absolute;
+  right: 5%;
+  bottom: 9%;
+  z-index: 2;
+
+  padding: 10px 14px;
+  font-size: clamp(12px, 1.3vw, 18px);
+
+  border: 1px solid #8ba6a3;
+  background: rgba(5, 13, 15, 0.8);
+  color: #c5f1e9;
+  cursor: pointer;
+}
+
+.next-modal-next:hover {
+  background-color: #203638;
+  border-color: #c5f1e9;
+}
+
+/* 글자와 버튼은 배경보다 위에 표시 */
+.next-modal-close,
+.next-modal-body {
+  position: relative;
+  z-index: 1;
+}
+
+.next-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #c5f1e9;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.next-modal-body {
+  position: static;
+  color: #e0e2dd;
+  line-height: 1.5;
+}
+
+.chapter-background {
+  display: block;
+  width: 200%;
+  /* height: 250px; */
+
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* 챕터 클리어 버튼 */
+#chapter-clear-button {
+  position: absolute;
+  top: 7%;
+  right: 4%;
+  z-index: 10;
+  padding: 0.7% 1.2%;
+  font-size: clamp(10px, 1vw, 16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  background: linear-gradient(145deg, #203638 0%, #091719 65%, #050d0f 100%);
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#chapter-clear-button:hover {
+  background: rgba(70, 70, 70, 0.95);
+}
+
+.nextModalTitle {
+  position: absolute;
+  top: 9%;
+  left: 6%;
+  z-index: 2;
+
+  margin: 0;
+  padding: 0;
+
+  color: #c5f1e9;
+  font-size: clamp(26px, 3vw, 44px);
+  line-height: 1.2;
+}
+
+.nextModalText {
+  position: absolute;
+  left: 6%;
+  bottom: 9%;
+  z-index: 2;
+
+  max-width: 55%;
+  margin: 0;
+  padding: 0;
+
+  color: #e0e2dd;
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+@media (max-width: 620px) {
+  .next-modal-box {
+    width: 92vw;
+    aspect-ratio: auto;
+    height: 300px;
+    max-height: 80vh;
+  }
+
+  .nextModalText {
+    left: 6%;
+    bottom: 70px;
+    max-width: 88%;
+  }
+
+  .next-modal-next {
+    right: 6%;
+    bottom: 12px;
+  }
+}
+
+/* ==================================================
+   END NEXT CHAPTER
+================================================== */
+/* ==================================================
+   PUZZLE
+   숫자 자물쇠 퍼즐
+   담당: 유정
+================================================== */
+
+.puzzle_popup {
+  position: relative;
+  overflow: hidden;
+
+  padding: 28px 32px 32px;
+
+  /* 오래된 금속판 */
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(131, 73, 34, 0.35) 0 3%,
+      transparent 8%
+    ),
+    radial-gradient(
+      circle at 92% 78%,
+      rgba(151, 84, 37, 0.28) 0 4%,
+      transparent 10%
+    ),
+    radial-gradient(
+      circle at 75% 10%,
+      rgba(107, 62, 35, 0.2) 0 2%,
+      transparent 7%
+    ),
+    linear-gradient(145deg, #30393a 0%, #182426 45%, #0b1415 100%);
+
+  border: 1px solid #81735d;
+  border-radius: 3px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -10px 20px rgba(0, 0, 0, 0.4);
+
+  color: #e7deca;
+}
+
+/* 살짝 낡은 표면 */
+.puzzle_popup::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    115deg,
+    transparent 0,
+    transparent 18px,
+    rgba(255, 255, 255, 0.015) 19px,
+    transparent 20px
+  );
+
+  pointer-events: none;
+}
+
+/* 제목 */
+.puzzle_popup h2 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 28px;
+
+  color: #d9ceb5;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* 숫자 자물쇠 전체 */
+.puzzle_nums {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  justify-content: center;
+  gap: 16px;
+}
+
+/* 숫자 하나 */
+.dial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+/* 숫자 표시창 */
+.dial_number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 58px;
+  height: 62px;
+
+  background: linear-gradient(180deg, #101718 0%, #263032 48%, #0b1112 100%);
+
+  border: 1px solid #8a795e;
+  border-radius: 4px;
+
+  box-shadow:
+    inset 0 4px 10px rgba(0, 0, 0, 0.7),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 2px 5px rgba(0, 0, 0, 0.5);
+
+  color: #eee2c5;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+
+  text-shadow: 0 0 5px rgba(226, 201, 143, 0.18);
+}
+
+/* 위 / 아래 금속 버튼 */
+.arrow_btn {
+  width: 58px;
+  height: 30px;
+
+  background: linear-gradient(180deg, #626662 0%, #3d4341 45%, #292f2d 100%);
+
+  border: 1px solid #766952;
+  border-radius: 3px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 2px 4px rgba(0, 0, 0, 0.45);
+
+  color: #dbd1ba;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.arrow_btn:hover {
+  border-color: #aa936c;
+
+  background: linear-gradient(180deg, #757a75 0%, #4b5350 50%, #323936 100%);
+
+  color: #fff3d4;
+}
+
+.arrow_btn:active {
+  transform: translateY(1px);
+
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.55);
+}
+
+/* CHECK 영역 */
+.check_answer {
+  grid-column: 1 / -1;
+
+  margin-top: 22px;
+
+  text-align: center;
+}
+
+/* 확인 버튼 */
+#check_btn {
+  min-width: 140px;
+  padding: 11px 24px;
+
+  background: linear-gradient(180deg, #66523a 0%, #453722 55%, #302719 100%);
+
+  border: 1px solid #a68b61;
+  border-radius: 3px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 3px 7px rgba(0, 0, 0, 0.45);
+
+  color: #eee2c5;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+  cursor: pointer;
+}
+
+#check_btn:hover {
+  border-color: #c0a477;
+
+  background: linear-gradient(180deg, #7a6245 0%, #55432a 55%, #3b2e1e 100%);
+}
+
+#check_btn:active {
+  transform: translateY(1px);
+}
+
+/* 정답 / 오답 */
+#answer_message {
+  min-height: 22px;
+  margin: 12px 0 0;
+
+  color: #c9b98f;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* ==================================================
+   END PUZZLE
+================================================== */
+/* ==================================================
+   HINT
+   담당: 효경
+================================================== */
+.modal-box {
+  background: linear-gradient(
+    145deg,
+    #162527 0%,
+    #071012 70%,
+    #04080a 100%
+  ) !important;
+  border: 1px solid #6b8c89 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8) !important;
+  width: 520px !important;
+  padding: 36px 40px !important;
+  box-sizing: border-box;
+}
+
+.hint-inner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: #e0e2dd;
+}
+
+.hint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(139, 166, 163, 0.2);
+  padding-bottom: 14px;
+}
+
+.hint-header h2 {
+  margin: 0;
+  color: #c5f1e9;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+#hint_close {
+  background: transparent;
+  border: none;
+  color: #8ba6a3;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+#hint_close:hover {
+  color: #c5f1e9;
+}
+
+.hint-inner-content p {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hint-inner-content p::before {
+  content: "🔑";
+  font-size: 18px;
+}
+
+.hint_buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.hint_buttons button {
+  flex: 1;
+  padding: 14px 16px;
+  background: linear-gradient(180deg, #32382e 0%, #1c2119 100%);
+  border: 1px solid #8c9e75;
+  border-radius: 4px;
+  color: #f3f4e8;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.hint_buttons button:hover {
+  background: linear-gradient(180deg, #3f4738 0%, #252c21 100%);
+  border-color: #b5cc97;
+  color: #fffde6;
+}
+
+.hint_buttons button:active {
+  transform: translateY(1px);
+}
+
+.hint_buttons button:focus-visible {
+  outline: 2px solid #b5cc97;
+  outline-offset: 2px;
+}
+
+.hint_content {
+  text-align: center;
+  padding: 22px 20px;
+  background-color: rgba(5, 11, 13, 0.6);
+  border: 1px solid #324a4d;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #c5f1e9;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ==================================================
+   END HINT
+================================================== */

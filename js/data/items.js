@@ -1,0 +1,170 @@
+export const items = [
+  // CH1. 일반 병실
+  {
+    id: "patient-record",
+    name: "찢어진 환자 기록지",
+    type: "clue",
+    chapter: 1,
+    description: `입원 경위에는 ‘자진 입원’이라고 적혀 있다.
+  하지만 내가 스스로 이곳에 들어온 기억은 없다.
+  기록의 일부가 엉망으로 찢겨 나갔지만,
+  ‘M-04’라는 표기는 알아볼 수 있다.`,
+    important: false,
+    image: "../assets/images/items/patient-record.png",
+  },
+  {
+    id: "warning-memo",
+    name: "누군가의 메모",
+    type: "clue",
+    chapter: 1,
+    description: `'기록을 믿지 마.
+    멈춘 것이 먼저다.'
+
+    휘갈기듯 급하게 쓴 글자다.
+    누가 쓴 것일까?`,
+    important: true,
+    image: "../assets/images/items/warning-memo.png",
+  },
+  {
+    id: "nurse-card",
+    name: "직원용 출입 카드",
+    type: "key",
+    chapter: 1,
+    description: "이걸로 간호사실에 출입할 수 있을 것 같다.",
+    important: false,
+    image: "../assets/images/items/nurse-card.png",
+  },
+
+  // CH2. 간호사실
+  {
+    id: "night-duty-log",
+    name: "야간 근무 일지",
+    type: "clue",
+    chapter: 2,
+    description: "",
+    important: false,
+    image: "../assets/images/items/night-duty-log.png",
+  },
+  {
+    id: "medicine-log",
+    name: "약품 관리 대장",
+    type: "clue",
+    chapter: 2,
+    description: "",
+    important: false,
+    image: "../assets/images/items/medicine-log.png",
+  },
+  {
+    id: "m04-book",
+    name: "M-04에 관한 책",
+    type: "clue",
+    chapter: 2,
+    description: "",
+    important: true,
+    image: "../assets/images/items/m04-book.png",
+  },
+  {
+    id: "amiorillia-book",
+    name: "Amiorillia에 관한 책",
+    type: "clue",
+    chapter: 2,
+    description: "",
+    important: false,
+    image: "../assets/images/items/amiorillia-book.png",
+  },
+  {
+    id: "anovaxanol-book",
+    name: "Anovaxanol에 관한 책",
+    type: "clue",
+    chapter: 2,
+    description: "",
+    important: false,
+    image: "../assets/images/items/anovaxanol-book.png",
+  },
+  {
+    id: "co-proxin-book",
+    name: "Co-proxin에 관한 책",
+    type: "clue",
+    chapter: 2,
+    description: "",
+    important: false,
+    image: "../assets/images/items/co-proxin-book.png",
+  },
+  {
+    id: "nurse-recording",
+    name: "간호사의 전화 기록",
+    type: "clue",
+    chapter: 2,
+    description: "",
+    important: true,
+    image: "../assets/images/items/nurse-recording.png",
+  },
+  {
+    id: "director-key",
+    name: "원장실 열쇠",
+    type: "key",
+    chapter: 2,
+    description: "",
+    important: false,
+    image: "../assets/images/items/director-key.png",
+  },
+
+  // CH3. 원장실
+  {
+    id: "accident-report",
+    name: "공식 사고 보고서",
+    type: "clue",
+    chapter: 3,
+    description: "간호사실 기록과 비교해 사건 은폐 사실을 확인",
+    important: false,
+    image: "../assets/images/items/accident-report.png",
+  },
+  {
+    id: "staff-photo",
+    name: "직원 단체 사진",
+    type: "clue",
+    chapter: 3,
+    description: "주인공이 과거 병원 직원이었다는 사실을 암시",
+    important: false,
+    image: "../assets/images/items/staff-photo.png",
+  },
+  {
+    id: "cctv-photo",
+    name: "사건 당일 CCTV 사진",
+    type: "clue",
+    chapter: 3,
+    description: "주인공이 404호 사고 현장에 있었음을 확인",
+    important: true,
+    image: "../assets/images/items/cctv-photo.png",
+  },
+  {
+    id: "director-secret-memo",
+    name: "원장의 비공식 메모",
+    type: "clue",
+    chapter: 3,
+    description:
+      "목격자인 주인공을 격리하고 환자로 등록 및 투약하라는 지시가 적혀있다.",
+    important: true,
+    image: "../assets/images/items/director-secret-memo.png",
+  },
+  {
+    id: "restricted-area-card",
+    name: "폐쇄구역 출입 카드",
+    type: "key",
+    chapter: 3,
+    description: "폐쇄구역 404호를 출입하는 카드",
+    important: false,
+    image: "../assets/images/items/restricted-area-card.png",
+  },
+
+  // ENDING. 404호
+  {
+    id: "past-self-recording",
+    name: "과거의 주인공이 남긴 녹음",
+    type: "clue",
+    chapter: 4,
+    description: "단서를 남긴 사람과 마지막 목격자가 모두 주인공이었음을 공개",
+    important: true,
+    image: "../assets/images/items/past-self-recording.png",
+  },
+];

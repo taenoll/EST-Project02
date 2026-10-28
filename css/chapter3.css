@@ -1,0 +1,72 @@
+
+.mainScreenChapterThree {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+
+  background-color: transparent;
+  background-image: url("../assets/images/backgrounds/chapter3-room.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.investigateIcon {
+  position: absolute;
+
+  width: 3%;
+  aspect-ratio: 1 / 1;
+
+  transform: translate(-50%, -50%);
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  background-image: url("../assets/images/icons/icon-search.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+  z-index: 5;
+}
+
+
+
+/* 책장 */
+.search-shelf {
+
+  left: 18%;
+  top: 40%;
+}
+
+/* 왼쪽 서랍장 */
+.search-cabinet {
+  left: 7%;
+  top: 49%;
+}
+
+/* 그림 */
+.search-portrait {
+  left: 57%;
+  top: 20%;
+}
+
+/* 책상 */
+.search-desk {
+  left: 45%;
+  top: 50%;
+}
+
+/* 원장실 문 */
+.search-door {
+  left: 87%;
+  top: 35%;
+}
+
+.investigateIcon.is-checked {
+  opacity: 0.35;
+}

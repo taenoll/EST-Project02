@@ -64,6 +64,10 @@
   opacity: 0.4;
 }
 
+.chapter2 .investigationButtons.is-hidden {
+  display: none;
+}
+
 /* investigationButtons */
 #board {
   left: 85%;

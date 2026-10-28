@@ -1,6 +1,3 @@
-// 이름이 같으면 다른 챕터에 있는 아이템이 있는데.. 챕터 반영 불가능?? OR just 이름 바꿈.
-// 들어오는 아이템으로 puzzle 추리 어떻게??
-
 export const objects = [
   // ===== CHAPTER 1 =====
   {
@@ -69,14 +66,14 @@ export const objects = [
   {
     id: "board",
     chapter: 2,
-    text: "간호사들의 최근 야간 근무 시간들이 적혀있다.",
+    text: "간호사들의 최근 야간 근무 기록이 적혀있다. 살펴보자.",
     required: true,
     itemId: "night-duty-log",
   },
   {
     id: "desk",
     chapter: 2,
-    text: "알 수 없는 약들이 적혀있다.",
+    text: ["알 수 없는 약들이 적혀있다.", "어디에 쓰는 약일까."],
     required: true,
     itemId: "medicine-log",
   },
@@ -85,12 +82,12 @@ export const objects = [
     chapter: 2,
     text: ["책들이 쌓여있다.", "책을 뒤져보자."],
     required: true,
-    itemId: "m04-medication-record",
+    itemId: "medicine_books",
   },
   {
     id: "cellphone",
     chapter: 2,
-    text: "한 녹취 기록이 저장되어 있다.",
+    text: "한 녹취 기록이 저장되어 있다. 확인해보자.",
     required: true,
     itemId: "nurse-recording",
   },
@@ -104,21 +101,24 @@ export const objects = [
   {
     id: "sink",
     chapter: 2,
-    text: "세면대 물이 나오지 않는다.",
+    text: ["세면대의 시원한 물이 나온다.", "손을 닦았다."],
     required: false,
     itemId: null,
   },
   {
     id: "noticeboard",
     chapter: 2,
-    text: "오늘의 구내식당 메뉴가 붙어있다.",
+    text: [
+      "오늘의 구내식당 메뉴가 붙어있다.",
+      "소고기 미역국, 주먹밥, 새우 튀김...",
+    ],
     required: false,
     itemId: null,
   },
   {
     id: "shelf",
     chapter: 2,
-    text: ["약들이 놓여있다.", "안에는 수상한 액체가 담겨있다."],
+    text: ["수상한 액체의 병들이 놓여져있다.", "위험해보이니까 건들지 말자."],
     required: false,
     itemId: null,
   },

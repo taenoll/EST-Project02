@@ -220,7 +220,21 @@ function handleInvestigation(button) {
     return;
   }
 
-  initDialogue(dialogues);
+  if (objectId === "chart") {
+    const chartImage = document.createElement("img");
+
+    chartImage.src = "./assets/images/items/chart-false-lead.png";
+    chartImage.alt = "오래된 투약 차트";
+    chartImage.className = "chapter1-chart-preview";
+
+    document.querySelector(".chapter1").appendChild(chartImage);
+
+    initDialogue(dialogues, () => {
+      chartImage.remove();
+    });
+  } else {
+    initDialogue(dialogues);
+  }
 
   // 처음 조사했을 때만 아이템 획득
   if (!result.alreadyChecked && result.itemId) {

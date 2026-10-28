@@ -1,7 +1,5 @@
-
 // 공통 모달을 화면에 렌더링하는 UI 코드를 작성할 파일입니다.
 
-import { items } from "../data/items.js";
 import { clearChapterItems } from "../game/inventory.js";
 import { renderChapter2 } from "../scenes/chapter2.js";
 import { renderChapter3 } from "../scenes/chapter3.js";
@@ -58,7 +56,6 @@ export function closeModal() {
   modal.innerHTML = "";
 }
 
-
 // 다음 챕터로 넘어가는 화면이 나오는 코드를 작성할 파일입니다.
 // 함수 사용법
 // 1. index.html에 import { nextChapterOption } from "../dom/renderModal.js"; 필요
@@ -73,8 +70,6 @@ export function closeModal() {
 // total 변수는 한챕터당 아이템의 갯수
 //
 //nextChapterOption(count,total);
-
-
 
 const chapterImages = {
   1: "./assets/images/backgrounds/nurse-room-entrance.png",
@@ -119,7 +114,7 @@ export function nextChapterModal(content, onNext = null) {
 `;
   nextChapter.classList.add("is-open");
 
-    // 챕터 화면에 챕터 클리어 버튼 생성
+  // 챕터 화면에 챕터 클리어 버튼 생성
   const scene = document.querySelector(".mainScreenChapterThree");
   let chapterButton = document.querySelector("#chapter-clear-button");
 
@@ -140,11 +135,10 @@ export function nextChapterModal(content, onNext = null) {
           <h2 class="nextModalTitle">챕터 클리어</h2>
           <p class="nextModalText">다음 챕터로 이동하시겠습니까?</p>
         `,
-        onNext
+        onNext,
       );
     };
   }
-
 
   nextChapter
     .querySelector(".next-modal-close")
@@ -184,13 +178,12 @@ export function nextChapterOption(checkedItem, stageItem, onNext = null) {
       <h2 class="nextModalTitle">챕터 클리어</h2>
       <p class="nextModalText">다음 챕터로 이동하시겠습니까?</p>
     `,
-    onNext
+    onNext,
   );
-
 }
 
-  // total : 이번스테이지에서 획득해야할 아이템수
-  // count : 확인한 아이템 수 조사이벤트 활성화마다 1씩 증가하도록 설정해주세요
+// total : 이번스테이지에서 획득해야할 아이템수
+// count : 확인한 아이템 수 조사이벤트 활성화마다 1씩 증가하도록 설정해주세요
 export function checkChapterClear(count, total) {
   // 모든 아이템을 조사하지 않았다면 종료
   if (count !== total) return;
@@ -198,7 +191,7 @@ export function checkChapterClear(count, total) {
   setTimeout(() => {
     const moveToNextChapter = () => {
       clearChapterItems();
-      
+
       if (gameState.currentChapter === 1) {
         renderChapter2();
       } else if (gameState.currentChapter === 2) {
@@ -211,4 +204,38 @@ export function checkChapterClear(count, total) {
 
     nextChapterOption(count, total, moveToNextChapter);
   }, 2000);
+}
+
+// Chapter2에서 Chapter3로 넘어가는 모달이 뜨는 함수
+export function showNextChapterButton() {
+  const chapter = document.querySelector(".chapter2");
+
+  if (!chapter) return;
+  if (document.querySelector("#chapter-clear-button")) return;
+
+  const button = document.createElement("button");
+
+  button.id = "chapter-clear-button";
+  button.type = "button";
+  button.textContent = "원장실로 이동";
+
+  chapter.appendChild(button);
+
+  button.addEventListener("click", () => {
+    nextChapterModal(
+      `
+        <h2 class="nextModalTitle">챕터 클리어</h2>
+        <p class="nextModalText">원장실로 이동하시겠습니까?</p>
+      `,
+      () => {
+        gameState.currentScene = "chapter3";
+        gameState.currentChapter = 3;
+
+        gameSave();
+
+        renderChapter3();
+        renderInventory();
+      },
+    );
+  });
 }

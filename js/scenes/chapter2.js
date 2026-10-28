@@ -18,7 +18,7 @@ import { initHint } from "../game/hint.js";
 const nurseRoomDialogues = [
   {
     name: "주인공",
-    text: "여기는 곧곧에 많은 정보가 있는 것 같아.",
+    text: "여기는 곳곳에 많은 정보가 있는 것 같아.",
   },
   {
     name: "주인공",
@@ -82,6 +82,7 @@ export function renderChapter2() {
           <button type="button" class="investigationButtons" id="shelf"></button>
 
           <div id="dialogueContainer"></div>
+          <div id="next-Chapter"></div>
         </section>
       </main>
 
@@ -174,14 +175,12 @@ export function setupInvestigation() {
       }, 2000);
 
       // 5. 퍼즐이 들어간 버튼이라면, 2초 뒤 퍼즐 실행
+      const hasDirectorKey = hasItem("director-key");
       if (clickedId === "drawer2") {
         setTimeout(() => {
           callPuzzle("930", "director-key");
         }, 2000);
       }
-
-      // 6. TODO: 퍼즐을 풀고 열쇠를 획득했다면, 다음 챕터로 넘어가는 함수
-      //
     });
   });
 }

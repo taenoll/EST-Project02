@@ -60,8 +60,8 @@ export function renderProlog() {
   const nextButton = document.querySelector('.prolog-next');
 
   // 강사님 더빙 삽입 부분 하트
-  const voice1 = new Audio("./assets/audio/sfx/prolog-1.m4a");
-  const voice2 = new Audio("./assets/audio/sfx/prolog-2.m4a");
+  playSfx("./assets/audio/sfx/prolog-1.m4a");
+  playSfx("./assets/audio/sfx/prolog-2.m4a");
 
   const voice2Trigger = document.querySelector(".prolog-voice-2-trigger");
 

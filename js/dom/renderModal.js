@@ -6,6 +6,7 @@ import { renderChapter3 } from "../scenes/chapter3.js";
 import { renderEnding } from "../scenes/ending.js";
 import { gameState } from "../state/gameState.js";
 import { gameSave } from "../state/storage.js";
+import { playSfx } from "../game/audio.js";
 
 // 공통 모달 사용법
 // 1. index.html에 <div id="next-Chapter"></div> 필요
@@ -147,6 +148,8 @@ export function nextChapterModal(content, onNext = null) {
   nextChapter
     .querySelector(".next-modal-next")
     .addEventListener("click", () => {
+      playSfx("./assets/audio/sfx/door-open.mp3");
+
       nextCloseModal();
 
       if (typeof onNext === "function") {

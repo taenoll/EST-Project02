@@ -263,31 +263,31 @@
 }
 
 #dialogueName {
-  margin: 1rem 1rem 20px;
+  margin: 0 0 12px;
 
   color: #a8c6c2;
-  font-size: 2rem;
+  font-size: clamp(18px, 1.8vw, 28px);
   font-weight: 600;
   letter-spacing: 1px;
   text-shadow: 0 0 5px rgba(165, 235, 220, 0.25);
 }
 
 #dialogueText {
-  margin: 6rem 1rem 20px;
+  margin: 0;
 
   color: #e0e2dd;
-  font-size: 1.5rem;
+  font-size: clamp(16px, 1.45vw, 23px);
   line-height: 1.7;
   white-space: pre-line;
 }
 
 #dialogueNext {
   position: absolute;
-  right: 24px;
-  bottom: 14px;
+  right: 12px;
+  bottom: 7px;
 
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: clamp(11px, 1vw, 16px);
   letter-spacing: 1px;
   text-shadow: 0 1px 3px #000000;
   animation: blink 1.2s infinite;
@@ -568,10 +568,13 @@
   position: relative;
   overflow: hidden;
 
-  width: min(1000px, 90%);
-  min-height: 600px;
-  padding: 32px;
-  /* 이미지가 모달 전체의 배경이 되도록 설정 */
+  width: min(800px, 76vw, 110vh);
+  aspect-ratio: 5 / 3;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  box-sizing: border-box;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -594,14 +597,20 @@
   position: absolute;
   right: 5%;
   bottom: 9%;
-  padding: 1% 1%;
-  font-size: 1.5rem;
+  z-index: 2;
+
+  padding: 10px 14px;
+  font-size: clamp(12px, 1.3vw, 18px);
 
   border: 1px solid #8ba6a3;
   background: rgba(5, 13, 15, 0.8);
   color: #c5f1e9;
   cursor: pointer;
-  z-index: 2;
+}
+
+.next-modal-next:hover {
+  background-color: #203638;
+  border-color: #c5f1e9;
 }
 
 /* 글자와 버튼은 배경보다 위에 표시 */
@@ -623,8 +632,9 @@
 }
 
 .next-modal-body {
+  position: static;
   color: #e0e2dd;
-  line-height: 1.8;
+  line-height: 1.5;
 }
 
 .chapter-background {
@@ -659,17 +669,55 @@
 }
 
 .nextModalTitle {
+  position: absolute;
+  top: 9%;
+  left: 6%;
+  z-index: 2;
+
+  margin: 0;
+  padding: 0;
+
   color: #c5f1e9;
-  font-size: 4rem;
-  padding-top: 1rem;
-  padding-left: 2rem;
+  font-size: clamp(26px, 3vw, 44px);
+  line-height: 1.2;
 }
 
 .nextModalText {
-  font-size: 2rem;
-  padding-top: 20rem;
-  padding-left: 2rem;
+  position: absolute;
+  left: 6%;
+  bottom: 9%;
+  z-index: 2;
+
+  max-width: 55%;
+  margin: 0;
+  padding: 0;
+
+  color: #e0e2dd;
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.6;
+  white-space: pre-line;
 }
+
+@media (max-width: 620px) {
+  .next-modal-box {
+    width: 92vw;
+    aspect-ratio: auto;
+    height: 300px;
+    max-height: 80vh;
+  }
+
+  .nextModalText {
+    left: 6%;
+    bottom: 70px;
+    max-width: 88%;
+  }
+
+  .next-modal-next {
+    right: 6%;
+    bottom: 12px;
+  }
+}
+
 /* ==================================================
    END NEXT CHAPTER
 ================================================== */

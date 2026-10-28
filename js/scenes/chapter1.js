@@ -252,7 +252,8 @@ function showNextChapterButton() {
     nextChapterModal(
       `
         <h2 class="nextModalTitle">챕터 클리어</h2>
-        <p class="nextModalText">간호사실로 이동하시겠습니까?</p>
+        <p class="nextModalText">출입 카드를 대자, 잠겨 있던 문이 열렸다.
+        간호사실로 들어가 볼까?</p>
       `,
       () => {
         gameState.currentScene = "chapter2";
